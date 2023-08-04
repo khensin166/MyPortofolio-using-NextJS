@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { BsFillMoonStarsFill } from "react-icons/bs";
 import Link from "next/link";
 import {
@@ -19,6 +19,7 @@ import web5 from "../public/web5.png";
 import web6 from "../public/web6.png";
 import { useState } from "react";
 
+
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
   return (
@@ -27,10 +28,13 @@ export default function Home() {
         <section className="min-h-screen">
           <nav className="py-10 mb-12 flex justify-between dark:text-gray-200">
             <h1 className="text-xl font-burtons">developedbyed</h1>
-           
+
             <ul className="flex items-center">
               <li>
-                <BsFillMoonStarsFill onClick={() => setDarkMode(!darkMode)} className="cursor-pointer text-2xl" />
+                <BsFillMoonStarsFill
+                  onClick={() => setDarkMode(!darkMode)}
+                  className="cursor-pointer text-2xl"
+                />
               </li>
               <li>
                 <Link
@@ -42,26 +46,36 @@ export default function Home() {
               </li>
             </ul>
           </nav>
-          <div className="text-center p-10 py-10">
-            <h2 className="text-5xl py-2 text-teal-600 font-medium dark:text-teal-400 md:text-6xl">
-              Kenan Tomfie Bukit
-            </h2>
-            <h3 className="text-2xl py-2 dark:text-white md:text-3xl ">
-              Developer and designer.
-            </h3>
-            <p className="text-md py-5 leading-8 text-gray-800 dark:text-gray-200 max-w-xl mx-auto md:text-xl">
-              Freelancer providing services for programming and design content
-              needs. Joim me down below and let`s get cracking
-            </p>
-          </div>
-          <div className="text-5xl flex justify-center gap-16 py-3 text-gray-600 dark:text-gray-400">
+          <div className="flex flex-wrap">
+            <div className="w-full md:w-1/2 flex items-center justify-center">
+              <div className="mx-auto bg-gradient-to-b from-teal-500 rounded-full w-80 h-80 relative overflow-hidden mt-20 md:h-96 md:w-96">
+                <Image alt="" src={deved} layout="fill" objectFit="cover" />
+              </div>
+            </div>
+            <div className="w-full md:w-1/2 p-10 py-10 flex items-end">
+              <div className="text-center md:text-left">
+                <h4 className=" text-2xl   ">
+                  Hello, i'm
+                </h4>
+                <h2 className="text-5xl py-2 text-teal-600 font-medium dark:text-teal-400 md:text-6xl ">
+                  Kenan Tomfie Bukit
+                </h2>
+                <h3 className="text-2xl py-2 dark:text-white md:text-3xl">
+                  Developer and designer.
+                </h3>
+                <p className="text-md py-5 leading-8 text-gray-800 dark:text-gray-200 max-w-xl mx-auto md:text-xl">
+                  Freelancer providing services for programming and design
+                  content needs. Join me down below and let's get cracking
+                </p>
+            <div className="text-5xl flex gap-16 py-3 text-gray-600 dark:text-gray-400">
             <AiFillTwitterCircle/>
             <AiFillLinkedin/>
             <AiFillYoutube/>
           </div>
-          <div className="mx-auto bg-gradient-to-b from-teal-500 rounded-full w-80 h-80 relative overflow-hidden mt-20 md:h-96 md:w-96">
-              <Image alt="" src={deved} layout="fill" objectFit="cover" />
+              </div>
             </div>
+
+          </div>
         </section>
         <section>
           <div>
