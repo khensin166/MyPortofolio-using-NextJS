@@ -55,7 +55,7 @@ export default function Home() {
             <div className="w-full md:w-1/2 p-10 py-10 flex items-end">
               <div className="text-center md:text-left">
                 <h4 className=" text-2xl   ">
-                  Hello, i'm
+                  Hello, i`m
                 </h4>
                 <h2 className="text-5xl py-2 text-teal-600 font-medium dark:text-teal-400 md:text-6xl ">
                   Kenan Tomfie Bukit
@@ -65,7 +65,7 @@ export default function Home() {
                 </h3>
                 <p className="text-md py-5 leading-8 text-gray-800 dark:text-gray-200 max-w-xl mx-auto md:text-xl">
                   Freelancer providing services for programming and design
-                  content needs. Join me down below and let's get cracking
+                  content needs. Join me down below and let`s get cracking
                 </p>
             <div className="text-5xl flex gap-16 py-3 text-gray-600 dark:text-gray-400">
             <AiFillTwitterCircle/>
