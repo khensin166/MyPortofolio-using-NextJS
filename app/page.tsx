@@ -1,11 +1,7 @@
 "use client";
 import { BsFillMoonStarsFill } from "react-icons/bs";
 import Link from "next/link";
-import {
-  AiFillTwitterCircle,
-  AiFillLinkedin,
-  AiFillYoutube,
-} from "react-icons/ai";
+import { AiFillLinkedin, AiFillYoutube, AiFillInstagram } from "react-icons/ai";
 import deved from "../public/dev-ed-wave.png";
 import code from "../public/code.png";
 import design from "../public/design.png";
@@ -18,17 +14,16 @@ import web4 from "../public/web4.png";
 import web5 from "../public/web5.png";
 import web6 from "../public/web6.png";
 import { useState } from "react";
-
+import Typewriter from "typewriter-effect";
 
 export default function Home() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   return (
     <div className={darkMode ? "dark" : ""}>
       <main className="bg-white px-10 dark:bg-gray-900 md:px-20 lg:px-40">
         <section className="min-h-screen">
-          <nav className="py-10 mb-12 flex justify-between dark:text-gray-200">
-            <h1 className="text-xl font-burtons">developedbyed</h1>
-
+          <nav className="py-10 mb-12 flex justify-between dark:text-gray-300">
+            <h1 className="text-xl font-burtons">Kenan Tomfie Bukit</h1>
             <ul className="flex items-center">
               <li>
                 <BsFillMoonStarsFill
@@ -52,29 +47,42 @@ export default function Home() {
                 <Image alt="" src={deved} layout="fill" objectFit="cover" />
               </div>
             </div>
-            <div className="w-full md:w-1/2 p-10 py-10 flex items-end">
-              <div className="text-center md:text-left">
-                <h4 className=" text-2xl   ">
-                  Hello, i`m
+            <div className="w-full md:w-1/2 self-center p-10 py-10 flex items-end">
+              <div className="text-center md:text-left justify-center">
+                <h4 className=" text-2xl text-gray-800 font-bold dark:text-white">
+                  Hello👋,  i`m
                 </h4>
-                <h2 className="text-5xl py-2 text-teal-600 font-medium dark:text-teal-400 md:text-6xl ">
+                <h2 className="text-4xl py-2 text-teal-600 font-medium dark:text-teal-400 md:text-6xl">
                   Kenan Tomfie Bukit
                 </h2>
-                <h3 className="text-2xl py-2 dark:text-white md:text-3xl">
-                  Developer and designer.
-                </h3>
+                <Typewriter
+                  options={{
+                    strings: [
+                      "Developer and Designer.",
+                      "Freelancer providing services.",
+                    ],
+                    autoStart: true,
+                    loop: true,
+                    wrapperClassName:
+                      "text-2xl py-2 dark:text-white md:text-3xl",
+                  }}
+                />
                 <p className="text-md py-5 leading-8 text-gray-800 dark:text-gray-200 max-w-xl mx-auto md:text-xl">
-                  Freelancer providing services for programming and design
-                  content needs. Join me down below and let`s get cracking
+                  Thank you for checking out my personal portfolio.
                 </p>
-            <div className="text-5xl flex gap-16 py-3 text-gray-600 dark:text-gray-400">
-            <AiFillTwitterCircle/>
-            <AiFillLinkedin/>
-            <AiFillYoutube/>
-          </div>
+                <div className="text-5xl flex gap-16 py-3 text-gray-600 dark:text-gray-400">
+                  <Link href="">
+                    <AiFillInstagram />
+                  </Link>
+                  <Link href="https://www.linkedin.com/in/kenan-tomfie0604">
+                    <AiFillLinkedin />
+                  </Link>
+                  <Link href="https://youtube.com/@kenantomfiebukit989">
+                    <AiFillYoutube />
+                  </Link>
+                </div>
               </div>
             </div>
-
           </div>
         </section>
         <section>
