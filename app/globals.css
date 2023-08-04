@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
 /* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -30,9 +30,11 @@ body {
 @font-face {
   font-family: "burtons";
   src: url(../public/Burtons.otf);
+  font-family: "poppins";
+  src: url(../public/Poppins.otf);
 }
 
 a:hover svg {
-  
+  transition: .5s ease-in-out;
   transform: scale(1.2);
 }

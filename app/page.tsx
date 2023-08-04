@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <div className={darkMode ? "dark" : ""}>
       <main className="bg-white px-10 dark:bg-gray-900 md:px-20 lg:px-40">
-        <section className="min-h-screen">
+        <section className="min-h-screen" id="home">
           <nav className="py-10 mb-12 flex justify-between dark:text-gray-300">
             <h1 className="text-xl font-burtons">Kenan Tomfie Bukit</h1>
             <ul className="flex items-center">
@@ -34,7 +34,7 @@ export default function Home() {
               <li>
                 <Link
                   href="#"
-                  className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-4 py-2 rounded-md ml-8"
+                  className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-4 py-2 rounded-md ml-8 hover:opacity-80 transition duration-300 ease-in-out "
                 >
                   Resume
                 </Link>
@@ -52,7 +52,7 @@ export default function Home() {
                 <h4 className=" text-2xl text-gray-800 font-bold dark:text-white">
                   Hello 👋, i`m
                 </h4>
-                <h2 className="text-4xl py-2 text-teal-600 font-medium dark:text-teal-400 md:text-6xl">
+                <h2 className="text-4xl py-2 text-teal-600 font-medium dark:text-teal-400 md:text-6xl font-poppins">
                   Kenan Tomfie Bukit
                 </h2>
                 <Typewriter
@@ -71,13 +71,22 @@ export default function Home() {
                   Thank you for checking out my personal portfolio.
                 </p>
                 <div className="text-5xl flex justify-center md:justify-start gap-16 py-3 text-gray-600 dark:text-gray-400">
-                  <Link href="">
+                  <Link
+                    href="https://www.instagram.com/kenan_bukit/"
+                    target="_blank"
+                  >
                     <AiFillInstagram />
                   </Link>
-                  <Link href="https://www.linkedin.com/in/kenan-tomfie0604">
+                  <Link
+                    href="https://www.linkedin.com/in/kenan-tomfie0604"
+                    target="_blank"
+                  >
                     <AiFillLinkedin />
                   </Link>
-                  <Link href="https://youtube.com/@kenantomfiebukit989">
+                  <Link
+                    href="https://youtube.com/@kenantomfiebukit989"
+                    target="_blank"
+                  >
                     <AiFillYoutube />
                   </Link>
                 </div>
@@ -85,6 +94,56 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <section id="about" className="pt-32 pb-32 md:pt-20 md:pb-20 lg:pt-20 lg:pb-20 ">
+          <div className="container">
+            <div className="flex flex-wrap">
+              <div className="w-full px-4 mb-10 lg:w-1/2">
+                <h4 className="font-bold uppercase text-primary text-lg">
+                  About Me
+                </h4>
+                <h2 className="font-bold text-dark text-3xl mb-5 max-w-xl lg:text-4xl">
+                  Lorem ipsum dolor sit amet consectetur
+                </h2>
+                <p className="font-medium text-base text-secondary max-w-xl lg:text-lg">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam
+                  nemo est animi non. Quis, quisquam nihil!
+                </p>
+              </div>
+              <div className="w-full px-4 lg:w-1/2">
+                <h3 className="font-semibold text-dark text-2xl mb-4 lg:text-3xl lg:pt-10">
+                  Mari berteman
+                </h3>
+                <p className="font-medium text-base text-secondary mb-6 lg:text-lg ">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Voluptates libero aspernatur ab neque tempore quia soluta
+                  repellat at?
+                </p>
+                <div className="text-5xl flex justify-center md:justify-start gap-16 text-gray-600 dark:text-gray-400">
+                  <Link
+                    href="https://www.instagram.com/kenan_bukit/"
+                    target="_blank"
+                  >
+                    <AiFillInstagram />
+                  </Link>
+                  <Link
+                    href="https://www.linkedin.com/in/kenan-tomfie0604"
+                    target="_blank"
+                  >
+                    <AiFillLinkedin />
+                  </Link>
+                  <Link
+                    href="https://youtube.com/@kenantomfiebukit989"
+                    target="_blank"
+                  >
+                    <AiFillYoutube />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section>
           <div>
             <h3 className="text-3xl py-1 dark:text-white ">Services I offer</h3>
