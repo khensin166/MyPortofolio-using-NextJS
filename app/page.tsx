@@ -43,14 +43,14 @@ export default function Home() {
           </nav>
           <div className="flex flex-wrap">
             <div className="w-full md:w-1/2 flex items-center justify-center">
-              <div className="mx-auto bg-gradient-to-b from-teal-500 rounded-full w-80 h-80 relative overflow-hidden mt-20 md:h-96 md:w-96">
+              <div className="mx-auto bg-gradient-to-b from-teal-500 rounded-full w-80 h-80 relative overflow-hidden md:mt-20 md:h-96 md:w-96">
                 <Image alt="" src={deved} layout="fill" objectFit="cover" />
               </div>
             </div>
-            <div className="w-full md:w-1/2 self-center p-10 py-10 flex items-end">
-              <div className="text-center md:text-left justify-center">
+            <div className="w-full md:w-1/2 self-center p-10">
+              <div className="text-center md:text-left justify-center md:mt-28 ">
                 <h4 className=" text-2xl text-gray-800 font-bold dark:text-white">
-                  Hello👋,  i`m
+                  Hello 👋, i`m
                 </h4>
                 <h2 className="text-4xl py-2 text-teal-600 font-medium dark:text-teal-400 md:text-6xl">
                   Kenan Tomfie Bukit
@@ -58,7 +58,7 @@ export default function Home() {
                 <Typewriter
                   options={{
                     strings: [
-                      "Developer and Designer.",
+                      "Developer & Designer.",
                       "Freelancer providing services.",
                     ],
                     autoStart: true,
@@ -70,7 +70,7 @@ export default function Home() {
                 <p className="text-md py-5 leading-8 text-gray-800 dark:text-gray-200 max-w-xl mx-auto md:text-xl">
                   Thank you for checking out my personal portfolio.
                 </p>
-                <div className="text-5xl flex gap-16 py-3 text-gray-600 dark:text-gray-400">
+                <div className="text-5xl flex justify-center md:justify-start gap-16 py-3 text-gray-600 dark:text-gray-400">
                   <Link href="">
                     <AiFillInstagram />
                   </Link>
