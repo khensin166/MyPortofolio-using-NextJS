@@ -21,6 +21,23 @@ export default function Home() {
   return (
     <div className={darkMode ? "dark" : ""}>
       <main className="bg-white px-10 dark:bg-gray-900 md:px-20 lg:px-40">
+        {/* <header className="bg-transparent absolute top-0 left-0 w-full flex items-center z-10">
+          <div className="container">
+            <div className="flex items-center">
+              <div className="px-4">
+                <a href="#home" className="font-bold text-lg text-primary block py-6">kenanBukit</a>
+              </div>
+              <div className="flex items-center px-4">
+                <button id="hamburger" name="hamburger" type="button" className="block absolute right-4" >
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </header> */}
+
         <section className="min-h-screen" id="home">
           <nav className="py-10 mb-12 flex justify-between dark:text-gray-300">
             <h1 className="text-xl font-burtons">Kenan Tomfie Bukit</h1>
@@ -95,7 +112,10 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="about" className="pt-32 pb-32 md:pt-20 md:pb-20 lg:pt-20 lg:pb-20 ">
+        <section
+          id="about"
+          className="pt-32 pb-32 md:pt-20 md:pb-20 lg:pt-20 lg:pb-20 "
+        >
           <div className="container">
             <div className="flex flex-wrap">
               <div className="w-full px-4 mb-10 lg:w-1/2">
@@ -103,11 +123,11 @@ export default function Home() {
                   About Me
                 </h4>
                 <h2 className="font-bold text-dark text-3xl mb-5 max-w-xl lg:text-4xl">
-                  Lorem ipsum dolor sit amet consectetur
+                  let me introduce myself
                 </h2>
                 <p className="font-medium text-base text-secondary max-w-xl lg:text-lg">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam
-                  nemo est animi non. Quis, quisquam nihil!
+                  Greetings, I'm Kenan Tomfie Bukit. Currently, I am a student
+                  at one of the institutes located around Lake Toba.
                 </p>
               </div>
               <div className="w-full px-4 lg:w-1/2">
