@@ -126,7 +126,7 @@ export default function Home() {
                   let me introduce myself
                 </h2>
                 <p className="font-medium text-base text-secondary max-w-xl lg:text-lg">
-                  Greetings, I'm Kenan Tomfie Bukit. Currently, I am a student
+                  Greetings, I`m Kenan Tomfie Bukit. Currently, I am a student
                   at one of the institutes located around Lake Toba.
                 </p>
               </div>
