@@ -112,51 +112,20 @@ export default function Home() {
           </div>
         </section>
 
-        <section
-          id="about"
-          className="pt-20 pb-20 md:pt-20 md:pb-20 lg:pt-20 lg:pb-20"
-        >
-          <div className="container">
-            <div className="flex flex-wrap">
-              <div className="w-full px-4 mb-10 lg:w-1/2">
-                <h4 className="font-bold uppercase text-primary text-lg lg:text-2xl">
-                  About Me
-                </h4>
-                <h2 className="font-bold text-dark text-3xl mb-5 max-w-xl lg:text-4xl">
-                  let me introduce myself
-                </h2>
-                <p className="font-medium text-base text-secondary max-w-xl lg:text-lg">
-                  Greetings, I`m Kenan Tomfie Bukit. Currently, I am a student
-                  at one of the institutes located around Lake Toba.
-                </p>
-              </div>
-              <div className="w-full px-4 lg:w-1/2">
-                <h3 className="font-semibold text-dark text-2xl mb-4 lg:text-3xl lg:pt-10">
-                  Let`s be friend
-                </h3>
-                <p className="font-medium text-base text-secondary mb-6 lg:text-lg ">
-                  Don`t forget to follow my social media to know more about me
-                </p>
-                
-              </div>
-            </div>
-          </div>
-        </section>
 
         <section>
           <div>
-            <h3 className="text-3xl py-1 dark:text-white ">Services I offer</h3>
+            <h3 className="text-3xl py-1 dark:text-white font-bold">
+              About <span className="text-primary">Me</span>
+            </h3>
             <p className="text-md py-2 leading-8 text-gray-800 dark:text-gray-200">
-              Since the beginning of my journey as a freelance designer and
-              developer, I`ve done remote work for
-              <span className="text-teal-500"> agencies </span>
-              consulted for <span className="text-teal-500">startups </span>
-              and collaborated with talanted people to create digital products
-              for both business and consumer use.
+              Greetings, I`m
+              <span className="text-teal-500"> Kenan Tomfie Bukit, </span>
+              Currently, I am a student at one of the institutes located around Lake Toba.
             </p>
             <p className="text-md py-2 leading-8 text-gray-800 dark:text-gray-200">
               I offer from a wide range of services, including brand design,
-              programming and teaching.
+              programming and web development.
             </p>
           </div>
           <div className="lg:flex gap-10">
@@ -207,7 +176,7 @@ export default function Home() {
         </section>
         <section className="py-10">
           <div>
-            <h3 className="text-3xl py-1 dark:text-white ">Portofolio</h3>
+            <h3 className="text-3xl py-1 dark:text-white font-bold">Portofolio</h3>
             <p className="text-md py-2 leading-8 text-gray-800 dark:text-gray-200">
               Since the beginning of my journey as a freelance designer and
               developer, I`ve done remote work for
@@ -217,8 +186,7 @@ export default function Home() {
               for both business and consumer use.
             </p>
             <p className="text-md py-2 leading-8 text-gray-800 dark:text-gray-200">
-              I offer from a wide range of services, including brand design,
-              programming and teaching.
+              Here are some projects I`ve worked on
             </p>
           </div>
           <div className="flex flex-col gap-10 py-10 lg:flex-row lg:flex-wrap">
@@ -238,7 +206,7 @@ export default function Home() {
                 src={web2}
               />
             </div>
-            <div className="basis-1/3 flex-1">
+            {/* <div className="basis-1/3 flex-1">
               <Image
                 className="rounded-lg object-cover"
                 alt=""
@@ -269,7 +237,7 @@ export default function Home() {
                 layout="responsive"
                 src={web6}
               />
-            </div>
+            </div> */}
           </div>
         </section>
       </main>
