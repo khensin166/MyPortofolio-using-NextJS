@@ -150,14 +150,15 @@ export default function Home() {
                 Code your dream project
               </h3>
               <p className="py-2">
-                Do you have an idea for your next great website? Let`s make it a
+                Do you have an idea for your next great application? Let`s make it a
                 reality.
               </p>
-              <h4 className="py-4 text-teal-600">Design Tools I Use</h4>
-              <p className="text-gray-800 py-1">Photoshop</p>
-              <p className="text-gray-800 py-1">Illustrator</p>
-              <p className="text-gray-800 py-1">Figma</p>
-              <p className="text-gray-800 py-1">Indesign</p>
+              <h4 className="py-4 text-teal-600">The language i have used</h4>
+              <p className="text-gray-800 py-1">c</p>
+              <p className="text-gray-800 py-1">php</p>
+              <p className="text-gray-800 py-1">javascript</p>
+              <p className="text-gray-800 py-1">kotlin</p>
+              <p className="text-gray-800 py-1">dart</p>
             </div>
             <div className="text-center shadow-lg p-10 rounded-xl my-10 dark:bg-white flex-1">
               <Image alt="" src={consulting} width={100} height={100} />
