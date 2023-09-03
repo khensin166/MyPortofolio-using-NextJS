@@ -112,7 +112,6 @@ export default function Home() {
           </div>
         </section>
 
-
         <section>
           <div>
             <h3 className="text-3xl py-1 dark:text-white font-bold">
@@ -121,7 +120,8 @@ export default function Home() {
             <p className="text-md py-2 leading-8 text-gray-800 dark:text-gray-200">
               Greetings, I`m
               <span className="text-teal-500"> Kenan Tomfie Bukit, </span>
-              Currently, I am a student at one of the institutes located around Lake Toba.
+              Currently, I am a student at one of the institutes located around
+              Lake Toba.
             </p>
             <p className="text-md py-2 leading-8 text-gray-800 dark:text-gray-200">
               I offer from a wide range of services, including brand design,
@@ -176,7 +176,9 @@ export default function Home() {
         </section>
         <section className="py-10">
           <div>
-            <h3 className="text-3xl py-1 dark:text-white font-bold">Portofolio</h3>
+            <h3 className="text-3xl py-1 dark:text-white font-bold">
+              Portofolio
+            </h3>
             <p className="text-md py-2 leading-8 text-gray-800 dark:text-gray-200">
               Since the beginning of my journey as a freelance designer and
               developer, I`ve done remote work for
@@ -191,30 +193,55 @@ export default function Home() {
           </div>
           <div className="flex flex-col gap-10 py-10 lg:flex-row lg:flex-wrap">
             <div className="basis-1/3 flex-1 ">
-              <Image
-                className="rounded-lg object-cover"
-                alt=""
-                layout="responsive"
-                src={web1}
-              />
+              <Link href="https://betatudia.sanbercodeapp.com/" target="_blank">
+                <Image
+                  className="rounded-lg object-cover"
+                  alt=""
+                  layout="responsive"
+                  src={web1}
+                />
+              </Link>
             </div>
             <div className="basis-1/3 flex-1">
-              <Image
-                className="rounded-lg object-cover"
-                alt=""
-                layout="responsive"
-                src={web2}
-              />
+              <Link
+                href="https://khensin166.github.io/kedai-kopi-kenangan-senja/"
+                target="_blank"
+              >
+                <Image
+                  className="rounded-lg object-cover"
+                  alt=""
+                  layout="responsive"
+                  src={web2}
+                />
+              </Link>
+            </div>
+            <div className="basis-1/3 flex-1">
+              <Link
+                href="https://huta-siallagan.vercel.app/index.html"
+                target="_blank"
+              >
+                <Image
+                  className="rounded-lg object-cover"
+                  alt=""
+                  layout="responsive"
+                  src={web3}
+                />
+              </Link>
+            </div>
+            <div className="basis-1/3 flex-1">
+              <Link
+                href="https://gitlab.com/khensin166/finaleprojectflutter"
+                target="_blank"
+              >
+                <Image
+                  className="rounded-lg object-cover"
+                  alt=""
+                  layout="responsive"
+                  src={web4}
+                />
+              </Link>
             </div>
             {/* <div className="basis-1/3 flex-1">
-              <Image
-                className="rounded-lg object-cover"
-                alt=""
-                layout="responsive"
-                src={web3}
-              />
-            </div>
-            <div className="basis-1/3 flex-1">
               <Image
                 className="rounded-lg object-cover"
                 alt=""
@@ -237,7 +264,7 @@ export default function Home() {
                 layout="responsive"
                 src={web6}
               />
-            </div> */}
+            </div>  */}
           </div>
         </section>
       </main>
