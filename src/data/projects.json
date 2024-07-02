@@ -1,0 +1,45 @@
+[
+  {
+    "title": "Clinic Del",
+    "imageSrc": "projects/clinicDel.png",
+    "description": "This project offers a comprehensive clinic management system using a website base and mobile application.",
+    "skills": ["React", "Flutter", "MySQL", "Fiber v2"],
+    "demo": "https://www.figma.com/design/wtU2gu2bOZvdMvvR5xlCQ4/Del-Clinic-Application-Mobile?node-id=1-1483&t=aIMuP3yehCVkjQQr-1",
+    "source": "https://www.github.com"
+  },
+  {
+    "title": "Petani Edukasi",
+    "imageSrc": "projects/petaniEdukasi.png",
+    "description": "This is a project created to help farmers in maintaining rice plants with the help of machine learning.",
+    "skills": ["Flutter", "Phyton", "Golang", "MySql"],
+    "demo": "https://www.figma.com/design/iOfVpEqvKNiPomu9x71u8Z/Untitled?node-id=0-1&t=Vj2XqzrmVVCSUVGj-1",
+    "source": "https://www.figma.com/design/iOfVpEqvKNiPomu9x71u8Z/Untitled?node-id=0-1&t=Vj2XqzrmVVCSUVGj-1"
+  },
+  {
+    "title": "Beta Tudia",
+    "imageSrc": "projects/betaTudia.png",
+    "description": "This project offers tourist information about destinations, accommodations, and news around Lake Toba.",
+    "skills": ["PHP", "Laravel 9", "MySql"],
+    "demo": "https://github.com/rickyananada1/PA1-Kel12",
+    "source": "https://github.com/rickyananada1/PA1-Kel12"
+  },
+  
+  {
+    "title": "Beta Tudia Mobile Aplication",
+    "imageSrc": "projects/betaTudiaMobile.png",
+    "description": "This project offers tourist information about destinations base on mobile.",
+    "skills": ["React", "Flutter", "MySQL", "Fiber v2"],
+    "demo": "https://www.figma.com/design/wtU2gu2bOZvdMvvR5xlCQ4/Del-Clinic-Application-Mobile?node-id=1-1483&t=aIMuP3yehCVkjQQr-1",
+    "source": "https://gitlab.com/khensin166/finaleprojectflutter"
+  }
+  ,
+  {
+    "title": "Web Huta Siallagan",
+    "imageSrc": "projects/hutaSiallagan.png",
+    "description": "Huta Siallagan is one of the destinations on the island of Samosir, and there are also some characteristics.",
+    "skills": ["HTML", "CSS", "Bootstrap"],
+    "demo": "https://huta-siallagan.vercel.app/index.html",
+    "source": "https://github.com/samuelalbi11/Huta-Siallagan"
+  }
+  
+]
