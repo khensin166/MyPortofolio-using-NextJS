@@ -157,4 +157,8 @@
     padding: 12px 21px;
     margin-bottom: 12px;
   }
+  .socialMedia {
+    font-size: 40px; /* Perbesar ukuran ikon */
+    gap: 30px;
+  }
 }
