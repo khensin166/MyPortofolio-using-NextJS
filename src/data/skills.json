@@ -1,0 +1,78 @@
+[
+  {
+    "title": "HTML",
+    "imageSrc": "skills/html.png"
+  },
+  {
+    "title": "CSS",
+    "imageSrc": "skills/css.png"
+  },
+  {
+    "title": "JavaScript",
+    "imageSrc": "skills/javascript.png"
+  },
+  {
+    "title": "PHP",
+    "imageSrc": "skills/php.png"
+  },
+  {
+    "title": "GoLang",
+    "imageSrc": "skills/go.png"
+  },
+  {
+    "title": "Swift",
+    "imageSrc": "skills/swift.png"
+  },
+  {
+    "title": "dart",
+    "imageSrc": "skills/dart.png"
+  },
+  {
+    "title": "Java",
+    "imageSrc": "skills/java.png"
+  },
+  {
+    "title": "React",
+    "imageSrc": "skills/react.png"
+  },
+  {
+    "title": "Laravel",
+    "imageSrc": "skills/laravel.png"
+  },
+  {
+    "title": "Flutter",
+    "imageSrc": "skills/Flutter.png"
+  },
+  {
+    "title": "SpriteKit",
+    "imageSrc": "skills/spritekit.png"
+  },
+  {
+    "title": "Node",
+    "imageSrc": "skills/node.png"
+  },
+  {
+    "title": "MySql",
+    "imageSrc": "skills/mysql.png"
+  },
+  {
+    "title": "MongoDB",
+    "imageSrc": "skills/mongodb.png"
+  },
+  {
+    "title": "Figma",
+    "imageSrc": "skills/figma.png"
+  },
+  {
+    "title": "Git",
+    "imageSrc": "skills/git.png"
+  },
+  {
+    "title": "VSCode",
+    "imageSrc": "skills/vscode.png"
+  },
+  {
+    "title": "Xcode",
+    "imageSrc": "skills/xcode.png"
+  }
+]

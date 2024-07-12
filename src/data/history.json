@@ -1,0 +1,40 @@
+[
+  {
+    "role": "IOS Developer",
+    "organisation": "Apple Academy",
+    "startDate": "Juni, 2024",
+    "endDate": "Present",
+    "experiences": ["Learn on the Foundation Program","Develop application based on IOS"],
+    "imageSrc": "history/apple.png"
+  },
+  {
+    "role": "Assistant Community Service Program",
+    "organisation": "Institute Technology Del",
+    "startDate": "Mei, 2024",
+    "endDate": "Aug, 2024",
+    "experiences": [
+      "Part of creating learning modules",
+      "Learning facilitator for Microsoft Word, Excel and Power Point"
+    ],
+    "imageSrc": "history/del.png"
+  },
+  {
+    "role": "Teaching Assistant",
+    "organisation": "Institute Technology Del",
+    "startDate": "Feb, 2024",
+    "endDate": "Mei, 2024",
+    "experiences": ["Assisted 52+ first-year students", "Familiar with database structure"],
+    "imageSrc": "history/asdos.png"
+  },
+  {
+    "role": "Teaching Assistant",
+    "organisation": "Institute Technology Del",
+    "startDate": "Aug, 2023",
+    "endDate": "Dec, 2023",
+    "experiences": [
+      "Assisted 60+ first-year students",
+      "Helped learner with topic discrete mathematics"
+    ],
+    "imageSrc": "history/asdos.png"
+  }
+]
