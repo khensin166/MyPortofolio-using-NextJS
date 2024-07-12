@@ -120,10 +120,24 @@
     gap: 34px;
   }
 
+  .historyItem{
+    flex-wrap: wrap;
+    text-align: center;
+    
+  }
   .skills {
     width: 100%;
     flex-direction: row;
     justify-content: center;
+  }
+
+  .title {
+    text-align: center;
+  }
+
+  .historyItem img {
+    width: 70px;
+    margin: 0 auto;
   }
 
   .history {

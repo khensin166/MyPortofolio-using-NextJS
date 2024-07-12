@@ -47,6 +47,16 @@
 }
 
 @media screen and (max-width: 830px) {
+  .text h2 {
+    font-size: 50px;
+    text-align: left; /* Tambahkan ini */
+  }
+
+  .text p {
+    font-size: 30px;
+    text-align: left; /* Tambahkan ini */
+  }
+
   .container {
     flex-direction: column;
     gap: 23px;
@@ -59,6 +69,6 @@
   }
 
   .links {
-    align-items: center;
+    /* align-items: center; */
   }
 }
