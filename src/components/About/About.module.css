@@ -41,6 +41,7 @@
   flex-direction: row;
   align-items: center;
   border-radius: 20px;
+  
   list-style: none;
   padding: 25px;
   background-image: linear-gradient(
@@ -51,6 +52,12 @@
   background-size: 0 100%;
   background-repeat: no-repeat;
   transition: 0.4s;
+}
+
+.aboutItem img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .aboutItem:hover {
@@ -68,9 +75,18 @@
 
 @media screen and (max-width: 830px) {
   .container {
+    margin-top: 80px;
     background-color: transparent;
     padding-left: 0;
     padding-right: 0;
+  }
+
+  .aboutItem{
+    flex-wrap: wrap;
+  }
+  
+  .title {
+    text-align: center;
   }
 
   .content {
@@ -83,6 +99,7 @@
 
   .aboutItems {
     margin-top: 29px;
+    text-align: center;
   }
 
   .aboutItem {
