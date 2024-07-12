@@ -68,7 +68,16 @@
     align-items: center;
   }
 
-  .links {
-    /* align-items: center; */
+  .container {
+    justify-content: space-evenly;
+    width: 100%;
+    padding: 30px 5%;
   }
+
+  .link a {
+    color: var(--color-text);
+    font-size: 25px;
+    letter-spacing: 1.5px;
+  }
+
 }
