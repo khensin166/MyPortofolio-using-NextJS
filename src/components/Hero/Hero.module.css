@@ -145,7 +145,7 @@
   }
 
   .title {
-    font-size: 50px;
+    font-size: 40px;
     margin-bottom: 20px;
     text-align: center;
   }
@@ -165,5 +165,4 @@
     font-size: 40px; /* Perbesar ukuran ikon */
     gap: 30px;
   }
-  /* test */
 }
