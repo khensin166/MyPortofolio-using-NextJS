@@ -126,6 +126,9 @@
 @media screen and (max-width: 830px) {
   .container {
     flex-direction: column-reverse;
+    margin-top: 0px;
+    margin-left: 3%;
+    margin-right: 3%;
   }
 
   .content {
@@ -138,18 +141,18 @@
   }
 
   .heroImg {
-    width: 60%;
+    width: 80%;
   }
 
   .title {
-    font-size: 50px;
+    font-size: 40px;
     margin-bottom: 20px;
     text-align: center;
   }
 
   .description {
     font-size: 25px;
-    text-align: center;
+    text-align: justify;
     margin-bottom: 25px;
   }
   .contactBtn {
@@ -162,5 +165,4 @@
     font-size: 40px; /* Perbesar ukuran ikon */
     gap: 30px;
   }
-  /* test */
 }
