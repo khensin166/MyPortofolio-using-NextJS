@@ -126,6 +126,9 @@
 @media screen and (max-width: 830px) {
   .container {
     flex-direction: column-reverse;
+    margin-top: 0px;
+    margin-left: 3%;
+    margin-right: 3%;
   }
 
   .content {
@@ -138,7 +141,7 @@
   }
 
   .heroImg {
-    width: 60%;
+    width: 80%;
   }
 
   .title {
@@ -149,7 +152,7 @@
 
   .description {
     font-size: 25px;
-    text-align: center;
+    text-align: justify;
     margin-bottom: 25px;
   }
   .contactBtn {
