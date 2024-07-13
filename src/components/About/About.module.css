@@ -84,7 +84,7 @@
   .aboutItem{
     flex-wrap: wrap;
   }
-  
+
   .title {
     text-align: center;
   }
@@ -98,7 +98,7 @@
   }
 
   .aboutItems {
-    margin-top: 29px;
+    gap: 15px;
     text-align: center;
   }
 
