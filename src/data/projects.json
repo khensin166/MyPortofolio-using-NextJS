@@ -19,7 +19,7 @@
     "title": "Beta Tudia",
     "imageSrc": "projects/betaTudia.png",
     "description": "This project offers tourist information about destinations, accommodations, and news around Lake Toba.",
-    "skills": ["PHP", "Laravel 9", "MySql"],
+    "skills": ["PHP", "Laravel 9", "MySql", "Javascript"],
     "demo": "https://github.com/rickyananada1/PA1-Kel12",
     "source": "https://github.com/rickyananada1/PA1-Kel12"
   },
@@ -37,9 +37,25 @@
     "title": "Web Huta Siallagan",
     "imageSrc": "projects/hutaSiallagan.png",
     "description": "Huta Siallagan is one of the destinations on the island of Samosir, and there are also some characteristics.",
-    "skills": ["HTML", "CSS", "Bootstrap"],
+    "skills": ["HTML", "Bootstrap", "Javascript", "CSS"],
     "demo": "https://huta-siallagan.vercel.app/index.html",
     "source": "https://github.com/samuelalbi11/Huta-Siallagan"
+  },
+  {
+    "title": "Redesign Del.ac.id",
+    "imageSrc": "projects/del.jpg",
+    "description": "This project is work on redesigning the del.ac.id website for the User Interface Design course project.",
+    "skills": ["HTML", "CSS", "Bootstrap"],
+    "demo": "https://khensin166.github.io/PAP_039-037/UserUmum/Dashboard.html",
+    "source": "https://github.com/khensin166/User-Interface-Design-Project-037-039"
+  },
+  {
+    "title": "E-Commerce JegeeSt Kedai",
+    "imageSrc": "projects/JegeeSt.png",
+    "description": "This project is work on a project to create an e-commerce JegeeSt Kedai website using the .net framework.",
+    "skills": [".NET", "HTML", "CSS", "Bootstrap", "MySql"],
+    "demo": "https://khensin166.github.io/PAP_039-037/UserUmum/Dashboard.html",
+    "source": "https://github.com/khensin166/User-Interface-Design-Project-037-039"
   }
   
 ]
