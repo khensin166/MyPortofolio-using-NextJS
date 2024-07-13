@@ -42,6 +42,11 @@
   {
     "title": "Flutter",
     "imageSrc": "skills/Flutter.png"
+  }
+  ,
+  {
+    "title": "ASP.Net",
+    "imageSrc": "skills/net.png"
   },
   {
     "title": "SpriteKit",
