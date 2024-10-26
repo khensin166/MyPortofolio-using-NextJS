@@ -23,7 +23,7 @@
     "demo": "https://github.com/rickyananada1/PA1-Kel12",
     "source": "https://github.com/rickyananada1/PA1-Kel12"
   },
-  
+
   {
     "title": "Beta Tudia Mobile Aplication",
     "imageSrc": "projects/betaTudiaMobile.png",
@@ -31,8 +31,7 @@
     "skills": ["React", "Flutter", "MySQL", "Fiber v2"],
     "demo": "https://www.figma.com/design/wtU2gu2bOZvdMvvR5xlCQ4/Del-Clinic-Application-Mobile?node-id=1-1483&t=aIMuP3yehCVkjQQr-1",
     "source": "https://gitlab.com/khensin166/finaleprojectflutter"
-  }
-  ,
+  },
   {
     "title": "Web Huta Siallagan",
     "imageSrc": "projects/hutaSiallagan.png",
@@ -56,6 +55,14 @@
     "skills": [".NET", "HTML", "CSS", "Bootstrap", "MySql"],
     "demo": "https://khensin166.github.io/PAP_039-037/UserUmum/Dashboard.html",
     "source": "https://github.com/khensin166/User-Interface-Design-Project-037-039"
+  },
+  {
+    "title": "Nightmare Seekers",
+    "imageSrc": "projects/nightmareSeekers.png",
+    "description": "this project is a Nightmare Seeker game made with IOS-based technology - while participating in the Foundation program at the Apple Developer Academy @infinite Learning",
+    "skills": ["Swift", "UIkit", "SpriteKit", "IOS"],
+    "demo": "https://github.com/khensin166/Nightmare-Seeker",
+    "source": "https://github.com/khensin166/Nightmare-Seeker"
+
   }
-  
 ]
