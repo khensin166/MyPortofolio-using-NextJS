@@ -12,6 +12,10 @@
     "imageSrc": "skills/javascript.png"
   },
   {
+    "title": "Python",
+    "imageSrc": "skills/python.png"
+  },
+  {
     "title": "PHP",
     "imageSrc": "skills/php.png"
   },

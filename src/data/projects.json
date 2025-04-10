@@ -1,11 +1,28 @@
 [
   {
+    "title": "Nightmare Seekers",
+    "imageSrc": "projects/nightmareSeekers.png",
+    "description": "this project Nightmare Seeker game made with IOS-based technology - while participating Foundation program Apple Developer Academy @infinite Learning",
+    "skills": ["Swift", "UIkit", "SpriteKit", "IOS"],
+    "demo": "https://github.com/khensin166/Nightmare-Seeker",
+    "source": "https://github.com/khensin166/Nightmare-Seeker"
+  
+  },
+  {
     "title": "Clinic Del",
     "imageSrc": "projects/clinicDel.png",
     "description": "This project offers a comprehensive clinic management system using a website base and mobile application.",
     "skills": ["React", "Flutter", "MySQL", "Fiber v2"],
     "demo": "https://www.figma.com/design/wtU2gu2bOZvdMvvR5xlCQ4/Del-Clinic-Application-Mobile?node-id=1-1483&t=aIMuP3yehCVkjQQr-1",
-    "source": "https://www.github.com"
+    "source": "https://github.com/khensin166/PA2-Group09-Clinic-Del"
+  },
+  {
+    "title": "Classifying egg conditions",
+    "imageSrc": "projects/eggcnn.png",
+    "description": "This project development for CNN-based app classifies egg conditions via image upload, deployed using Flask for easy access.",
+    "skills": ["Flask", "Python", "TensorFlow", "CNN"],
+    "demo": "https://web-production-e9e47.up.railway.app/",
+    "source": "https://github.com/khensin166/Egg-Detection-Using-CNN"
   },
   {
     "title": "Petani Edukasi",
@@ -55,14 +72,5 @@
     "skills": [".NET", "HTML", "CSS", "Bootstrap", "MySql"],
     "demo": "https://khensin166.github.io/PAP_039-037/UserUmum/Dashboard.html",
     "source": "https://github.com/khensin166/User-Interface-Design-Project-037-039"
-  },
-  {
-    "title": "Nightmare Seekers",
-    "imageSrc": "projects/nightmareSeekers.png",
-    "description": "this project is a Nightmare Seeker game made with IOS-based technology - while participating in the Foundation program at the Apple Developer Academy @infinite Learning",
-    "skills": ["Swift", "UIkit", "SpriteKit", "IOS"],
-    "demo": "https://github.com/khensin166/Nightmare-Seeker",
-    "source": "https://github.com/khensin166/Nightmare-Seeker"
-
   }
 ]
