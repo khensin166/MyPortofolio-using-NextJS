@@ -1,10 +1,26 @@
 [
   {
+    "role": "Software Engineer",
+    "organisation": "AirAsia Indonesia",
+    "startDate": "Aug, 2024",
+    "endDate": "Feb, 2025",
+    "experiences": [
+      "Deployment utilizing Google Cloud",
+      "Developing analytics Dashboard",
+      "Problem Solving",
+      "Team Work"
+    ],
+    "imageSrc": "history/airasia.png"
+  },
+  {
     "role": "IOS Developer",
     "organisation": "Apple Academy",
     "startDate": "Juni, 2024",
-    "endDate": "Present",
-    "experiences": ["Learn on the Foundation Program","Develop application based on IOS"],
+    "endDate": "Aug, 2024",
+    "experiences": [
+      "Learn on the Foundation Program",
+      "Develop application based on IOS"
+    ],
     "imageSrc": "history/apple.png"
   },
   {
@@ -21,17 +37,11 @@
   {
     "role": "Teaching Assistant",
     "organisation": "Institute Technology Del",
-    "startDate": "Feb, 2024",
-    "endDate": "Mei, 2024",
-    "experiences": ["Assisted 52+ first-year students", "Familiar with database structure"],
-    "imageSrc": "history/asdos.png"
-  },
-  {
-    "role": "Teaching Assistant",
-    "organisation": "Institute Technology Del",
     "startDate": "Aug, 2023",
-    "endDate": "Dec, 2023",
+    "endDate": "Mei, 2024",
     "experiences": [
+      "Assisted 52+ first-year students",
+      "Familiar with database structure",
       "Assisted 60+ first-year students",
       "Helped learner with topic discrete mathematics"
     ],

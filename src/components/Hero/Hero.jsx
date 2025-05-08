@@ -15,7 +15,7 @@ export const Hero = () => {
           Resume
         </a>
         <div className={styles.socialMedia}>
-          <a href="https://www.instagram.com/kenan_bukit/" target="_blank" className={styles.socialBtn}><FaInstagram /></a>
+          <a href="https://www.instagram.com/kenan_bukit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" className={styles.socialBtn}><FaInstagram /></a>
           <a href="https://www.linkedin.com/in/kenan-tomfie-bukit" target="_blank" className={styles.socialBtn}><FaLinkedin /></a>
           <a href="https://github.com/khensin166" target="_blank" className={styles.socialBtn}><FaGithub /></a>
           <a href="https://www.youtube.com/@kenantomfiebukit989" target="_blank" className={styles.socialBtn}><FaYoutube /></a>
