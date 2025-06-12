@@ -6,7 +6,6 @@
     "skills": ["Swift", "UIkit", "SpriteKit", "IOS"],
     "demo": "https://github.com/khensin166/Nightmare-Seeker",
     "source": "https://github.com/khensin166/Nightmare-Seeker"
-  
   },
   {
     "title": "Clinic Del",
@@ -21,7 +20,7 @@
     "imageSrc": "projects/eggcnn.png",
     "description": "This project development for CNN-based app classifies egg conditions via image upload, deployed using Flask for easy access.",
     "skills": ["Flask", "Python", "TensorFlow", "CNN"],
-    "demo": "https://web-production-e9e47.up.railway.app/",
+    "demo": "https://web-production-fbfa.up.railway.app/",
     "source": "https://github.com/khensin166/Egg-Detection-Using-CNN"
   },
   {
@@ -62,7 +61,7 @@
     "imageSrc": "projects/del.jpg",
     "description": "This project is work on redesigning the del.ac.id website for the User Interface Design course project.",
     "skills": ["HTML", "CSS", "Bootstrap"],
-    "demo": "https://khensin166.github.io/PAP_039-037/UserUmum/Dashboard.html",
+    "demo": "https://khensin166.github.io/User-Interface-Design-Project-037-039/UserUmum/Dashboard.html",
     "source": "https://github.com/khensin166/User-Interface-Design-Project-037-039"
   },
   {
@@ -70,7 +69,7 @@
     "imageSrc": "projects/JegeeSt.png",
     "description": "This project is work on a project to create an e-commerce JegeeSt Kedai website using the .net framework.",
     "skills": [".NET", "HTML", "CSS", "Bootstrap", "MySql"],
-    "demo": "https://khensin166.github.io/PAP_039-037/UserUmum/Dashboard.html",
-    "source": "https://github.com/khensin166/User-Interface-Design-Project-037-039"
+    "demo": "https://github.com/khensin166/JegeeSt-Kedai-.Net",
+    "source": "https://github.com/khensin166/JegeeSt-Kedai-.Net"
   }
 ]
