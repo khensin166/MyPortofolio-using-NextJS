@@ -1,28 +1,40 @@
 @import "../../vars.css";
 
+/* PERBAIKAN: .container sekarang mengatur layout utama */
 .container {
   position: relative;
-  display: flex;
+  display: flex; /* Mengatur konten dan gambar berdampingan */
   align-items: center;
   justify-content: space-between;
-  margin-top: 49px;
+  margin-top: 80px;
   z-index: 1;
   margin-left: 10%;
   margin-right: 10%;
+  min-height: 70vh;
 }
 
+/* DIHAPUS: Tidak diperlukan lagi karena fungsinya digabung ke .container */
+/* .topSection { ... } */
+
+/* PERBAIKAN: .content sekarang adalah wadah untuk SEMUA item di kiri */
 .content {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-direction: column; /* Menyusun title, desc, dan tombol secara vertikal */
+  align-items: flex-start; /* Semua item rata kiri */
   color: var(--color-text);
-  z-index: 1;
+  z-index: 1; /* PENTING: Agar bisa diklik */
+  flex: 0 0 60%;
+  max-width: 60%;
 }
 
+/* DIHAPUS: Tidak diperlukan lagi */
+/* .textContent { ... } */
+/* .buttonSection { ... } */
+
 .title {
-  font-size: 72px;
+  font-size: 58px;
   font-weight: 900;
-  margin-bottom: 33px;
+  margin-bottom: 30px; /* Jarak disesuaikan */
   font-family: var(--font-roboto);
   background: linear-gradient(
     90deg,
@@ -36,7 +48,59 @@
 .description {
   font-size: 30px;
   font-family: var(--font-roboto);
-  margin-bottom: 52px;
+  margin-bottom: 40px; /* Jarak ke tombol di bawahnya */
+  line-height: 1.5;
+}
+
+/* --- Animasi Kata (Tetap Sama) --- */
+.animatedWordContainer {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  height: 1.2em;
+  vertical-align: baseline;
+  min-width: 280px;
+  perspective: 1200px;
+}
+
+.animatedWord {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: 700;
+  color: var(--color-primary);
+  background: linear-gradient(
+    90deg,
+    var(--color-primary) 0%,
+    var(--color-hover) 100%
+  );
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transform-origin: center center;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flipIn {
+  transform: rotateX(0deg) scale(1);
+  opacity: 1;
+}
+
+.flipOut {
+  transform: rotateX(-90deg) scale(0.8);
+  opacity: 0;
+}
+/* --- Akhir Animasi Kata --- */
+
+/* BARU: Wadah untuk tombol Resume dan ikon sosial */
+.actionsContainer {
+  display: flex;
+  align-items: center; /* Menyejajarkan tombol dan ikon */
+  gap: 30px; /* Jarak antara tombol dan grup ikon */
 }
 
 .contactBtn {
@@ -48,7 +112,8 @@
   font-weight: 600;
   padding: 17px 26px;
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
-  transition: transform 1s ease-in-out;
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  /* Hapus margin-bottom karena jarak diatur oleh parent */
 }
 
 .contactBtn:hover {
@@ -56,10 +121,30 @@
   background-color: var(--color-hover);
 }
 
-.heroImg {
-  width: 50%;
-  z-index: 1;
+.socialMedia {
+  display: flex;
+  gap: 20px;
+  /* Hapus margin-top */
+}
 
+.socialBtn {
+  font-size: 50px;
+  color: var(--color-text);
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+  display: flex; /* Untuk memastikan ikon berada di tengah */
+  align-items: center;
+}
+
+.socialBtn:hover {
+  transform: scale(1.1);
+  color: var(--color-hover);
+}
+
+/* --- Gambar dan Blur (Tetap Sama) --- */
+.heroImg {
+  flex: 0 0 35%;
+  max-width: 35%;
+  z-index: 1;
   animation-name: floating;
   animation-duration: 3s;
   animation-iteration-count: infinite;
@@ -78,91 +163,109 @@
   }
 }
 
-.topBlur {
+.topBlur,
+.bottomBlur {
   position: absolute;
+  filter: blur(100px);
+  z-index: 0; /* PENTING: Di belakang konten */
+}
+
+.topBlur {
   width: 50vw;
   height: 50vw;
   min-width: 350px;
-  min-width: 350px;
+  min-height: 350px;
   top: -128px;
   left: -10vw;
   border-radius: 764px;
   background: rgba(25, 55, 109, 0.7);
-  filter: blur(100px);
-  z-index: 0;
 }
 
 .bottomBlur {
-  position: absolute;
   width: 70vw;
   height: 50vw;
   min-width: 350px;
-  min-width: 250px;
+  min-height: 250px;
   top: 246px;
   right: -25vw;
   border-radius: 764px;
   background: rgba(25, 55, 109, 0.7);
-  filter: blur(100px);
-  z-index: 0;
 }
 
-.socialMedia {
-  display: flex;
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.socialBtn {
-  font-size: 50px; /* Perbesar ukuran ikon */
-  color: var(--color-text);
-  transition: transform 0.3s ease-in-out;
-}
-
-.socialBtn:hover {
-  transform: scale(1.1);
-  color: var(--color-hover);
-}
-
+/* --- Responsive (Sudah disesuaikan dengan struktur baru) --- */
+/* Ganti blok media query Anda dengan yang ini */
 @media screen and (max-width: 830px) {
   .container {
     flex-direction: column-reverse;
-    margin-top: 0px;
-    margin-left: 5%;
-    margin-right: 5%;
+    align-items: center;
+    margin-left: 8%; /* Sedikit lebih lebar dari 5% */
+    margin-right: 8%;
   }
 
   .content {
     align-items: center;
-  }
-
-  .socialMedia {
-    justify-content: center;
-    font-size: 30px;
+    flex: 1;
+    max-width: 100%;
   }
 
   .heroImg {
-    width: 80%;
+    max-width: 65%; /* Ukuran gambar disesuaikan */
+    width: 65%;
+    margin-bottom: 30px;
   }
 
   .title {
-    font-size: 40px;
+    font-size: 38px; /* Sedikit lebih besar untuk hierarki */
     margin-bottom: 20px;
     text-align: center;
   }
 
   .description {
-    font-size: 25px;
-    text-align: justify;
-    margin-bottom: 25px;
+    font-size: 18px; /* Saran: Perbesar agar lebih mudah dibaca */
+    text-align: center;
+    line-height: 1.6; /* Saran: Tambah spasi antar baris */
+    margin-bottom: 40px; /* Saran: Beri jarak lebih ke tombol di bawah */
+  }
+
+  .actionsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; /* Pastikan container mengambil lebar penuh */
+    gap: 25px; /* Jarak antara tombol dan grup ikon */
+  }
+
+  .contactBtn {
+    font-size: 20px;
+    padding: 14px 22px;
+    width: 60%; /* Saran: Buat tombol lebih lebar */
+    max-width: 250px; /* Batas lebar maksimum */
+    text-align: center;
+  }
+
+  .socialMedia {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Saran: Perlebar jarak antar ikon */
+  }
+
+  .socialBtn {
+    font-size: 40px; /* Ukuran ikon sudah bagus */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .title {
+    font-size: 28px;
+  }
+  .description {
+    font-size: 16px;
   }
   .contactBtn {
-    border-radius: 100px;
-    font-size: 25px;
-    padding: 12px 21px;
-    margin-bottom: 12px;
+    font-size: 18px;
+    padding: 10px 16px;
   }
-  .socialMedia {
-    font-size: 40px; /* Perbesar ukuran ikon */
-    gap: 30px;
+  .socialBtn {
+    font-size: 40px;
   }
 }
