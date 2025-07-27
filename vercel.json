@@ -2,7 +2,13 @@
   "redirects": [
     {
       "source": "/",
-      "destination": "https://www.kenantomfie.site",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.kenantomfie.site"
+        }
+      ],
+      "destination": "https://kenantomfie.site",
       "permanent": true
     }
   ]
