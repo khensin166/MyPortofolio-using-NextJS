@@ -49,7 +49,7 @@ export const Hero = () => {
         {/* Wadah baru untuk tombol dan ikon sosial */}
         <div className={styles.actionsContainer}>
           <a
-            href="https://drive.google.com/file/d/1lde0FbGG5dL8gQpGCAcR8Y0WlVbslGo3/view?usp=sharing"
+            href="https://drive.google.com/file/d/1lIi5Njw9-ditdx6Dy94FWxiEK5qC_g_R/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.contactBtn}
