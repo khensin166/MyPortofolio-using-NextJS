@@ -22,7 +22,7 @@ export async function POST(request) {
     }
 
     // AJAIBNYA TERJADI DI SINI: Menghancurkan Edge Cache Vercel spesifik tersebut!
-    revalidateTag(tag);
+    revalidateTag(tag, 'max');
 
     return new Response(JSON.stringify({ 
       revalidated: true, 

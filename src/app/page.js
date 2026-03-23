@@ -12,15 +12,16 @@ export default async function Home() {
   let experienceData = [];
 
   try {
+    const bypass = Date.now();
     // Menarik Data secara paralel dari Edge Hono API Anda!
     const [resProj, resSkill, resExp] = await Promise.all([
-      fetch('https://my-portofolio-backend.vercel.app/api/projects', {
+      fetch(`https://my-portofolio-backend.vercel.app/api/projects?t=${bypass}`, {
         next: { tags: ['projects'], revalidate: 3600 }
       }),
-      fetch('https://my-portofolio-backend.vercel.app/api/skills', {
+      fetch(`https://my-portofolio-backend.vercel.app/api/skills?t=${bypass}`, {
         next: { tags: ['skills'], revalidate: 3600 }
       }),
-      fetch('https://my-portofolio-backend.vercel.app/api/experiences', {
+      fetch(`https://my-portofolio-backend.vercel.app/api/experiences?t=${bypass}`, {
         next: { tags: ['experiences'], revalidate: 3600 }
       }),
     ]);

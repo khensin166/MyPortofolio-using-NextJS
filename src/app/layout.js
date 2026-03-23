@@ -5,7 +5,7 @@ const roboto = Roboto({ subsets: ["latin"], weight: ["400", "700"] });
 const outfit = Outfit({ subsets: ["latin"], weight: ["400", "700"] });
 
 export const metadata = {
-  title: "Kenan's Portfolio API",
+  title: "Kenan's Portfolio",
   description: "A fast Next.js & Hono EDGE portfolio.",
 };
 

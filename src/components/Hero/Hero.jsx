@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import styles from "./Hero.module.css";
+import Image from "next/image";
 import { getImageUrl } from "../../utils";
 import { FaInstagram, FaLinkedin, FaGithub, FaYoutube } from "react-icons/fa";
 
@@ -94,9 +95,12 @@ export const Hero = () => {
         </div>
       </div>
 
-      <img
+      <Image
         src={getImageUrl("hero/heroImagee.png")}
         alt="Profile picture of Kenan"
+        width={400}
+        height={400}
+        priority={true}
         className={styles.heroImg}
       />
       
