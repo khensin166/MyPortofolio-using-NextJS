@@ -10,11 +10,12 @@ export default async function Home() {
   let projectsData = [];
   let skillsData = [];
   let experienceData = [];
+  let profileData = null;
 
   try {
     const bypass = Date.now();
-    // Menarik Data secara paralel dari Edge Hono API Anda!
-    const [resProj, resSkill, resExp] = await Promise.all([
+    // Menarik Data secara paralel dari Edge Hono API Anda (sekarang 4 rute sekaligus)!
+    const [resProj, resSkill, resExp, resProfile] = await Promise.all([
       fetch(`https://my-portofolio-backend.vercel.app/api/projects?t=${bypass}`, {
         next: { tags: ['projects'], revalidate: 3600 }
       }),
@@ -24,15 +25,20 @@ export default async function Home() {
       fetch(`https://my-portofolio-backend.vercel.app/api/experiences?t=${bypass}`, {
         next: { tags: ['experiences'], revalidate: 3600 }
       }),
+      fetch(`https://my-portofolio-backend.vercel.app/api/profile?t=${bypass}`, {
+        next: { tags: ['profile'], revalidate: 3600 }
+      }),
     ]);
 
     const projJson = await resProj.json();
     const skillJson = await resSkill.json();
     const expJson = await resExp.json();
+    const profileJson = await resProfile.json();
 
     projectsData = projJson.data || projJson || [];
     skillsData = skillJson.data || skillJson || [];
     experienceData = expJson.data || expJson || [];
+    profileData = profileJson.data || profileJson;
 
   } catch (err) {
     console.error("Gagal menarik data dari Hono:", err);
@@ -41,7 +47,7 @@ export default async function Home() {
   return (
     <div className={styles.App}>
       <Navbar />
-      <Hero />
+      <Hero profile={profileData} />
       <About />
       <Experience skills={skillsData} history={experienceData} />
       <Projects projects={projectsData} />

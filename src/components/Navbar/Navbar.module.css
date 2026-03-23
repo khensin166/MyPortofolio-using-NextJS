@@ -40,14 +40,15 @@
 
 @media screen and (max-width: 830px) {
   .navbar {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between; /* Menjaga title kiri, menu kanan */
+    padding-top: 30px; /* Dikurangi untuk mobile */
   }
 
   .menu {
-    position: absolute;
-    right: 0;
-    margin-right: 10%;
+    position: relative; /* Gunakan relative agar gampang disejajarkan */
+    display: flex;
     flex-direction: column;
     align-items: flex-end;
     gap: 11px;
@@ -64,15 +65,18 @@
     flex-direction: column;
     align-items: center;
     gap: 13px;
+    position: absolute;
+    top: 50px;
+    right: 0;
     border-radius: 10px;
-    background: rgb(25, 55, 109);
+    background: rgb(12, 28, 56);
     background: linear-gradient(
-      0deg,
-      rgba(25, 55, 109, 0.2) 0%,
-      rgba(25, 55, 109, 1) 100%
+      180deg,
+      rgba(25, 55, 109, 1) 0%,
+      rgba(15, 35, 70, 1) 100%
     );
     padding: 24px 33px;
-    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   }
 
   .menuOpen {

@@ -34,22 +34,24 @@
 .title {
   font-size: 58px;
   font-weight: 900;
-  margin-bottom: 30px; /* Jarak disesuaikan */
+  margin-bottom: 30px;
   font-family: var(--font-roboto);
   background: linear-gradient(
     90deg,
-    rgba(255, 255, 255, 1) 70%,
-    rgba(255, 255, 255, 0) 120%
+    #ffffff 0%,
+    #eeeeee 100%
   );
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
+  line-height: 1.1;
 }
 
 .description {
-  font-size: 30px;
+  font-size: 34px;
   font-family: var(--font-roboto);
   margin-bottom: 40px; /* Jarak ke tombol di bawahnya */
   line-height: 1.5;
+  color: #d1d1d1; /* Sedikit lebih terang agar enak dibaca */
 }
 
 /* --- Animasi Kata (Tetap Sama) --- */
@@ -209,8 +211,9 @@
   }
 
   .heroImg {
-    max-width: 65%; /* Ukuran gambar disesuaikan */
+    max-width: 65%;
     width: 65%;
+    height: auto; /* PENTING: Menjaga rasio agar tidak gepeng */
     margin-bottom: 30px;
   }
 
@@ -221,10 +224,10 @@
   }
 
   .description {
-    font-size: 18px; /* Saran: Perbesar agar lebih mudah dibaca */
+    font-size: 22px; /* Diperbesar agar lebih menonjol */
     text-align: center;
-    line-height: 1.6; /* Saran: Tambah spasi antar baris */
-    margin-bottom: 40px; /* Saran: Beri jarak lebih ke tombol di bawah */
+    line-height: 1.6;
+    margin-bottom: 40px;
   }
 
   .actionsContainer {
@@ -259,7 +262,7 @@
     font-size: 28px;
   }
   .description {
-    font-size: 16px;
+    font-size: 18px;
   }
   .contactBtn {
     font-size: 18px;
