@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    border-radius: 3px;
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    border: 2px solid;
+    background-color: theme("colors.neutral.600");
+    border-color: theme("colors.neutral.300");
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    background-color: theme("colors.neutral.400");
+  }
+}
+
+@layer components {
+  .hexagon {
+    clip-path: polygon(0 25%, 50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%);
+  }
+}
