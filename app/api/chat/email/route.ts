@@ -1,16 +1,16 @@
-import * as nodemailer from "nodemailer";
+// import * as nodemailer from "nodemailer";
 import { NextResponse } from "next/server";
 
 export const POST = async (request: Request) => {
   try {
     const body = await request.json();
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.NODEMAILER_EMAIL,
-        pass: process.env.NODEMAILER_PW,
-      },
-    });
+    // const transporter = nodemailer.createTransport({
+    //   service: "gmail",
+    //   auth: {
+    //     user: process.env.NODEMAILER_EMAIL,
+    //     pass: process.env.NODEMAILER_PW,
+    //   },
+    // });
 
     // Warna Utama & Tekstur
     const primaryColor = "#fbe400";
@@ -50,12 +50,12 @@ export const POST = async (request: Request) => {
         </div>
       `;
 
-      await transporter.sendMail({
-        from: `"Satria Bahari" <${process.env.NODEMAILER_EMAIL}>`,
-        to: targetEmail,
-        subject: `Re: Pesan kamu dibalas oleh ${senderName}`,
-        html: htmlReply,
-      });
+      // await transporter.sendMail({
+      //   from: `"Satria Bahari" <${process.env.NODEMAILER_EMAIL}>`,
+      //   to: targetEmail,
+      //   subject: `Re: Pesan kamu dibalas oleh ${senderName}`,
+      //   html: htmlReply,
+      // });
     } else {
       const { name, email, message } = body;
 
@@ -85,12 +85,12 @@ export const POST = async (request: Request) => {
         </div>
       `;
 
-      await transporter.sendMail({
-        from: `"Chat System" <${process.env.NODEMAILER_EMAIL}>`,
-        to: "satriaaxel7703@gmail.com",
-        subject: `New Message from ${name} 💬`,
-        html: htmlNewChat,
-      });
+      // await transporter.sendMail({
+      //   from: `"Chat System" <${process.env.NODEMAILER_EMAIL}>`,
+      //   to: "satriaaxel7703@gmail.com",
+      //   subject: `New Message from ${name} 💬`,
+      //   html: htmlNewChat,
+      // });
     }
 
     return NextResponse.json({ message: "Sent" });

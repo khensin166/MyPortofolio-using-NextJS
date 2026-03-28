@@ -45,7 +45,9 @@ const Layouts = ({ children }: LayoutsProps) => {
         <main
           className={cn(
             "transition-all duration-300",
-            isSidebar ? "max-w-[854px] lg:w-4/5" : "w-full",
+            isSidebar
+              ? "max-w-[854px] px-4 pt-5 lg:w-4/5 lg:px-0 lg:pt-0"
+              : "w-full",
           )}
         >
           {children}
