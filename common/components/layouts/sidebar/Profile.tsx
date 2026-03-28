@@ -63,10 +63,12 @@ const Profile = () => {
                 "h-[130px] flex-col-reverse !items-end justify-between pb-1",
             )}
           >
-            <div className="flex gap-4">
-              <IntlToggle />
-              <ThemeToggle />
-            </div>
+            {isOpen && (
+              <div className="flex gap-4">
+                <IntlToggle />
+                <ThemeToggle />
+              </div>
+            )}
             <MobileMenuButton expandMenu={isOpen} setExpandMenu={toggleMenu} />
           </div>
         )}

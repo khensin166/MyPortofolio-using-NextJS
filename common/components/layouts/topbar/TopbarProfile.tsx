@@ -18,17 +18,19 @@ const TopbarProfile = () => {
     <div className="flex items-center justify-between w-full px-4 py-3 bg-card border-b border-border">
       <div className="flex items-center gap-4">
         <Link href="/" className="flex items-center gap-3 group">
-          <Image
-            src="/images/kenan.jpeg"
-            width={40}
-            height={40}
-            alt="Kenan"
-            className="border-2 border-border transition-transform group-hover:scale-110"
-            rounded="rounded-full"
-          />
+          <div className="hidden sm:block">
+            <Image
+              src="/images/kenan.jpeg"
+              width={40}
+              height={40}
+              alt="Kenan"
+              className="border-2 border-border transition-transform group-hover:scale-110"
+              rounded="rounded-full"
+            />
+          </div>
           <div className="flex flex-col">
             <div className="flex items-center gap-1">
-              <h3 className="text-sm font-bold">Kenan Tomfie Bukit</h3>
+              <h3 className="text-sm font-bold">Kenan Bukit</h3>
               <VerifiedIcon size={14} className="text-blue-400" />
             </div>
             <span className="text-[10px] text-muted-foreground">@kenan_bukit</span>
@@ -50,7 +52,7 @@ const TopbarProfile = () => {
             onClick={toggleLayoutMode}
             className="flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-card p-2 shadow-sm transition-all duration-300 hover:scale-110 active:scale-95"
           >
-            <HiOutlineViewList size={20} className="text-muted-foreground" />
+            <HiOutlineViewList size={20} className="text-foreground" />
           </button>
         </Tooltip>
       </div>

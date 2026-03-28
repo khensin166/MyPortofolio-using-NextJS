@@ -12,6 +12,8 @@ import Sidebar from "./sidebar";
 import Topbar from "./topbar";
 import { useLayoutStore } from "../../stores/layout";
 
+import ThemeMagicClick from "../elements/ThemeMagicClick";
+
 const Notif = dynamic(() => import("../elements/Notif"), { ssr: false });
 
 interface LayoutsProps {
@@ -35,6 +37,7 @@ const Layouts = ({ children }: LayoutsProps) => {
 
   return (
     <div className="mx-auto max-w-7xl lg:px-12">
+      <ThemeMagicClick />
       <div
         className={cn(
           "mx-auto flex flex-col transition-all duration-300 lg:py-4",
