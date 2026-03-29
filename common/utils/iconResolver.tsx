@@ -4,6 +4,10 @@ import * as BsIcons from "react-icons/bs";
 import * as TbIcons from "react-icons/tb";
 import * as Fa6Icons from "react-icons/fa6";
 import * as RiIcons from "react-icons/ri";
+import * as DiIcons from "react-icons/di";
+import * as AiIcons from "react-icons/ai";
+import * as HiIcons from "react-icons/hi2";
+import * as MdIcons from "react-icons/md";
 import Image from "next/image";
 
 // Map prefixes to their respective dynamic modules
@@ -14,6 +18,10 @@ const libraryMap: Record<string, Record<string, any>> = {
   Tb: TbIcons,
   Fa: Fa6Icons,
   Ri: RiIcons,
+  Di: DiIcons,
+  Ai: AiIcons,
+  Hi: HiIcons,
+  Md: MdIcons,
 };
 
 export const IconResolver = ({ 

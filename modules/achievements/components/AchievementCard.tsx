@@ -13,6 +13,19 @@ import SpotlightCard from "@/common/components/elements/SpotlightCard";
 import Portal from "@/common/components/elements/Portal";
 import Link from "next/link";
 
+const getImageUrl = (url: string) => {
+  if (!url) return { url: "", isDrive: false };
+  const driveRegex = /drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/;
+  const match = url.match(driveRegex);
+  if (match && match[1]) {
+    return { 
+      url: `https://drive.google.com/thumbnail?id=${match[1]}&sz=w1000`, 
+      isDrive: true 
+    };
+  }
+  return { url, isDrive: false };
+};
+
 const AchievementCard = ({
   name,
   issuing_organization,
@@ -29,6 +42,7 @@ const AchievementCard = ({
   const t = useTranslations("AchievementsPage");
 
   const issueDate = issue_date ? format(parseISO(issue_date), "MMMM yyyy") : "";
+  const { url: displayImage, isDrive } = getImageUrl(image);
 
   useEffect(() => {
     if (isOpen) {
@@ -55,10 +69,11 @@ const AchievementCard = ({
           <div className="relative overflow-hidden">
             <motion.div layoutId={`image-${image}`}>
               <Image
-                src={image}
+                src={displayImage}
                 alt={name}
                 width={500}
                 height={250}
+                unoptimized={isDrive}
                 className="min-h-[180px] w-full rounded-t-xl object-cover transition-transform duration-500 group-hover:scale-105 md:h-[170px]"
               />
             </motion.div>
@@ -137,10 +152,11 @@ const AchievementCard = ({
                   <div className="w-full bg-secondary">
                     <motion.div layoutId={`image-${image}`}>
                       <Image
-                        src={image}
+                        src={displayImage}
                         alt={name}
                         width={1000}
                         height={700}
+                        unoptimized={isDrive}
                         className="h-full max-h-[70vh] w-full object-contain md:max-h-[85vh]"
                       />
                     </motion.div>
@@ -192,6 +208,7 @@ const AchievementCard = ({
                       <Link
                         href={url_credential}
                         className="mt-6 flex w-fit justify-between gap-2 rounded-full bg-primary px-3 py-3 text-primary-foreground font-semibold transition-all duration-300 hover:scale-105 hover:brightness-110 active:scale-95"
+                        target="_blank"
                       >
                         <p className="text-sm ">Credential URL</p>
                         <ViewIcon size={20} className=" " />

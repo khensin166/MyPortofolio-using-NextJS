@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import { BiCodeAlt as SkillsIcon } from "react-icons/bi";
 import { useTranslations } from "next-intl";
+import { motion, AnimatePresence } from "framer-motion";
 
 import SectionHeading from "@/common/components/elements/SectionHeading";
 import SectionSubHeading from "@/common/components/elements/SectionSubHeading";
@@ -57,7 +58,7 @@ const SkillList = ({ skills }: SkillListProps) => {
         </SectionSubHeading>
       </div>
 
-      <div className="flex flex-wrap gap-2 pb-4">
+      <div className="flex flex-wrap gap-2 pb-2">
         {tags.map((tag) => (
           <button
             key={tag.rawValue}
@@ -66,14 +67,14 @@ const SkillList = ({ skills }: SkillListProps) => {
               "flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300 border",
               selectedTag === tag.rawValue
                 ? "bg-primary border-primary text-primary-foreground shadow-lg shadow-primary/20"
-                : "bg-secondary border-border text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+                : "bg-secondary/50 border-border text-muted-foreground hover:bg-accent hover:text-accent-foreground backdrop-blur-sm"
             )}
           >
             <span>{tag.name}</span>
             <span className={clsx(
               "flex items-center justify-center min-w-[20px] h-5 px-1 text-[10px] rounded-full transition-colors",
               selectedTag === tag.rawValue
-                ? "bg-primary-foreground/10 text-primary-foreground"
+                ? "bg-primary-foreground/20 text-primary-foreground"
                 : "bg-muted text-muted-foreground"
             )}>
               {tag.count}
@@ -82,24 +83,43 @@ const SkillList = ({ skills }: SkillListProps) => {
         ))}
       </div>
 
-      <div className="flex flex-wrap gap-3">
-        {filteredSkills.map((skill, index) => (
-          <div
-            key={index}
-            className="group flex items-center gap-3 px-4 py-2 bg-secondary border border-border rounded-full transition-all duration-300 hover:border-primary/50 hover:bg-accent hover:shadow-md"
-          >
-            <div 
-              style={{ color: skill.color || "currentColor" }}
-              className="transition-transform duration-300 group-hover:scale-110"
+      <motion.div 
+        layout
+        className="flex flex-wrap gap-3"
+      >
+        <AnimatePresence mode="popLayout">
+          {filteredSkills.map((skill, index) => (
+            <motion.div
+              layout
+              key={skill.id || index}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.2 }}
+              className="group flex items-center gap-2.5 pl-1.5 pr-4 py-1.5 bg-secondary/40 border border-border/50 rounded-full transition-all duration-300 hover:border-primary/50 hover:bg-accent/80 hover:shadow-lg hover:shadow-primary/5 backdrop-blur-sm"
             >
-              <IconResolver iconNameOrUrl={skill.imageSrc} size={20} />
-            </div>
-            <span className="text-sm font-medium text-foreground truncate max-w-[150px]">
-              {skill.title}
-            </span>
-          </div>
-        ))}
-      </div>
+              {/* Icon Plate */}
+              <div 
+                className="flex items-center justify-center w-8 h-8 rounded-full bg-background/60 border border-border/40 shadow-inner overflow-hidden transition-all duration-300 group-hover:scale-110 group-hover:border-primary/30"
+                style={{ 
+                  filter: `drop-shadow(0 0 4px ${skill.color}40)` 
+                }}
+              >
+                <div 
+                  style={{ color: skill.color || "currentColor" }}
+                  className="transition-all duration-300 group-hover:brightness-125"
+                >
+                  <IconResolver iconNameOrUrl={skill.imageSrc} size={18} />
+                </div>
+              </div>
+              
+              <span className="text-sm font-medium text-foreground/90 group-hover:text-foreground">
+                {skill.title}
+              </span>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
     </section>
   );
 };
