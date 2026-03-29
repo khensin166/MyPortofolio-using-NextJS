@@ -63,7 +63,11 @@ const Achievements = () => {
           
         return matchesShow && matchesType && matchesCategory;
       })
-      .sort((a: AchievementItem, b: AchievementItem) => b.id - a.id);
+      .sort((a: AchievementItem, b: AchievementItem) => {
+        const dateA = a.issue_date || "";
+        const dateB = b.issue_date || "";
+        return dateB.localeCompare(dateA);
+      });
   }, [data, category, type]);
 
   return (
