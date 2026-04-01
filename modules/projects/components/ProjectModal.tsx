@@ -114,14 +114,23 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                   <h2 className="text-xl font-bold text-foreground">
                     {title}
                   </h2>
-                  <div className="flex flex-wrap gap-2 text-xs text-muted-foreground">
-                    {category && <span>{category}</span>}
-                    {type && category && <span>·</span>}
-                    {type && <span>{type}</span>}
-                  </div>
+                {/* Categories & Type */}
+                <div className="flex flex-wrap gap-2 text-xs text-muted-foreground">
+                  {(() => {
+                    const cats = Array.isArray(category) ? category : category ? [category] : [];
+                    const types = Array.isArray(type) ? type : type ? [type] : [];
+                    const allItems = [...cats, ...types];
+                    return allItems.map((item, i) => (
+                      <span key={i} className="flex items-center gap-1">
+                        {i > 0 && <span className="opacity-40">·</span>}
+                        <span>{item}</span>
+                      </span>
+                    ));
+                  })()}
                 </div>
+              </div>
 
-                {/* Tags */}
+              {/* Tags */}
                 <div className="flex flex-wrap gap-2">
                   {tags?.map((tag, i) => (
                     <span
@@ -142,9 +151,15 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
 
                 {/* Description */}
                 {description && (
-                  <p className="text-sm leading-relaxed text-foreground">
-                    {description}
-                  </p>
+                  <div className="text-sm leading-relaxed text-foreground space-y-2">
+                    {Array.isArray(description) ? (
+                      description.map((paragraph, idx) => (
+                        <p key={idx}>{paragraph}</p>
+                      ))
+                    ) : (
+                      <p>{description}</p>
+                    )}
+                  </div>
                 )}
 
                 {/* Reactions */}

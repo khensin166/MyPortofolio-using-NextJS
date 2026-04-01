@@ -58,13 +58,13 @@ const SkillList = ({ skills }: SkillListProps) => {
         </SectionSubHeading>
       </div>
 
-      <div className="flex flex-wrap gap-2 pb-2">
+      <div className="flex overflow-x-auto gap-2 pb-4 pt-1 md:flex-wrap [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
         {tags.map((tag) => (
           <button
             key={tag.rawValue}
             onClick={() => setSelectedTag(tag.rawValue)}
             className={clsx(
-              "flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300 border",
+              "flex whitespace-nowrap items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300 border",
               selectedTag === tag.rawValue
                 ? "bg-primary border-primary text-primary-foreground shadow-lg shadow-primary/20"
                 : "bg-secondary/50 border-border text-muted-foreground hover:bg-accent hover:text-accent-foreground backdrop-blur-sm"
@@ -85,7 +85,7 @@ const SkillList = ({ skills }: SkillListProps) => {
 
       <motion.div 
         layout
-        className="flex flex-wrap gap-3"
+        className="grid grid-cols-2 sm:grid-cols-3 md:flex md:flex-wrap gap-3"
       >
         <AnimatePresence mode="popLayout">
           {filteredSkills.map((skill, index) => (
@@ -113,7 +113,7 @@ const SkillList = ({ skills }: SkillListProps) => {
                 </div>
               </div>
               
-              <span className="text-sm font-medium text-foreground/90 group-hover:text-foreground">
+              <span className="text-sm font-medium text-foreground/90 group-hover:text-foreground truncate">
                 {skill.title}
               </span>
             </motion.div>

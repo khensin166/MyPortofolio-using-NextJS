@@ -21,11 +21,12 @@ const ProjectDetail = ({
   tags,
   demoUrl,
   sourceUrl,
-  content,
+  description,
+  features,
   type,
   category,
   reactions: initialReactions = {},
-}: ProjectItem & { content?: string }) => {
+}: ProjectItem) => {
   const t = useTranslations("ProjectsPage");
 
   const [reactions, setReactions] = useState<Record<string, number>>(initialReactions);
@@ -93,20 +94,22 @@ const ProjectDetail = ({
         />
       </div>
       {/* Type & Category badges */}
-      {(type || category) && (
-        <div className="flex flex-wrap gap-2">
-          {category && (
-            <span className="rounded-full border border-border bg-secondary px-3 py-1 text-xs text-muted-foreground">
-              {category}
-            </span>
-          )}
-          {type && (
-            <span className="rounded-full border border-border bg-secondary px-3 py-1 text-xs text-muted-foreground">
-              {type}
-            </span>
-          )}
-        </div>
-      )}
+      {/* Type & Category badges */}
+      {(() => {
+        const cats = Array.isArray(category) ? category : category ? [category] : [];
+        const types = Array.isArray(type) ? type : type ? [type] : [];
+        const items = [...cats, ...types];
+        if (items.length === 0) return null;
+        return (
+          <div className="flex flex-wrap gap-2">
+            {items.map((item, i) => (
+              <span key={i} className="rounded-full border border-border bg-secondary px-3 py-1 text-xs text-muted-foreground whitespace-nowrap font-medium">
+                {item}
+              </span>
+            ))}
+          </div>
+        );
+      })()}
 
       
 
@@ -154,12 +157,25 @@ const ProjectDetail = ({
         </div>
       </div>
 
-      {/* MDX Content */}
-      {content ? (
-        <div className="mt-5 space-y-6 leading-[1.8] text-foreground">
-          <MDXComponent>{content}</MDXComponent>
+
+      {/* Features List */}
+      {features && features.length > 0 && (
+        <div className="mt-10">
+          <h3 className="mb-6 flex items-center gap-2 text-xl font-bold text-foreground">
+            <span className="text-primary text-2xl">✨</span> Key Features
+          </h3>
+          <div className="space-y-6">
+            {features.map((feature, idx) => (
+              <div key={idx} className="flex items-start gap-4">
+                <div className="mt-2.5 h-2 w-2 shrink-0 rounded-full bg-primary shadow-[0_0_8px] shadow-primary" />
+                <p className="leading-relaxed text-neutral-600 dark:text-neutral-400">
+                  {feature}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
-      ) : null}
+      )}
     </div>
   );
 };

@@ -42,7 +42,7 @@ export const generateMetadata = async ({
 
   return {
     title: `${project.title} ${METADATA.exTitle}`,
-    description: project.description,
+    description: project.overview || (Array.isArray(project.description) ? project.description[0] : (project.description || "")),
     openGraph: {
       images: project.imageSrc, // Use imageSrc for the API
       url: `${METADATA.openGraph.url}/${slug}`,

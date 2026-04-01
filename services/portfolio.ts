@@ -32,6 +32,16 @@ export const getLocalizedData = (data: any, locale: string): any => {
     }
     return mapped;
   }
+  if (typeof data === "string") {
+    if (data.startsWith("[") && data.endsWith("]")) {
+      try {
+        const parsed = JSON.parse(data);
+        return getLocalizedData(parsed, locale);
+      } catch (e) {
+        return data;
+      }
+    }
+  }
   return data;
 };
 

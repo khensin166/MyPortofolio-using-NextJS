@@ -33,7 +33,7 @@ const ProjectCard = (project: ProjectItem) => {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
-  const previewText = overview || description || "";
+  const previewText = overview || (Array.isArray(description) ? description[0] : (description || ""));
   const trimmedContent = previewText.slice(0, 85) + (previewText.length > 85 ? "..." : "");
 
   // Only show reactions with count > 0
