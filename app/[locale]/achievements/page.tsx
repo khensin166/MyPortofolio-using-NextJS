@@ -34,7 +34,7 @@ const AchievementsPage = async ({ params }: AchievementsPageProps) => {
   return (
     <Container data-aos="fade-up">
       <PageHeading title={t("title")} description={t("description")} />
-      <Suspense>
+      <Suspense fallback={null}>
         <Achievements />
       </Suspense>
     </Container>

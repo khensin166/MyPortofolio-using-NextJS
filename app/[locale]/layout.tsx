@@ -13,6 +13,7 @@ import { METADATA } from "@/common/constants/metadata";
 import { inter } from "@/common/styles/fonts";
 import SkeletonThemeProvider from "@/SkeletonThemeProvider";
 import { routing } from "@/i18n/routing";
+import VisitorTracker from "@/common/components/elements/VisitorTracker";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -86,6 +87,7 @@ const RootLayout = async ({
             </SkeletonThemeProvider>
           </ThemeProviderContext>
         </NextIntlClientProvider>
+        <VisitorTracker />
         <Analytics />
       </body>
     </html>

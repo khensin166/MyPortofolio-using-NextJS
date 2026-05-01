@@ -108,6 +108,11 @@ const themeConfigs = {
 const ThemeMagicClick = () => {
   const { theme } = useTheme();
   const [particles, setParticles] = useState<Particle[]>([]);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleGlobalClick = useCallback((e: MouseEvent) => {
     // Determine active theme (default to light if undefined)
@@ -141,13 +146,14 @@ const ThemeMagicClick = () => {
   }, [theme]);
 
   useEffect(() => {
+    if (!mounted) return;
     window.addEventListener("click", handleGlobalClick);
     return () => {
       window.removeEventListener("click", handleGlobalClick);
     };
-  }, [handleGlobalClick]);
+  }, [handleGlobalClick, mounted]);
 
-  if (!theme) return null;
+  if (!mounted || !theme) return null;
 
   const renderShape = (themeMode: string) => {
     if (themeMode === "forest") {
