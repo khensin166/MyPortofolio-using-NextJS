@@ -15,6 +15,16 @@
       "title": "Featured Sections",
       "sub_title": "Explore everything I’ve crafted, contributed, and accomplished."
     },
+    "analytics": {
+      "title": "Visitor Analytics",
+      "sub_title": "A quick look at who's visiting.",
+      "total_visitors": "Total Visitors",
+      "countries": "Countries",
+      "top_device": "Top Device",
+      "top_source": "Top Source",
+      "top_countries": "Top Visitor Countries",
+      "top_cities": "Top Visitor Cities"
+    },
     "error": "An error occurred on the server.",
     "no_data": "No data available."
   },

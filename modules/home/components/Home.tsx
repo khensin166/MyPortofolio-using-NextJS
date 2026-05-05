@@ -2,15 +2,17 @@ import Breakline from "@/common/components/elements/Breakline";
 
 import Introduction from "./Introduction";
 import SkillList, { SkillItem } from "./SkillList";
+import VisitorAnalytics from "./VisitorAnalytics";
 
 interface HomeProps {
   skills: SkillItem[];
+  analytics?: any;
   resumeUrl?: string;
   heroDescription?: string;
   location?: string;
 }
 
-const Home = ({ skills, resumeUrl, heroDescription, location }: HomeProps) => {
+const Home = ({ skills, analytics, resumeUrl, heroDescription, location }: HomeProps) => {
   return (
     <>
       <Introduction
@@ -20,6 +22,8 @@ const Home = ({ skills, resumeUrl, heroDescription, location }: HomeProps) => {
       />
       <Breakline className="my-8" />
       <SkillList skills={skills} />
+      <Breakline className="my-8" />
+      <VisitorAnalytics data={analytics} />
     </>
   );
 };
