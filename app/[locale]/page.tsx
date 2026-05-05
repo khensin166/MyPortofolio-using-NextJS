@@ -4,7 +4,7 @@ import { getTranslations } from "next-intl/server";
 import Container from "@/common/components/elements/Container";
 import Home from "@/modules/home";
 import { METADATA } from "@/common/constants/metadata";
-import { getSkills, getProfile } from "@/services/portfolio";
+import { getSkills, getProfile, getAnalytics } from "@/services/portfolio";
 
 interface HomePageProps {
   params: Promise<{ locale: string }>;
@@ -37,15 +37,17 @@ const HomePage = async ({ params }: HomePageProps) => {
   const { locale } = await params;
   
   // Fetch data in parallel
-  const [skills, profile] = await Promise.all([
+  const [skills, profile, analytics] = await Promise.all([
     getSkills(locale),
-    getProfile(locale)
+    getProfile(locale),
+    getAnalytics()
   ]);
 
   return (
     <Container data-aos="fade-up">
       <Home
         skills={skills || []}
+        analytics={analytics}
         resumeUrl={profile?.resumeUrl}
         heroDescription={profile?.heroDescription}
         location={profile?.location}

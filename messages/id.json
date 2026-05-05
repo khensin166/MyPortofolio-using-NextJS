@@ -15,6 +15,16 @@
       "title": "Bagian Unggulan",
       "sub_title": "Jelajahi semua yang telah saya buat, kontribusikan, dan capai."
     },
+    "analytics": {
+      "title": "Analitik Pengunjung",
+      "sub_title": "Tinjauan singkat tentang siapa yang berkunjung.",
+      "total_visitors": "Total Pengunjung",
+      "countries": "Negara",
+      "top_device": "Perangkat Teratas",
+      "top_source": "Sumber Teratas",
+      "top_countries": "Negara Pengunjung Teratas",
+      "top_cities": "Kota Pengunjung Teratas"
+    },
     "error": "Terjadi kesalahan pada server.",
     "no_data": "Data tidak tersedia."
   },

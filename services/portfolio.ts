@@ -62,6 +62,11 @@ export const getProjects = async (locale: string = "en") => {
     return null;
   }
 };
+
+export const getAnalytics = async () => {
+  const data = await fetchAPI('/analytics', ['analytics'], 3600); // cache for 1 hour
+  return data;
+};
 export const getSkills = async (locale: string = "en") => {
   const data = await fetchAPI('/skills', ['skills']);
   return getLocalizedData(data, locale);
