@@ -17,10 +17,11 @@ interface ItemProps {
 const Leaderboard = ({ data }: LeaderboardProps) => {
   const t = useTranslations("DashboardPage.monkeytype");
 
-  const datas = Object.values(data.allTimeLbs.time) || [];
-
   const Item = ({ label, value, percent }: ItemProps) => {
-    const number = value.replace("th", "");
+    const hasSuffix = /st|nd|rd|th$/.test(value);
+    const number = hasSuffix ? value.slice(0, -2) : value;
+    const suffix = hasSuffix ? value.slice(-2) : "";
+
     return (
       <div className="flex items-center gap-4">
         <div className="flex flex-col items-end gap-y-0.5">
@@ -35,7 +36,7 @@ const Leaderboard = ({ data }: LeaderboardProps) => {
         </div>
         <div className="flex gap-1">
           <span className="text-2xl text-primary">{number}</span>
-          <span className="text-neutral-400">th</span>
+          <span className="text-neutral-400">{suffix}</span>
         </div>
       </div>
     );
@@ -46,14 +47,17 @@ const Leaderboard = ({ data }: LeaderboardProps) => {
       <span className="text-sm text-neutral-600 dark:text-neutral-400">
         {t("title_leaderboard")}
       </span>
-      {datas.map((data, index) => {
-        const percent = (data?.english?.rank / data?.english?.count) * 100;
+      {Object.entries(data.allTimeLbs.time).map(([time, lbData], index) => {
+        const rank = lbData?.english?.rank;
+        const count = lbData?.english?.count;
+        const percent = rank && count ? (rank / count) * 100 : null;
+        
         return (
           <Item
             key={index}
-            label={index == 0 ? "15" : "60"}
-            value={convertToOrdinal(data?.english?.rank) || "-"}
-            percent={percent.toFixed(2)}
+            label={time}
+            value={rank ? convertToOrdinal(rank) : "-"}
+            percent={percent ? percent.toFixed(2) : undefined}
           />
         );
       })}
