@@ -23,7 +23,8 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NODE_ENV === "development"
       ? "http://localhost:3000"
-      : process.env.DOMAIN || "",
+      : process.env.DOMAIN || 
+        (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "https://staging.kenantomfie.site"),
   ),
   description: METADATA.description,
   keywords: METADATA.keyword,
@@ -33,11 +34,22 @@ export const metadata: Metadata = {
     url: METADATA.openGraph.url,
   },
   openGraph: {
-    images: METADATA.profile,
+    images: [
+      {
+        url: METADATA.openGraph.image,
+        width: 1200,
+        height: 630,
+        alt: METADATA.creator,
+      },
+    ],
     url: METADATA.openGraph.url,
     siteName: METADATA.openGraph.siteName,
     locale: METADATA.openGraph.locale,
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [METADATA.openGraph.image],
   },
 };
 

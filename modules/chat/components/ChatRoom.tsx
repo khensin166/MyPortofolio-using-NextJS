@@ -94,7 +94,7 @@ export const ChatRoom = ({ isWidget = false }: { isWidget?: boolean }) => {
         name: msg.name || msg.senderName || "Anonymous",
         email: msg.email || msg.senderEmail || "",
         message: msg.message || "",
-        created_at: msg.created_at || msg.createdAt || msg.timestamp || new Date().toISOString(),
+        created_at: msg.created_at || msg.createdAt || msg.receivedAt || msg.timestamp || new Date().toISOString(),
       }))
     : [];
 
