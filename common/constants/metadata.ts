@@ -10,7 +10,7 @@ export const METADATA = {
     url: process.env.DOMAIN,
     siteName: "Kenan Bukit",
     locale: "id-ID",
-    image: "/images/ogg.png",
+    image: "/images/ogg.jpg",
   },
   exTitle: "| Kenan Bukit",
   profile: "/images/satria.jpg",
