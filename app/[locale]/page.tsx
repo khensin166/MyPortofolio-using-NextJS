@@ -28,6 +28,7 @@ export async function generateMetadata({
       url: `${process.env.DOMAIN}/${locale}`,
       siteName: METADATA.openGraph.siteName,
       locale: locale === "id" ? "id_ID" : "en_US",
+      images: METADATA.openGraph.image,
       type: "website",
     },
   };
