@@ -96,13 +96,23 @@ const SkillList = ({ skills }: SkillListProps) => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.2 }}
-              className="group flex items-center gap-2.5 pl-1.5 pr-4 py-1.5 bg-secondary/40 border border-border/50 rounded-full transition-all duration-300 hover:border-primary/50 hover:bg-accent/80 hover:shadow-lg hover:shadow-primary/5 backdrop-blur-sm"
+              className="group flex items-center gap-2.5 pl-1.5 pr-4 py-1.5 border rounded-full transition-all duration-300 backdrop-blur-md"
+              style={{
+                backgroundColor: `${skill.color}15`,
+                borderColor: `${skill.color}40`,
+              }}
+              whileHover={{
+                backgroundColor: `${skill.color}25`,
+                borderColor: `${skill.color}80`,
+                boxShadow: `0 8px 20px ${skill.color}20`,
+                y: -2
+              }}
             >
               {/* Icon Plate */}
               <div 
-                className="flex items-center justify-center w-8 h-8 rounded-full bg-background/60 border border-border/40 shadow-inner overflow-hidden transition-all duration-300 group-hover:scale-110 group-hover:border-primary/30"
+                className="flex items-center justify-center w-8 h-8 rounded-full bg-white/50 dark:bg-white/70 backdrop-blur-md border border-border/40 shadow-inner overflow-hidden transition-all duration-300 group-hover:scale-110"
                 style={{ 
-                  filter: `drop-shadow(0 0 4px ${skill.color}40)` 
+                  filter: `drop-shadow(0 0 4px ${skill.color}60)` 
                 }}
               >
                 <div 
@@ -113,7 +123,7 @@ const SkillList = ({ skills }: SkillListProps) => {
                 </div>
               </div>
               
-              <span className="text-sm font-medium text-foreground/90 group-hover:text-foreground truncate">
+              <span className="text-sm font-medium text-foreground/90 group-hover:text-foreground truncate transition-colors duration-300">
                 {skill.title}
               </span>
             </motion.div>
