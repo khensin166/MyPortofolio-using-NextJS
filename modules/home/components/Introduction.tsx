@@ -31,7 +31,7 @@ const Introduction = ({
 
       <div className="space-y-4">
         <ul className="ml-5 flex list-disc flex-col gap-x-10 gap-y-2 text-muted-foreground md:flex-row">
-          <li>{location || t("location")}</li>
+          <li>📍{location || t("location")}</li>
           <li>{t("location_type")}</li>
         </ul>
         <div className="mt-6 space-y-4 leading-7 text-foreground">
