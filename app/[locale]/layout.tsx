@@ -14,6 +14,7 @@ import { inter } from "@/common/styles/fonts";
 import SkeletonThemeProvider from "@/SkeletonThemeProvider";
 import { routing } from "@/i18n/routing";
 import VisitorTracker from "@/common/components/elements/VisitorTracker";
+import { PostHogProvider } from "@/app/providers/PostHogProvider";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -73,34 +74,29 @@ const RootLayout = async ({
 
   return (
     <html lang={locale} suppressHydrationWarning={true}>
-      <head>
-        <Script
-          defer
-          src="https://cloud.umami.is/script.js"
-          data-website-id="a8dab3df-ddac-481d-a8e9-f67943769f1d"
-        />
-      </head>
       <body className={inter.className}>
-        <NextTopLoader
-          color="#fbe400"
-          initialPosition={0.08}
-          crawlSpeed={200}
-          height={3}
-          crawl={true}
-          showSpinner={false}
-          easing="ease"
-          speed={200}
-          shadow="0 0 10px #fbe400,0 0 5px #ffffb8"
-        />
-        <NextIntlClientProvider messages={messages} locale={locale}>
-          <ThemeProviderContext>
-            <SkeletonThemeProvider>
-              <Layouts>{children}</Layouts>
-            </SkeletonThemeProvider>
-          </ThemeProviderContext>
-        </NextIntlClientProvider>
-        <VisitorTracker />
-        <Analytics />
+        <PostHogProvider>
+          <NextTopLoader
+            color="#fbe400"
+            initialPosition={0.08}
+            crawlSpeed={200}
+            height={3}
+            crawl={true}
+            showSpinner={false}
+            easing="ease"
+            speed={200}
+            shadow="0 0 10px #fbe400,0 0 5px #ffffb8"
+          />
+          <NextIntlClientProvider messages={messages} locale={locale}>
+            <ThemeProviderContext>
+              <SkeletonThemeProvider>
+                <Layouts>{children}</Layouts>
+              </SkeletonThemeProvider>
+            </ThemeProviderContext>
+          </NextIntlClientProvider>
+          <VisitorTracker />
+          <Analytics />
+        </PostHogProvider>
       </body>
     </html>
   );

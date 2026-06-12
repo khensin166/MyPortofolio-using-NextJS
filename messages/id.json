@@ -83,8 +83,8 @@
     "description": "Dasbor pribadi saya yang dibangun dengan rute API Next.js, memvisualisasikan statistik pengembangan dan kontribusi secara real-time.",
     "error": "Terjadi kesalahan pada server.",
     "no_data": "Statistik tidak tersedia.",
-    "umami": {
-      "title": "Umami",
+    "posthog": {
+      "title": "PostHog Analytics",
       "sub_title": "Pantau trafik dan interaksi real-time dari situs portofolio saya.",
       "overview": {
         "page_views": "Dilihat",

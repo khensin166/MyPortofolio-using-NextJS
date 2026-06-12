@@ -42,7 +42,7 @@ const ContactCard = ({
             href={href}
             target="_blank"
             className="flex items-center justify-center gap-x-2  text-black"
-            data-umami-event={`click_contact_${name}`}
+            data-posthog-event={`click_contact_${name}`}
           >
             <p className="text-sm font-medium">
               {locale == "en" ? "Go to" : "Pergi ke"}{" "}

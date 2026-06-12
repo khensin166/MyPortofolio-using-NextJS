@@ -56,7 +56,7 @@ const InputSearch = () => {
         className="w-full bg-transparent pr-2 text-sm outline-none placeholder:text-muted-foreground text-foreground transition-colors duration-300"
         onChange={handleChange}
         onKeyDown={handleKeyDown}
-        data-umami-event="input_search"
+        data-posthog-event="input_search"
       />
     </div>
   );

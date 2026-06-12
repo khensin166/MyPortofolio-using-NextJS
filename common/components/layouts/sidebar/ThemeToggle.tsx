@@ -53,7 +53,7 @@ const ThemeToggle = () => {
               onClick={() => setTheme(t.name)}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              data-umami-event={`change_theme_${t.name}`}
+              data-posthog-event={`change_theme_${t.name}`}
             >
               {t.icon}
             </motion.button>

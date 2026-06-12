@@ -117,7 +117,7 @@ const ChatInput = ({
                 "cursor-not-allowed !bg-muted opacity-50 active:scale-100",
             )}
             disabled={isSending || !message.trim() || !senderName.trim() || !senderEmail.trim()}
-            data-umami-event="click_send_message"
+            data-posthog-event="click_send_message"
           >
             <SendIcon size={18} />
           </button>
