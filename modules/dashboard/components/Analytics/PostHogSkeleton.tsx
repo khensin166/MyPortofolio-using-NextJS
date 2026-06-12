@@ -3,7 +3,7 @@ import Skeleton from "react-loading-skeleton";
 import SkeletonLoader from "@/common/components/elements/SkeletonLoader";
 import SpotlightCard from "@/common/components/elements/SpotlightCard";
 
-const UmamiSkeleton = () => {
+const PostHogSkeleton = () => {
   return (
     <SkeletonLoader>
       <div className="!mt-4 grid grid-cols-2 gap-4 md:grid-cols-5">
@@ -47,4 +47,4 @@ const UmamiSkeleton = () => {
   );
 };
 
-export default UmamiSkeleton;
+export default PostHogSkeleton;

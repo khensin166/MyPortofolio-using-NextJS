@@ -83,8 +83,8 @@
     "description": "My personal dashboard built with Next.js API routes, visualizing development statistics and contributions in real-time.",
     "error": "An error occurred on the server.",
     "no_data": "No data available.",
-    "umami": {
-      "title": "Umami",
+    "posthog": {
+      "title": "PostHog Analytics",
       "sub_title": "Monitor real-time traffic and interactions from my portfolio site.",
       "overview": {
         "page_views": "Page Views",

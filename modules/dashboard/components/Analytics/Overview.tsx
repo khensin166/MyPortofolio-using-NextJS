@@ -25,7 +25,7 @@ interface OverviewProps {
 }
 
 const Overview = ({ data }: OverviewProps) => {
-  const t = useTranslations("DashboardPage.umami.overview");
+  const t = useTranslations("DashboardPage.posthog.overview");
 
   const pageViewsData = data?.websiteStats?.pageviews?.value ?? 0;
   const visitorsData = data?.websiteStats?.visitors?.value ?? 0;

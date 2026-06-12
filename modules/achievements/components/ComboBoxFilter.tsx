@@ -91,7 +91,7 @@ const ComboBoxFilter = ({
       <Button
         className="flex w-full items-center justify-between gap-4 bg-secondary p-2 text-foreground outline outline-border hover:bg-muted transition-all duration-300"
         onClick={handleClickOpen}
-        data-umami-event="click_filter_achievements"
+        data-posthog-event="click_filter_achievements"
       >
         <span className="text-sm ">
           {selectValue

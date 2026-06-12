@@ -7,14 +7,14 @@ import Breakline from "@/common/components/elements/Breakline";
 import { GITHUB_ACCOUNTS } from "@/common/constants/github";
 import { CODEWARS_ACCOUNT } from "@/common/constants/codewars";
 import React, { Suspense } from "react";
-import Umami from "./Umami";
-import UmamiSkeleton from "./Umami/UmamiSkeleton";
+import PostHog from "./Analytics";
+import PostHogSkeleton from "./Analytics/PostHogSkeleton";
 
 const Dashboard = () => {
   return (
     <>
-      <Suspense fallback={<UmamiSkeleton />}>
-        <Umami />
+      <Suspense fallback={<PostHogSkeleton />}>
+        <PostHog />
       </Suspense>
       <Breakline className="my-8" />
       <Contributions endpoint={GITHUB_ACCOUNTS.endpoint} />
