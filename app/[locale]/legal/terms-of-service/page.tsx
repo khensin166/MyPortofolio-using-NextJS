@@ -6,7 +6,7 @@ import { METADATA } from "@/common/constants/metadata";
 export const metadata: Metadata = {
   title: `Terms of Service ${METADATA.exTitle}`,
   description:
-    "Terms of Service for Satria Bahari's Portfolio App regarding TikTok API usage",
+    "Terms of Service for Kenan's Portfolio App regarding TikTok API usage",
   keywords: "portfolio frontend developer, terms of service, tiktok api",
   alternates: {
     canonical: `${process.env.DOMAIN}/terms-of-service`,
@@ -26,8 +26,8 @@ const TermsOfServicePage = () => {
             1. Purpose of the Website
           </h2>
           <p>
-            This website is a personal portfolio created to showcase Satria
-            Bahari&apos;s professional projects, technical skills, and social
+            This website is a personal portfolio created to showcase Kenan's
+            professional projects, technical skills, and social
             media presence through integrated API services.
           </p>
         </section>
@@ -38,7 +38,7 @@ const TermsOfServicePage = () => {
           </h2>
           <p>
             All original code, design elements, and content on this website are
-            the property of Satria Bahari. Content displayed through the TikTok
+            the property of Kenan. Content displayed through the TikTok
             API (such as videos and profile data) remains the intellectual
             property of its respective owners and is subject to TikTok&apos;s
             legal terms.

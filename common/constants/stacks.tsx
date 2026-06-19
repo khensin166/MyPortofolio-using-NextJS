@@ -3,7 +3,7 @@ import { BsFillBootstrapFill, BsRobot } from "react-icons/bs";
 import { TbBeach, TbBrandFramerMotion } from "react-icons/tb";
 import { FaNpm, FaGolang } from "react-icons/fa6";
 import {
-  SiCss,
+  SiCss3,
   SiExpress,
   SiFramer,
   SiGithub,
@@ -60,7 +60,7 @@ export const STACKS: SkillProps = {
     isActive: true,
   },
   CSS: {
-    icon: <SiCss size={iconSize} />,
+    icon: <SiCss3 size={iconSize} />,
     background: "bg-blue-500",
     color: "text-blue-500",
     isActive: true,
