@@ -26,7 +26,7 @@ const MobileHeader = () => {
         >
           <div className="z-10 w-max rounded-full border-2 border-white shadow-md dark:border-neutral-800">
             <Image
-              src={"/images/satria.jpg"}
+              src={"/images/kenan.jpg"}
               alt="profile"
               width={isOpen ? 80 : imageSize * 0.9}
               height={isOpen ? 80 : imageSize * 0.9}
@@ -36,7 +36,7 @@ const MobileHeader = () => {
           <div className="mt-1 flex items-center gap-2">
             <Link href="/" passHref>
               <h2 className="flex-grow whitespace-nowrap text-lg font-medium lg:text-xl">
-                Satria Bahari
+                Kenan
               </h2>
             </Link>
             <Tooltip title="Verified">
