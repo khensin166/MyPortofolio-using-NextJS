@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const domain = process.env.DOMAIN || "https://kenantomfie.site";
+  const domain = process.env.DOMAIN || "https://kenantomfie.com";
   
   // Public routes to index
   const routes = ["", "/about", "/projects", "/contact", "/achievements"];

@@ -17,7 +17,7 @@ export default function VisitorTracker() {
 
     const trackVisit = async () => {
       try {
-        const apiUrl = process.env.NEXT_PUBLIC_ANALYSIS_API_URL || "https://porto-analysis.kenantomfie.site/api";
+        const apiUrl = process.env.NEXT_PUBLIC_ANALYSIS_API_URL || "https://porto-analysis.kenantomfie.com/api";
         await fetch(`${apiUrl}/track`, {
           method: "POST",
           headers: {
