@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     process.env.NODE_ENV === "development"
       ? "http://localhost:3000"
       : process.env.DOMAIN || 
-        (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "https://staging.kenantomfie.site"),
+        (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "https://staging.kenantomfie.com"),
   ),
   description: METADATA.description,
   keywords: METADATA.keyword,
