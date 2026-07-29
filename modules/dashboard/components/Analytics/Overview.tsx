@@ -1,6 +1,7 @@
 import React from "react";
 import OverviewItem from "./OverviewItem";
 import { useTranslations } from "next-intl";
+import { FiEye, FiUsers, FiActivity, FiGlobe, FiZap } from "react-icons/fi";
 
 interface OverviewProps {
   data: {
@@ -34,14 +35,24 @@ const Overview = ({ data }: OverviewProps) => {
   const eventsData = data?.websiteStats?.events?.value ?? 0;
 
   return (
-    <div className="grid grid-cols-2 gap-3 py-2 sm:grid-cols-5">
-      <OverviewItem label={t("page_views")} value={pageViewsData} />
-      <OverviewItem label={t("visitors")} value={visitorsData} />
-      <OverviewItem label={t("visits")} value={visitsData} />
-      <OverviewItem label={t("countries")} value={countriesData} />
-      <OverviewItem label={t("events")} value={eventsData} />
+    <div className="grid grid-cols-2 gap-3 py-2">
+      <OverviewItem
+        label={t("page_views")}
+        value={pageViewsData}
+        icon={<FiEye />}
+        accentColor="text-cyan-400"
+        bgColor="bg-cyan-400/10"
+      />
+      <OverviewItem
+        label={t("visitors")}
+        value={visitorsData}
+        icon={<FiUsers />}
+        accentColor="text-violet-400"
+        bgColor="bg-violet-400/10"
+      />
     </div>
   );
 };
 
 export default Overview;
+
