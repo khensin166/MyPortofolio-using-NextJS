@@ -1,7 +1,7 @@
 export const METADATA = {
   creator: "Kenan Tomfie Bukit",
-  description: "Personal website, portfolio, and blog of Kenan Tomfie Bukit. A Software Engineer and Fullstack Developer.",
-  keyword: "Kenan Tomfie Bukit, Kenan Bukit, Kenan Tomfie, kenan, Portfolio, Web Developer, Frontend, Backend, Software Engineer",
+  description: "Personal portfolio of Kenan Tomfie Bukit — DevOps Engineer (SRE-focused) at Bank Rakyat Indonesia, specializing in Core Banking operations, distributed systems, Docker, Kafka, RabbitMQ, Golang, and system observability.",
+  keyword: "Kenan Tomfie Bukit, Kenan Bukit, Kenan Tomfie, Kenan, Tomfie Bukit, DevOps Engineer BRI, Site Reliability Engineer BRI, SRE Bank Rakyat Indonesia, DevOps Core Banking, SRE Core Banking, DevOps Engineer Indonesia, Site Reliability Engineer Indonesia, Backend Engineer Golang, Golang Developer Indonesia, Kafka RabbitMQ DevOps, Docker SRE Engineer, System Observability Engineer, Distributed Systems Engineer, Portofolio DevOps Kenan, Portfolio SRE Kenan, Software Engineer Indonesia",
   authors: {
     name: "Kenan Tomfie Bukit",
     url: process.env.DOMAIN,
