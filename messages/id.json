@@ -4,8 +4,8 @@
     "location": "Berdomisili di Jambi, Indonesia 🇮🇩",
     "location_type": "Onsite",
     "resume": {
-      "paragraph_1": "Seorang Software Engineer dan kreator konten coding yang berdedikasi untuk membangun solusi digital yang berdampak. Saya spesialis dalam pengembangan platform web yang skalabel dan aplikasi mobile menggunakan tech stack modern, terutama Next.js, TypeScript, dan Native Android (Kotlin).",
-      "paragraph_2": "Fokus saya adalah merancang arsitektur perangkat lunak yang terstruktur dengan baik, mudah dipelihara, dan selaras dengan tujuan bisnis. Saya memadukan keahlian teknis dengan komunikasi proaktif dan kepemimpinan untuk memastikan setiap proyek memberikan kejelasan logis dan dampak nyata di dunia nyata."
+      "paragraph_1": "DevOps Engineer (berfokus pada SRE) yang saat ini bekerja di Bank Rakyat Indonesia pada bagian Operasi Perbankan Inti (Core Banking), berpengalaman dalam menjaga sistem produksi yang andal, skalabel, dan ber-ketersediaan tinggi di industri perbankan.",
+      "paragraph_2": "Terampil dalam sistem terdistribusi, arsitektur event-driven, kontainerisasi dengan Docker, message broker seperti Kafka dan RabbitMQ, pemantauan produksi, pemecahan masalah insiden, otomatisasi deployment, serta observabilitas sistem. Memiliki fondasi rekayasa backend yang kuat dengan pengalaman langsung di Golang, Java, PHP, dan JavaScript."
     },
     "skills": {
       "title": "Keahlian",
@@ -32,9 +32,9 @@
     "title": "Tentang",
     "description": "Pengenalan singkat mengenai siapa saya.",
     "resume": {
-      "paragraph_1": "Saya Kenan Bukit, seorang Software Engineer yang berbasis di Jambi, berdedikasi untuk membangun solusi digital yang berdampak. Saya spesialis dalam pengembangan platform web dan aplikasi mobile menggunakan tech stack modern, termasuk Next.js, TypeScript, dan pengembangan Android native dengan Kotlin.",
-      "paragraph_2": "Fokus utama saya adalah merancang arsitektur perangkat lunak yang tidak hanya berfungsi tetapi juga terstruktur dengan baik, mudah dipelihara, dan skalabel untuk memenuhi kebutuhan bisnis. Saya percaya bahwa kode berkualitas tinggi harus berjalan beriringan dengan efisiensi sistem dan kejelasan logis.",
-      "paragraph_3": "Saya memadukan keahlian teknis dengan komunikasi proaktif, berpikir kritis, dan manajemen waktu yang efektif. Saya berkembang dalam lingkungan kolaboratif dan memanfaatkan keterampilan kepemimpinan untuk memastikan setiap proyek memberikan hasil optimal dan dampak nyata.",
+      "paragraph_1": "Saya Kenan Tomfie Bukit, seorang DevOps Engineer (berfokus pada SRE) yang saat ini bekerja di Bank Rakyat Indonesia pada bagian Operasi Perbankan Inti (Core Banking).",
+      "paragraph_2": "Saya berpengalaman dalam menjaga sistem produksi yang andal, skalabel, dan ber-ketersediaan tinggi (high-availability) di industri perbankan. Keahlian saya mencakup sistem terdistribusi, arsitektur event-driven, kontainerisasi menggunakan Docker, message broker seperti Kafka dan RabbitMQ, pemantauan produksi, troubleshooting insiden, otomatisasi deployment, serta observabilitas sistem.",
+      "paragraph_3": "Dengan fondasi rekayasa backend yang kuat dalam Golang, Java, PHP, dan JavaScript, saya berdedikasi untuk keunggulan operasional, keandalan sistem, dan stabilitas infrastruktur pada lingkungan perbankan skala kritis (mission-critical).",
       "paragraph_4": "Salam hangat,"
     },
     "career": {
