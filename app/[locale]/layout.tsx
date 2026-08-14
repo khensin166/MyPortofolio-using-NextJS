@@ -34,6 +34,18 @@ export const metadata: Metadata = {
     name: METADATA.creator,
     url: METADATA.openGraph.url,
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.ico", type: "image/x-icon" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+    other: {
+      rel: "icon",
+      url: "/favicon.ico",
+    },
+  },
   openGraph: {
     images: [
       {
@@ -74,6 +86,10 @@ const RootLayout = async ({
 
   return (
     <html lang={locale} suppressHydrationWarning={true}>
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+      </head>
       <body className={inter.className}>
         <PostHogProvider>
           <NextTopLoader

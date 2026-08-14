@@ -1,0 +1,26 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "kenantomfie.site"
+        }
+      ],
+      "destination": "https://kenantomfie.com/:path*",
+      "statusCode": 301
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.kenantomfie.site"
+        }
+      ],
+      "destination": "https://kenantomfie.com/:path*",
+      "statusCode": 301
+    }
+  ]
+}

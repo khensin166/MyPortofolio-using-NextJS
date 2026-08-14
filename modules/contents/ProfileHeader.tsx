@@ -59,7 +59,7 @@ export default function ProfileHeader({
         <div className="absolute -inset-1 bg-gradient-to-r from-pink-600 to-purple-600 rounded-full blur opacity-30"></div>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={`/api/proxy-image?url=${encodeURIComponent(profilePic)}`}
+          src={profilePic.includes("yrizzz.my.id") ? profilePic : `/api/proxy-image?url=${encodeURIComponent(profilePic)}`}
           className="relative w-[100px] h-[100px] sm:w-[120px] sm:h-[120px] rounded-full border-4 border-card object-cover"
           alt="Profile"
         />
