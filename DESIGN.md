@@ -1,101 +1,127 @@
-# Kenan Portfolio — Style Reference
-> Interactive developer portfolio with gamified aesthetics. A dark canvas where neon yellow accents signal action, accompanied by subtle matrix-like forest themes and dynamic glitch effects.
+﻿# Kenan Portfolio — Style Reference
+> Interactive developer portfolio with gamified aesthetics. A dark forest canvas where Lime Pulse accents signal action, Forest Depths provides depth, and Snow White surfaces breathe clarity.
 
-**Themes:** dark (default), light, forest
-
-This portfolio uses a modern, developer-centric design language: a primary dark canvas, high-contrast primary yellow accents, and strict geometric structural elements. The interface feels like a premium developer tool infused with personal branding. Typography relies entirely on the versatile **Inter** family to maintain maximum readability and a clean, unopinionated foundation. Surfaces are elevated through subtle background color shifts (`background` → `card` → `popover`) and 1px hairline borders, completely avoiding heavy drop shadows.
-
-Color appears systematically: a vibrant yellow (`#fbe400`) exclusively for primary actions/toploaders, while contribution heatmaps use a graded system to indicate activity intensity. The whole system reads as 'professional developer who cares deeply about detail and aesthetics'.
-
-## 1. Tokens — Colors
-
-### Primary Palette (Tailwind Variables)
-| Name | Value | Token | Role |
-|------|-------|-------|------|
-| Primary Yellow | `hsl(45 92% 47%)` / `#fbe400` | `--primary` | The single primary accent. Used for CTA buttons, the NextTopLoader, and critical highlighted information. |
-| Primary Foreground | `hsl(222.2 47.4% 11.2%)` | `--primary-foreground` | Very dark text used on top of the Primary Yellow for maximum readability. |
-| Destructive Red | `hsl(0 62.8% 30.6%)` (Dark) | `--destructive` | Used strictly for error states or destructive actions. |
-
-### Contribution Heatmap (GitHub Style)
-Used for the custom activity/contribution graphs:
-| Level | Role | Token |
-|-------|------|-------|
-| Level 1 | Base activity (Lightest) | `--contribution-1` |
-| Level 2 | Low-medium activity | `--contribution-2` |
-| Level 3 | Medium-high activity | `--contribution-3` |
-| Level 4 | Peak activity (Solid) | `--contribution-4` |
-
-### Surfaces (Dark Theme - Default)
-| Name | Value | Token | Role |
-|------|-------|-------|------|
-| Canvas | `hsl(222.2 84% 4.9%)` | `--background` | The absolute background of the page. |
-| Card | `hsl(222.2 84% 4.9%)` | `--card` | Elevated surface for feature cards and panels. Matches background but delineated by borders. |
-| Popover | `hsl(222.2 84% 4.9%)` | `--popover` | Highest elevation surface (dropdowns, tooltips). |
-| Border | `hsl(217.2 32.6% 17.5%)` | `--border` | The 1px hairline color used to separate all surfaces. |
-| Muted | `hsl(217.2 32.6% 17.5%)` | `--muted` | Secondary surface for inactive tabs or subtle backgrounds. |
-
-### Surfaces (Forest Theme)
-A special theme triggered by the `.forest` variant.
-| Name | Value | Role |
-|------|-------|------|
-| Forest Canvas | `hsl(120 100% 6%)` | A very deep, near-black green (`#001f00` equivalent). |
-| Forest Foreground | `hsl(49 77% 65%)` | A muted yellow-gold for text, creating a retro terminal/matrix feel. |
-| Forest Border | `hsl(120 50% 15%)` | Subtle dark green borders for component separation. |
+**Themes:** light (default) | dark | orest
 
 ---
 
-## 2. Tokens — Typography
+## 1. Color Palette
 
-### Primary Font: Inter
-- **Substitute:** system-ui, -apple-system, sans-serif
-- **Weights:** 300 (Light), 400 (Regular), 500 (Medium), 600 (Semibold), 700 (Bold), 800 (ExtraBold)
-- **Role:** The singular workhorse font for the entire portfolio. Used for headlines, body copy, navigation, and badges.
+### New Forest Color System
 
-*(Note: No external monospace fonts are forced globally. If terminal/code aesthetics are needed, rely strictly on standard Tailwind `font-mono` utilities so the core styling remains lightweight).*
+| Token | Value | CSS Variable | Role |
+|-------|-------|-------------|------|
+| Forest Depths | #1c3a13 | --color-forest-depths | Primary brand — Forest theme background, near-black ink |
+| Lime Pulse | #d3fa99 | --color-lime-pulse | Glowing primary accent — filled CTAs, active indicators, ring |
+| Sage Moss | #757c5d | --color-sage-moss | Muted accent — subdued labels, variant elements |
+| Olive Gold | #9f995b | --color-olive-gold | Yellow-green wash — decorative bands, soft emphasis |
+| Eucalyptus | #698e79 | --color-eucalyptus | Cooler green-blue accent — --accent in Forest theme |
+| Snow White | #fcfcf7 | --color-snow-white | Page canvas / foreground text in Forest — warm off-white |
+| Warm Stone | #eeeee9 | --color-warm-stone | Secondary surface — alternating panels, subtle separators |
+| Frosted Glass | #c4c7c4 | --color-frosted-glass | Translucent overlay — ackdrop-filter: blur surfaces |
+| Ash | #b3b3b3 | --color-ash | Disabled states, muted borders |
+| Pewter | #666666 | --color-pewter | Secondary body text, captions |
+| Ink | #000000 | --color-ink | Max contrast text on light sections (use sparingly) |
 
----
+> **In Light/Dark mode**: primary accent remains **yellow** (#fbe400 / --primary: 45 92% 47%).  
+> **In Forest mode**: primary switches to **Lime Pulse** (#d3fa99), background to **Forest Depths** (#1c3a13).
 
-## 3. Tokens — Spacing & Shapes
+### Theme CSS Variable Mapping
 
-**Base unit:** 0.5rem (8px)
-
-### Border Radius
-| Element | Token | Value | Note |
-|---------|-------|-------|------|
-| Global Radius | `--radius` | `0.5rem` / 8px | The universal standard for cards, inputs, and buttons. |
-
-### Layout & Animations
-- **No Drop Shadows:** Elevation is communicated via 1px solid borders (`border-border`) and background color changes. Do not use generic Tailwind shadows (e.g., `shadow-md`, `shadow-lg`).
-- **Hexagon Clip-path:** A specialized `.hexagon` class is available for distinct geometric image framing or badges.
-- **Micro-Animations:** Use the pre-configured keyframes (`shine`, `gradient`, `glitch`, `star-movement-bottom`, `star-movement-top`) for hover effects or hero section backgrounds. Do not overuse them on readable text.
-
----
-
-## 4. Components
-
-### Badges / Tags
-**Role:** Tech stack pills, categories.
-Muted background (`bg-muted`) with muted foreground text (`text-muted-foreground`). 1px border (`border-border`). Radius 8px (`rounded-md`).
-
-### Feature Cards / Projects
-**Role:** Displaying projects or blog posts.
-Background relies on `--card`. Must have a 1px border (`border border-border`). Hover states can utilize a slight background shift (e.g., `hover:bg-muted/50`) or the `shine` animation overlay. **No hover drop-shadows.**
-
-### Primary Buttons
-**Role:** Main call-to-actions (e.g., "Contact Me", "View Project").
-Background `--primary`, text `--primary-foreground`. Radius 8px (`rounded-md`). Keep the text bold (weight 600 or 700) using Inter.
+| Token | Light | Dark | Forest |
+|-------|-------|------|--------|
+| --background | white | near-black blue | Forest Depths |
+| --foreground | dark text | light text | Snow White |
+| --primary | Yellow (#fbe400) | Yellow (#fbe400) | Lime Pulse (#d3fa99) |
+| --primary-foreground | dark | dark | Forest Depths |
+| --card | white | near-black | deeper Forest Depths |
+| --muted | light gray | dark gray | dark forest green |
+| --accent | light gray | dark gray | Eucalyptus |
+| --border | soft gray | dark gray | forest hairline |
+| --ring | dark | light | Lime Pulse |
 
 ---
 
-## 5. AI Assistant Do's and Don'ts
+## 2. Typography
 
-### Do
-- **Do use CSS Variables:** Always use Tailwind variables like `bg-primary`, `bg-card`, `text-muted-foreground`.
-- **Do respect the 8px radius:** Stick to `rounded-md` (which maps to the 0.5rem `--radius` variable) for UI elements.
-- **Do use hairline borders:** Separate sections and cards using `border-t border-border` or `border border-border`.
+- **Font Family**: Inter — the ONLY permitted font, loaded from Google Fonts
+- **No extra fonts** — do NOT add additional font families
 
-### Don't
-- **Don't hardcode colors:** Never use colors outside the system (e.g., `bg-blue-500`, `text-green-400`), unless it is a specific brand logo color (like GitHub black or React blue).
-- **Don't use generic shadows:** Never add `shadow-lg` or `shadow-xl`. The aesthetic relies on flat design separated by subtle lines.
-- **Don't introduce new fonts:** Do not import new Google fonts. Use `Inter` for everything, or `font-mono` if absolutely necessary for a code block.
-- **Don't use extreme border radii:** Avoid `rounded-full` or `rounded-[32px]` for structural elements (cards, containers). `rounded-full` is strictly reserved for user avatars/profile pictures.
+### Scale
+| Role | Size | Weight | Notes |
+|------|------|--------|-------|
+| Hero | 	ext-4xl – 	ext-5xl | 700 | Page title, H1 |
+| Section Heading | 	ext-xl – 	ext-2xl | 600 | H2 |
+| Card Title | 	ext-base – 	ext-lg | 500–600 | |
+| Body | 	ext-sm – 	ext-base | 400 | Default |
+| Caption / Label | 	ext-xs | 400–500 | Tags, metadata |
+
+---
+
+## 3. Spacing & Layout
+
+- **Border Radius**: ounded-lg (cards) · ounded-xl (panels) · ounded-full (avatars & pills only)
+- **Card Padding**: p-4 minimum
+- **Section Gap**: gap-6 – gap-8
+- **Layout**: sidebar (left, 1/5 width) + main content (right, 4/5 width)
+
+---
+
+## 4. Elevation & Depth
+
+> **NO drop shadows**. Elevation is communicated through border contrast only.
+
+- ✅ Use order border-border to separate surfaces
+- ✅ Use subtle g-secondary or g-card stacking for card-on-background contrast
+- ❌ **Never** use shadow-md, shadow-lg, shadow-xl, shadow-2xl
+
+---
+
+## 5. Component Patterns
+
+### Theme Toggle (Pill Segmented Control)
+- **Container**: pill ounded-full, g-secondary, order border-border, p-1
+- **Items**: 3 options — Sun (Light), Moon (Dark), Leaf (Forest)
+- **Active indicator**: motion.div with g-primary, spring animation
+- **Tooltip**: z-[10000], absolute, ottom-full, arrow indicator
+- **Mobile**: pill hidden in Header — shown inside mobile menu (isOpen)
+
+### Locale Toggle (IntlToggle)
+- **Desktop**: pill with flag emoji, spring slide animation
+- **Mobile**: single icon button (cycles to next locale on tap)
+
+### Tooltip
+- Always z-[10000] — must sit above all UI layers
+- pointer-events-none — never blocks clicks
+- Centered with left-1/2 -translate-x-1/2
+
+### Cards
+- g-card border border-border rounded-lg — no shadows
+- Hover: hover:border-primary/50 transition-colors duration-300
+
+### Buttons
+- Primary: g-primary text-primary-foreground
+- Ghost: order border-border hover:bg-secondary
+- Tag/Badge: g-secondary text-secondary-foreground rounded-full text-xs
+
+---
+
+## 6. Animation Principles
+
+- **Micro-animations**: ramer-motion spring for interactive elements
+- whileHover={{ scale: 1.05 }} / whileTap={{ scale: 0.95 }}
+- Glitch animation on hero elements (see 	ailwind.config.ts keyframes)
+- **No** looping background animations on body
+
+---
+
+## 7. Rules & Anti-Patterns
+
+| ❌ Avoid | ✅ Use instead |
+|---------|--------------|
+| shadow-lg, shadow-xl | order border-border |
+| Hardcoded hex colors in components | CSS Variables via Tailwind tokens |
+| Non-Inter fonts | Inter only |
+| ounded-full on non-avatar/non-pill elements | ounded-lg or ounded-xl |
+| Inline style={{ color: '#...' }} for UI | 	ext-primary, 	ext-muted-foreground etc. |
+| Brand icon colors (Docker blue, etc.) | Allowed exception — tech icon colors |

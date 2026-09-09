@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -35,7 +35,7 @@ const Tooltip = ({ title, children }: TooltipProps) => {
       </div>
       {isTooltipVisible && (
         <motion.div
-          className="absolute bottom-full mb-2 hidden w-max max-w-xs rounded bg-neutral-500 px-2 py-1 text-xs font-medium text-neutral-100 dark:bg-neutral-100 dark:text-neutral-700 lg:block"
+          className="pointer-events-none absolute bottom-full left-1/2 z-[10000] mb-2 hidden w-max max-w-xs -translate-x-1/2 rounded bg-neutral-800 px-2 py-1 text-xs font-medium text-neutral-100 dark:bg-neutral-100 dark:text-neutral-700 lg:block"
           variants={tooltipVariants}
           initial="hidden"
           animate="visible"
@@ -48,3 +48,4 @@ const Tooltip = ({ title, children }: TooltipProps) => {
 };
 
 export default Tooltip;
+

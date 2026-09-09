@@ -1,7 +1,10 @@
-@tailwind base;
+﻿@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* =============================================
+   PALETTE: New Forest Color System
+   ============================================= */
 :root {
   --background: 0 0% 100%;
   --foreground: 222.2 84% 4.9%;
@@ -38,6 +41,19 @@
   --ring: 222.2 84% 4.9%;
 
   --radius: 0.5rem;
+
+  /* Raw palette tokens (accessible in all themes) */
+  --color-forest-depths: 114 49% 16%;     /* #1c3a13 */
+  --color-lime-pulse: 90 91% 80%;         /* #d3fa99 */
+  --color-sage-moss: 77 14% 42%;          /* #757c5d */
+  --color-olive-gold: 56 27% 49%;         /* #9f995b */
+  --color-eucalyptus: 143 16% 49%;        /* #698e79 */
+  --color-snow-white: 60 33% 99%;         /* #fcfcf7 */
+  --color-warm-stone: 60 11% 93%;         /* #eeeee9 */
+  --color-frosted-glass: 120 2% 77%;      /* #c4c7c4 */
+  --color-ash: 0 0% 70%;                  /* #b3b3b3 */
+  --color-pewter: 0 0% 40%;               /* #666666 */
+  --color-ink: 0 0% 0%;                   /* #000000 */
 }
 
 .dark {
@@ -76,31 +92,54 @@
   --ring: 212.7 26.8% 83.9%;
 }
 
+/* =============================================
+   FOREST THEME — Full redesign with new palette
+   ============================================= */
 .forest {
-  --background: 120 100% 6%;
-  --foreground: 49 77% 65%;
-  --card: 120 100% 6%;
-  --card-foreground: 49 77% 65%;
-  --popover: 120 100% 6%;
-  --popover-foreground: 49 77% 65%;
-  --primary: 49 77% 65%;
-  --primary-foreground: 120 100% 6%;
-  --secondary: 120 30% 10%;
-  --secondary-foreground: 49 77% 65%;
-  --muted: 120 30% 10%;
-  --muted-foreground: 50 68% 45%;
-  --accent: 163 100% 19%;
-  --accent-foreground: 49 77% 65%;
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 49 77% 65%;
-  --border: 120 50% 15%;
-  --input: 120 50% 15%;
-  --ring: 49 77% 65%;
+  /* Page canvas: Forest Depths as near-black ink */
+  --background: 114 49% 16%;             /* #1c3a13 — Forest Depths */
+  --foreground: 60 33% 99%;              /* #fcfcf7 — Snow White */
 
-  --contribution-1: 120 70% 20%;
-  --contribution-2: 120 70% 35%;
-  --contribution-3: 120 70% 50%;
-  --contribution-4: 120 70% 65%;
+  /* Cards: slightly lighter than background for elevation without shadow */
+  --card: 114 45% 13%;                   /* deeper forest, card surface */
+  --card-foreground: 60 33% 99%;
+
+  /* Popovers: frosted glass overlay */
+  --popover: 114 45% 13%;
+  --popover-foreground: 60 33% 99%;
+
+  /* Primary: Lime Pulse — glowing action accent */
+  --primary: 90 91% 80%;                 /* #d3fa99 — Lime Pulse */
+  --primary-foreground: 114 49% 16%;     /* Forest Depths text on Lime */
+
+  /* Secondary surface: between card and background */
+  --secondary: 114 35% 19%;             /* warm forest mid-tone */
+  --secondary-foreground: 60 33% 99%;
+
+  /* Muted: Sage Moss — subdued label areas */
+  --muted: 114 30% 18%;
+  --muted-foreground: 77 14% 62%;       /* Sage Moss tint */
+
+  /* Accent: Eucalyptus — cooler highlight for evening/PM elements */
+  --accent: 143 16% 49%;               /* #698e79 — Eucalyptus */
+  --accent-foreground: 60 33% 99%;
+
+  /* Borders & Inputs: forest hairline */
+  --border: 114 40% 22%;
+  --input: 114 40% 22%;
+
+  /* Destructive */
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 60 33% 99%;
+
+  /* Ring */
+  --ring: 90 91% 80%;                   /* Lime Pulse glow ring */
+
+  /* GitHub-style contribution heatmap in forest tones */
+  --contribution-1: 114 60% 22%;
+  --contribution-2: 114 65% 34%;
+  --contribution-3: 90 80% 58%;
+  --contribution-4: 90 91% 80%;         /* Lime Pulse brightest */
 }
 
 @layer base {
