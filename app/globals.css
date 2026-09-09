@@ -93,53 +93,65 @@
 }
 
 /* =============================================
-   FOREST THEME — Full redesign with new palette
+   FOREST THEME - Premium Natural/Organic Light
+   Palette by Kenan — mapped to Seed-style aesthetic
+   =============================================
+   Forest Depths  #1c3a13  → CTAs, nav, body text
+   Lime Pulse     #d3fa99  → badges, highlights, accents
+   Sage Moss      #757c5d  → muted text, secondary tags
+   Olive Gold     #9f995b  → warm accent, decorative
+   Eucalyptus     #698e79  → cool secondary accent
+   Snow White     #fcfcf7  → page canvas, primary inverse text
+   Warm Stone     #eeeee9  → secondary surfaces, panels
+   Frosted Glass  #c4c7c4  → borders, muted overlays
+   Ash            #b3b3b3  → disabled states, low-emphasis
+   Pewter         #666666  → secondary body text, captions
    ============================================= */
 .forest {
-  /* Page canvas: Forest Depths as near-black ink */
-  --background: 114 49% 16%;             /* #1c3a13 — Forest Depths */
-  --foreground: 60 33% 99%;              /* #fcfcf7 — Snow White */
+  /* Page canvas: Snow White — warm off-white, not clinical-sterile */
+  --background: 60 33% 99%;              /* #fcfcf7 - Snow White */
+  --foreground: 114 49% 16%;             /* #1c3a13 - Forest Depths (near-black ink) */
 
-  /* Cards: slightly lighter than background for elevation without shadow */
-  --card: 114 45% 13%;                   /* deeper forest, card surface */
-  --card-foreground: 60 33% 99%;
+  /* Cards: Warm Stone — secondary surface to create quiet rhythm */
+  --card: 60 11% 93%;                    /* #eeeee9 - Warm Stone */
+  --card-foreground: 114 49% 16%;        /* Forest Depths */
 
-  /* Popovers: frosted glass overlay */
-  --popover: 114 45% 13%;
-  --popover-foreground: 60 33% 99%;
+  /* Popovers: Snow White with Forest Depths text */
+  --popover: 60 33% 99%;                 /* Snow White */
+  --popover-foreground: 114 49% 16%;     /* Forest Depths */
 
-  /* Primary: Lime Pulse — glowing action accent */
-  --primary: 90 91% 80%;                 /* #d3fa99 — Lime Pulse */
-  --primary-foreground: 114 49% 16%;     /* Forest Depths text on Lime */
+  /* Primary CTA: Forest Depths — the dark green filled button (like Seed's "Shop Daily Essentials") */
+  --primary: 114 49% 16%;               /* #1c3a13 - Forest Depths */
+  --primary-foreground: 60 33% 99%;     /* Snow White text on dark CTA */
 
-  /* Secondary surface: between card and background */
-  --secondary: 114 35% 19%;             /* warm forest mid-tone */
-  --secondary-foreground: 60 33% 99%;
+  /* Secondary surface: slightly deeper than Snow White, lighter than Warm Stone */
+  --secondary: 60 11% 93%;              /* #eeeee9 - Warm Stone */
+  --secondary-foreground: 114 49% 16%;  /* Forest Depths */
 
-  /* Muted: Sage Moss — subdued label areas */
-  --muted: 114 30% 18%;
-  --muted-foreground: 77 14% 62%;       /* Sage Moss tint */
+  /* Muted: Frosted Glass background, Pewter text for captions */
+  --muted: 120 2% 77%;                  /* #c4c7c4 - Frosted Glass surface */
+  --muted-foreground: 0 0% 40%;         /* #666666 - Pewter */
 
-  /* Accent: Eucalyptus — cooler highlight for evening/PM elements */
-  --accent: 143 16% 49%;               /* #698e79 — Eucalyptus */
-  --accent-foreground: 60 33% 99%;
+  /* Accent: Lime Pulse — badge highlights, "25% Off" tags, decorative bands */
+  --accent: 90 91% 80%;                 /* #d3fa99 - Lime Pulse */
+  --accent-foreground: 114 49% 16%;     /* Forest Depths on lime */
 
-  /* Borders & Inputs: forest hairline */
-  --border: 114 40% 22%;
-  --input: 114 40% 22%;
+  /* Borders & Inputs: Frosted Glass hairline — natural, not harsh */
+  --border: 120 2% 77%;                 /* #c4c7c4 - Frosted Glass */
+  --input: 60 11% 93%;                  /* Warm Stone input surface */
 
   /* Destructive */
-  --destructive: 0 62.8% 30.6%;
+  --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 60 33% 99%;
 
-  /* Ring */
-  --ring: 90 91% 80%;                   /* Lime Pulse glow ring */
+  /* Ring: Forest Depths focus ring */
+  --ring: 114 49% 16%;                  /* Forest Depths */
 
-  /* GitHub-style contribution heatmap in forest tones */
-  --contribution-1: 114 60% 22%;
-  --contribution-2: 114 65% 34%;
-  --contribution-3: 90 80% 58%;
-  --contribution-4: 90 91% 80%;         /* Lime Pulse brightest */
+  /* GitHub-style contribution heatmap in organic tones */
+  --contribution-1: 90 60% 92%;         /* very pale lime */
+  --contribution-2: 77 14% 62%;         /* Sage Moss light */
+  --contribution-3: 143 16% 49%;        /* Eucalyptus mid */
+  --contribution-4: 114 49% 16%;        /* Forest Depths richest */
 }
 
 @layer base {
@@ -175,3 +187,4 @@
     clip-path: polygon(0 25%, 50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%);
   }
 }
+

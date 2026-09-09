@@ -9,12 +9,15 @@ interface SkeletonLoaderProps {
   children: ReactNode;
 }
 
+/**
+ * Returns skeleton colors based on the current theme.
+ * Forest is now a LIGHT theme (Snow White canvas), so skeleton uses light tones.
+ */
 const getSkeletonColors = (theme: string | undefined) => {
   switch (theme) {
     case "light":
-      return { baseColor: "#d4d4d4", highlightColor: "#f5f5f5" };
-    case "forest":
-      return { baseColor: "#24431a", highlightColor: "#366128" };
+    case "forest": // Forest is a warm light theme — use warm stone tones
+      return { baseColor: "#eeeee9", highlightColor: "#fcfcf7" };
     case "dark":
     default:
       return { baseColor: "#202020", highlightColor: "#2e2e2e" };
