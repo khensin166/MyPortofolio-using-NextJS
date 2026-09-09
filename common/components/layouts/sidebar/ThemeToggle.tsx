@@ -63,11 +63,15 @@ const ThemeToggle = () => {
             )}
 
             <motion.button
-              className={elative z-10 flex h-8 w-8 items-center justify-center rounded-full transition-colors duration-300 }
+              className={`relative z-10 flex h-8 w-8 items-center justify-center rounded-full transition-colors duration-300 ${
+                theme === t.name
+                  ? "text-primary-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
               onClick={() => setTheme(t.name)}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              data-posthog-event={change_theme_}
+              data-posthog-event={`change_theme_${t.name}`}
             >
               {t.icon}
             </motion.button>
