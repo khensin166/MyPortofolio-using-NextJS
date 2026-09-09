@@ -23,16 +23,24 @@ const ThemeToggle = () => {
 
   if (!mounted) return null;
 
+  // Defalut to light if theme is somehow missing
   const activeIndex = THEMES.findIndex((t) => t.name === theme);
+  const safeActiveIndex = activeIndex === -1 ? 0 : activeIndex;
+
+  const handleNextTheme = () => {
+    const nextIndex = (safeActiveIndex + 1) % THEMES.length;
+    setTheme(THEMES[nextIndex].name);
+  };
 
   return (
     <div className="flex items-center justify-center">
-      <div className="relative flex items-center gap-1 rounded-full border border-border bg-secondary p-1 shadow-inner">
+      {/* Desktop Layout: Segmented Pill */}
+      <div className="relative hidden md:flex items-center gap-1 rounded-full border border-border bg-secondary p-1 shadow-inner">
         {/* Animated Background Indicator */}
         <motion.div
           className="absolute h-8 w-8 rounded-full bg-primary"
           animate={{
-            x: activeIndex * 36,
+            x: safeActiveIndex * 36,
           }}
           transition={{
             type: "spring",
@@ -48,7 +56,7 @@ const ThemeToggle = () => {
             onMouseEnter={() => setHoveredTheme(t.name)}
             onMouseLeave={() => setHoveredTheme(null)}
           >
-            {/* Tooltip — z-[10000] ensures it sits above ALL layers */}
+            {/* Tooltip - z-[10000] ensures it sits above ALL layers */}
             {hoveredTheme === t.name && (
               <motion.div
                 className="pointer-events-none absolute bottom-full left-1/2 z-[10000] mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded bg-neutral-800 px-2 py-1 text-xs font-medium text-neutral-100 dark:bg-neutral-100 dark:text-neutral-700 lg:block"
@@ -71,12 +79,26 @@ const ThemeToggle = () => {
               onClick={() => setTheme(t.name)}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
+              aria-label={`Switch to ${t.name} theme`}
               data-posthog-event={`change_theme_${t.name}`}
             >
               {t.icon}
             </motion.button>
           </div>
         ))}
+      </div>
+
+      {/* Mobile Layout: Single Cycling Button */}
+      <div className="flex md:hidden">
+        <motion.button
+          onClick={handleNextTheme}
+          whileTap={{ scale: 0.9 }}
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-secondary text-foreground hover:bg-muted transition-colors"
+          aria-label="Toggle Theme"
+          data-posthog-event={`change_theme_mobile_cycle`}
+        >
+          {THEMES[safeActiveIndex].icon}
+        </motion.button>
       </div>
     </div>
   );
