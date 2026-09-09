@@ -85,7 +85,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.92, y: 20 }}
               transition={{ duration: 0.25 }}
-              className="relative z-[10000] flex max-h-[90vh] w-full max-w-3xl flex-col overflow-hidden rounded-2xl bg-card shadow-2xl"
+              className="relative z-[10000] flex max-h-[90vh] w-full max-w-3xl flex-col overflow-hidden rounded-2xl bg-card border border-border"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}

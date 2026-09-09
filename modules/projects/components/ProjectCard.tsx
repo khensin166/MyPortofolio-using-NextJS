@@ -137,7 +137,7 @@ const ProjectCard = (project: ProjectItem) => {
 
                 {showPicker && (
                   <div
-                    className="absolute bottom-9 right-0 z-50 flex gap-1.5 rounded-2xl border border-border bg-card p-2 shadow-lg"
+                    className="absolute bottom-9 right-0 z-50 flex gap-1.5 rounded-2xl border border-border bg-card p-2"
                     onClick={(e) => e.stopPropagation()}
                   >
                     {ALL_EMOJIS.map((emoji) => (

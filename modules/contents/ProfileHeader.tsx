@@ -86,7 +86,7 @@ export default function ProfileHeader({
 
       {/* Platform Button */}
       <div className="flex flex-col items-center justify-center gap-3 flex-shrink-0 w-full sm:w-auto">
-        <div className="p-0.5 rounded-xl bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600 shadow-lg">
+        <div className="p-0.5 rounded-xl bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600">
           <div className="bg-card rounded-[calc(0.75rem-2px)] p-3 flex items-center justify-center w-[68px] h-[68px]">
             {isInstagram ? (
               <InstagramIcon size={40} className="text-pink-500" />

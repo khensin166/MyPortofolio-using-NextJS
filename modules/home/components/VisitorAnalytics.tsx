@@ -84,7 +84,7 @@ const VisitorAnalytics = ({ data }: VisitorAnalyticsProps) => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1, duration: 0.3 }}
-            className="flex flex-col space-y-2 p-5 bg-secondary/40 backdrop-blur-sm border border-border/50 rounded-2xl shadow-sm hover:shadow-md hover:border-primary/30 transition-all"
+            className="flex flex-col space-y-2 p-5 bg-secondary/40 backdrop-blur-sm border border-border/50 rounded-2xl hover:border-primary/30 transition-all"
           >
             <div className="flex items-center gap-2 text-muted-foreground text-sm font-medium">
               {card.icon}
@@ -104,7 +104,7 @@ const VisitorAnalytics = ({ data }: VisitorAnalyticsProps) => {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.3 }}
-          className="p-5 bg-secondary/40 backdrop-blur-sm border border-border/50 rounded-2xl shadow-sm hover:shadow-md hover:border-primary/30 transition-all"
+          className="p-5 bg-secondary/40 backdrop-blur-sm border border-border/50 rounded-2xl hover:border-primary/30 transition-all"
         >
           <h3 className="text-sm font-medium text-muted-foreground mb-4">
             {t("top_countries")}
@@ -132,7 +132,7 @@ const VisitorAnalytics = ({ data }: VisitorAnalyticsProps) => {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.3 }}
-          className="p-5 bg-secondary/40 backdrop-blur-sm border border-border/50 rounded-2xl shadow-sm hover:shadow-md hover:border-primary/30 transition-all"
+          className="p-5 bg-secondary/40 backdrop-blur-sm border border-border/50 rounded-2xl hover:border-primary/30 transition-all"
         >
           <h3 className="text-sm font-medium text-muted-foreground mb-4">
             {t("top_cities")}

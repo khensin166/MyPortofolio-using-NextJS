@@ -31,7 +31,7 @@ const ThemeToggle = () => {
       <div className="relative flex items-center gap-1 rounded-full border border-border bg-secondary p-1 shadow-inner md:gap-2">
         {/* Animated Background Indicator */}
         <motion.div
-          className="absolute h-8 w-8 rounded-full bg-primary shadow-lg"
+          className="absolute h-8 w-8 rounded-full bg-primary"
           animate={{
             x: activeIndex * (typeof window !== 'undefined' && window.innerWidth < 768 ? 36 : 40),
           }}

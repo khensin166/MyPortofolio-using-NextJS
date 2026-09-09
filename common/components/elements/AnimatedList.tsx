@@ -178,7 +178,7 @@ const AnimatedList: React.FC<AnimatedListProps> = ({
                     width={150}
                     height={50}
                     alt={item.text ?? `Image ${index}`}
-                    className="rounded-lg shadow-xl"
+                    className="rounded-lg border border-border/30"
                   />
                 </div>
               </Link>

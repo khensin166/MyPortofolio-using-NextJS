@@ -66,7 +66,7 @@ const SkillList = ({ skills }: SkillListProps) => {
             className={clsx(
               "flex whitespace-nowrap items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300 border",
               selectedTag === tag.rawValue
-                ? "bg-primary border-primary text-primary-foreground shadow-lg shadow-primary/20"
+                ? "bg-primary border-primary text-primary-foreground"
                 : "bg-secondary/50 border-border text-muted-foreground hover:bg-accent hover:text-accent-foreground backdrop-blur-sm"
             )}
           >

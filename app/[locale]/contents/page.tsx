@@ -23,7 +23,7 @@ const ContentsPage = () => {
           onClick={() => setActiveTab("tiktok")}
           className={`flex items-center justify-center gap-2 flex-1 py-3 rounded-lg transition-all duration-300 ${
             activeTab === "tiktok"
-              ? "bg-primary text-primary-foreground shadow-lg scale-[1.02]"
+              ? "bg-primary text-primary-foreground scale-[1.02]"
               : "text-muted-foreground hover:text-foreground hover:bg-muted"
           }`}
         >
@@ -34,7 +34,7 @@ const ContentsPage = () => {
           onClick={() => setActiveTab("instagram")}
           className={`flex items-center justify-center gap-2 flex-1 py-3 rounded-lg transition-all duration-300 ${
             activeTab === "instagram"
-              ? "bg-primary text-primary-foreground shadow-lg scale-[1.02]"
+              ? "bg-primary text-primary-foreground scale-[1.02]"
               : "text-muted-foreground hover:text-foreground hover:bg-muted"
           }`}
         >
