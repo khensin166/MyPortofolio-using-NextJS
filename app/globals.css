@@ -108,51 +108,52 @@
    Pewter         #666666  → secondary body text, captions
    ============================================= */
 .forest {
-  /* Page canvas: Snow White — warm off-white, not clinical-sterile */
-  --background: 60 33% 99%;              /* #fcfcf7 - Snow White */
-  --foreground: 114 49% 16%;             /* #1c3a13 - Forest Depths (near-black ink) */
+  /* Page canvas: Snow White for a clean, bright base */
+  --background: 60 33% 99%;              /* #fcfcf7 */
+  --foreground: 114 49% 16%;             /* #1c3a13 - Forest Depths */
 
-  /* Cards: Warm Stone — secondary surface to create quiet rhythm */
-  --card: 60 11% 93%;                    /* #eeeee9 - Warm Stone */
+  /* Cards: A pale wash of Olive Gold for colorful but legible surfaces */
+  --card: 56 40% 90%;                    /* Pale Olive Gold wash */
   --card-foreground: 114 49% 16%;        /* Forest Depths */
 
-  /* Popovers: Snow White with Forest Depths text */
-  --popover: 60 33% 99%;                 /* Snow White */
+  /* Popovers: Pale wash of Eucalyptus for a cool contrast to cards */
+  --popover: 143 30% 92%;                /* Pale Eucalyptus wash */
   --popover-foreground: 114 49% 16%;     /* Forest Depths */
 
-  /* Primary CTA: Forest Depths — the dark green filled button (like Seed's "Shop Daily Essentials") */
+  /* Primary CTA: Forest Depths filled button, but with Lime Pulse text for a vibrant pop! */
   --primary: 114 49% 16%;               /* #1c3a13 - Forest Depths */
-  --primary-foreground: 60 33% 99%;     /* Snow White text on dark CTA */
+  --primary-foreground: 90 91% 80%;     /* #d3fa99 - Lime Pulse */
 
-  /* Secondary surface: slightly deeper than Snow White, lighter than Warm Stone */
-  --secondary: 60 11% 93%;              /* #eeeee9 - Warm Stone */
-  --secondary-foreground: 114 49% 16%;  /* Forest Depths */
+  /* Secondary surface: Sage Moss */
+  --secondary: 77 14% 42%;              /* #757c5d - Sage Moss */
+  --secondary-foreground: 60 33% 99%;   /* Snow White */
 
-  /* Muted: Frosted Glass background, Pewter text for captions */
-  --muted: 120 2% 77%;                  /* #c4c7c4 - Frosted Glass surface */
-  --muted-foreground: 0 0% 40%;         /* #666666 - Pewter */
+  /* Muted: Slightly deeper wash for muted areas (like badge backgrounds) */
+  --muted: 56 30% 83%;                  
+  --muted-foreground: 114 49% 25%;      /* Lightened Forest Depths */
 
-  /* Accent: Lime Pulse — badge highlights, "25% Off" tags, decorative bands */
+  /* Accent: Lime Pulse for highlights and tags */
   --accent: 90 91% 80%;                 /* #d3fa99 - Lime Pulse */
-  --accent-foreground: 114 49% 16%;     /* Forest Depths on lime */
+  --accent-foreground: 114 49% 16%;     /* Forest Depths */
 
-  /* Borders & Inputs: Frosted Glass hairline — natural, not harsh */
-  --border: 120 2% 77%;                 /* #c4c7c4 - Frosted Glass */
-  --input: 60 11% 93%;                  /* Warm Stone input surface */
+  /* Borders: Actual Olive Gold for a striking, colorful outline */
+  --border: 56 27% 49%;                 /* #9f995b - Olive Gold */
+  --input: 60 33% 99%;                  /* Snow White */
 
   /* Destructive */
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 60 33% 99%;
 
-  /* Ring: Forest Depths focus ring */
-  --ring: 114 49% 16%;                  /* Forest Depths */
+  /* Ring: Eucalyptus for a cool-toned focus ring */
+  --ring: 143 16% 49%;                  /* Eucalyptus */
 
-  /* GitHub-style contribution heatmap in organic tones */
-  --contribution-1: 90 60% 92%;         /* very pale lime */
-  --contribution-2: 77 14% 62%;         /* Sage Moss light */
-  --contribution-3: 143 16% 49%;        /* Eucalyptus mid */
-  --contribution-4: 114 49% 16%;        /* Forest Depths richest */
+  /* GitHub-style contribution heatmap in vibrant organic tones */
+  --contribution-1: 56 40% 90%;         /* Pale Olive */
+  --contribution-2: 90 91% 80%;         /* Lime Pulse */
+  --contribution-3: 143 16% 49%;        /* Eucalyptus */
+  --contribution-4: 114 49% 16%;        /* Forest Depths */
 }
+
 
 @layer base {
   * {
@@ -187,4 +188,5 @@
     clip-path: polygon(0 25%, 50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%);
   }
 }
+
 
