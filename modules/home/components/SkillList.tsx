@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useMemo } from "react";
 import { BiCodeAlt as SkillsIcon } from "react-icons/bi";
@@ -31,7 +31,7 @@ const SkillList = ({ skills }: SkillListProps) => {
   const tags = useMemo(() => {
     const allTags = skills.flatMap((skill) => skill.tags || []);
     const uniqueTags = Array.from(new Set(allTags));
-    
+
     const tagCounts = uniqueTags.map((tag) => ({
       name: tag.charAt(0).toUpperCase() + tag.slice(1),
       rawValue: tag,
@@ -83,19 +83,34 @@ const SkillList = ({ skills }: SkillListProps) => {
         ))}
       </div>
 
-      <motion.div 
+      <motion.div
         layout
         className="grid grid-cols-2 sm:grid-cols-3 md:flex md:flex-wrap gap-3"
+        transition={{
+          layout: {
+            type: "spring",
+            stiffness: 260,
+            damping: 28,
+          },
+        }}
       >
-        <AnimatePresence mode="popLayout">
-          {filteredSkills.map((skill, index) => (
+        <AnimatePresence>
+          {filteredSkills.map((skill) => (
             <motion.div
               layout
-              key={skill.id || index}
-              initial={{ opacity: 0, scale: 0.9 }}
+              key={skill.id}
+              initial={{ opacity: 0, scale: 0.85 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.2 }}
+              exit={{ opacity: 0, scale: 0.85 }}
+              transition={{
+                opacity: { duration: 0.18, ease: "easeInOut" },
+                scale: { duration: 0.2, ease: "easeOut" },
+                layout: {
+                  type: "spring",
+                  stiffness: 260,
+                  damping: 28,
+                },
+              }}
               className="group flex items-center gap-2.5 pl-1.5 pr-4 py-1.5 border rounded-full transition-all duration-300 backdrop-blur-md"
               style={{
                 backgroundColor: `${skill.color}15`,
@@ -105,24 +120,24 @@ const SkillList = ({ skills }: SkillListProps) => {
                 backgroundColor: `${skill.color}25`,
                 borderColor: `${skill.color}80`,
                 boxShadow: `0 8px 20px ${skill.color}20`,
-                y: -2
+                y: -2,
               }}
             >
               {/* Icon Plate */}
-              <div 
+              <div
                 className="flex items-center justify-center w-8 h-8 rounded-full bg-white/50 dark:bg-white/70 backdrop-blur-md border border-border/40 shadow-inner overflow-hidden transition-all duration-300 group-hover:scale-110"
-                style={{ 
-                  filter: `drop-shadow(0 0 4px ${skill.color}60)` 
+                style={{
+                  filter: `drop-shadow(0 0 4px ${skill.color}60)`,
                 }}
               >
-                <div 
+                <div
                   style={{ color: skill.color || "currentColor" }}
                   className="transition-all duration-300 group-hover:brightness-125"
                 >
                   <IconResolver iconNameOrUrl={skill.imageSrc} size={18} />
                 </div>
               </div>
-              
+
               <span className="text-sm font-medium text-foreground/90 group-hover:text-foreground truncate transition-colors duration-300">
                 {skill.title}
               </span>
