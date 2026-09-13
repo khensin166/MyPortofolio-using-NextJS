@@ -5,7 +5,7 @@ import { useAdminAuth } from "@/hooks/useAdminAuth";
 import { Loader2, ArrowLeft, Mail, Phone, Calendar, CheckCircle } from "lucide-react";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
-import type { FormInquiry } from "@/common/types/discovery-form";
+import type { Inquiry } from "@/common/types/discovery-form";
 import { motion } from "framer-motion";
 
 export default function InquiryDetailPage() {
@@ -14,7 +14,7 @@ export default function InquiryDetailPage() {
   const router = useRouter();
   
   const { token, isLoading: authLoading } = useAdminAuth();
-  const [inquiry, setInquiry] = useState<FormInquiry | null>(null);
+  const [inquiry, setInquiry] = useState<Inquiry | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
   const [isUpdating, setIsUpdating] = useState(false);
