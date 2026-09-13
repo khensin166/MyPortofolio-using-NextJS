@@ -152,10 +152,10 @@ export default function ExperienceForm({ initialData, onSubmit, onCancel, isLoad
         </div>
       </div>
 
-      <ArrayInputSection title="Responsibilities" field="responsibilities" data={formData.responsibilities} onUpdate={handleArrayChange} onAdd={() => addArrayItem("responsibilities")} onRemove={(idx) => removeArrayItem("responsibilities", idx)} />
-      <ArrayInputSection title="What I Learned" field="whatILearned" data={formData.whatILearned} onUpdate={handleArrayChange} onAdd={() => addArrayItem("whatILearned")} onRemove={(idx) => removeArrayItem("whatILearned", idx)} />
-      <ArrayInputSection title="Impact / Achievements" field="impact" data={formData.impact} onUpdate={handleArrayChange} onAdd={() => addArrayItem("impact")} onRemove={(idx) => removeArrayItem("impact", idx)} />
-      <ArrayInputSection title="Tags / Technologies" field="tags" data={formData.tags} onUpdate={handleArrayChange} onAdd={() => addArrayItem("tags")} onRemove={(idx) => removeArrayItem("tags", idx)} />
+      <ArrayInputSection title="Responsibilities" field="responsibilities" data={formData.responsibilities} onUpdate={handleArrayChange} onAdd={() => addArrayItem("responsibilities")} onRemove={(idx: number) => removeArrayItem("responsibilities", idx)} />
+      <ArrayInputSection title="What I Learned" field="whatILearned" data={formData.whatILearned} onUpdate={handleArrayChange} onAdd={() => addArrayItem("whatILearned")} onRemove={(idx: number) => removeArrayItem("whatILearned", idx)} />
+      <ArrayInputSection title="Impact / Achievements" field="impact" data={formData.impact} onUpdate={handleArrayChange} onAdd={() => addArrayItem("impact")} onRemove={(idx: number) => removeArrayItem("impact", idx)} />
+      <ArrayInputSection title="Tags / Technologies" field="tags" data={formData.tags} onUpdate={handleArrayChange} onAdd={() => addArrayItem("tags")} onRemove={(idx: number) => removeArrayItem("tags", idx)} />
 
       <div className="flex justify-end gap-3 pt-4 border-t border-border">
         <button type="button" onClick={onCancel} disabled={isLoading} className="rounded-lg px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors">

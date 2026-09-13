@@ -17,9 +17,9 @@ export const apiClient = async <T = any>(
   const { requireAuth = true, headers, ...customOptions } = options;
   const url = endpoint.startsWith("http") ? endpoint : `${BASE_URL}${endpoint}`;
 
-  const customHeaders: HeadersInit = {
+  const customHeaders: Record<string, string> = {
     "Content-Type": "application/json",
-    ...headers,
+    ...(headers as Record<string, string>),
   };
 
   if (requireAuth) {
