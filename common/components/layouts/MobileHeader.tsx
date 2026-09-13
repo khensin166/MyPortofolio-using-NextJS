@@ -24,7 +24,7 @@ const MobileHeader = () => {
         <div
           className={`flex ${isOpen ? "flex-col space-y-3" : "flex-row space-x-3"}`}
         >
-          <div className="z-10 w-max rounded-full border-2 border-white shadow-md dark:border-neutral-800">
+          <div className="z-10 w-max rounded-full border-2 border-white dark:border-neutral-800">
             <Image
               src={"/images/kenan.jpg"}
               alt="profile"

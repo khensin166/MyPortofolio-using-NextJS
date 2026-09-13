@@ -93,7 +93,7 @@ const ProjectLink = ({ title, link_github, link_demo }: ProjectLinkProps) => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
-                className="relative z-10 w-full max-w-4xl aspect-video rounded-xl overflow-hidden bg-black shadow-2xl"
+                className="relative z-10 w-full max-w-4xl aspect-video rounded-xl overflow-hidden bg-black border border-border/30"
               >
                 <button
                   onClick={() => setIsModalOpen(false)}

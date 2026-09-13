@@ -35,7 +35,7 @@ export default function InstagramCard({
     <Link
       href={url}
       target="_blank"
-      className="group relative flex flex-col h-full overflow-hidden rounded-2xl bg-card border border-border shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+      className="group relative flex flex-col h-full overflow-hidden rounded-2xl bg-card border border-border transition-all duration-300 hover:border-primary/50 hover:-translate-y-1"
     >
       <div className="relative w-full overflow-hidden">
         <motion.div

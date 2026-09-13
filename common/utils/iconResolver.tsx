@@ -8,7 +8,6 @@ import * as DiIcons from "react-icons/di";
 import * as AiIcons from "react-icons/ai";
 import * as HiIcons from "react-icons/hi2";
 import * as MdIcons from "react-icons/md";
-import Image from "next/image";
 
 // Map prefixes to their respective dynamic modules
 const libraryMap: Record<string, Record<string, any>> = {
@@ -36,9 +35,9 @@ export const IconResolver = ({
   // Check if it's a URL
   if (iconNameOrUrl.startsWith("http://") || iconNameOrUrl.startsWith("https://") || iconNameOrUrl.startsWith("/")) {
     return (
-      <Image 
+      <img 
         src={iconNameOrUrl} 
-        alt="Skill Icon" 
+        alt="Icon" 
         width={typeof size === "number" ? size : 24} 
         height={typeof size === "number" ? size : 24} 
         className={className} 

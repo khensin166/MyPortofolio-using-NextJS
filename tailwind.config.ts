@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss";
+﻿import type { Config } from "tailwindcss";
 import plugin from "tailwindcss/plugin";
 
 const config: Config = {
@@ -61,6 +61,17 @@ const config: Config = {
         light: {
           DEFAULT: "#fafafa",
         },
+        "forest-depths": "hsl(var(--color-forest-depths))",
+        "lime-pulse": "hsl(var(--color-lime-pulse))",
+        "sage-moss": "hsl(var(--color-sage-moss))",
+        "olive-gold": "hsl(var(--color-olive-gold))",
+        "eucalyptus": "hsl(var(--color-eucalyptus))",
+        "snow-white": "hsl(var(--color-snow-white))",
+        "warm-stone": "hsl(var(--color-warm-stone))",
+        "frosted-glass": "hsl(var(--color-frosted-glass))",
+        "ash": "hsl(var(--color-ash))",
+        "pewter": "hsl(var(--color-pewter))",
+        "ink": "hsl(var(--color-ink))",
         contribution: {
           1: "hsl(var(--contribution-1))",
           2: "hsl(var(--contribution-2))",
@@ -136,3 +147,4 @@ const config: Config = {
   darkMode: "class",
 };
 export default config;
+

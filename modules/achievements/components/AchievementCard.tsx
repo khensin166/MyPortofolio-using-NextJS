@@ -138,7 +138,7 @@ const AchievementCard = ({
 
               <motion.div
                 layoutId={`card-${image}`}
-                className="relative z-[10000] flex max-w-6xl flex-col overflow-hidden rounded-2xl bg-card shadow-2xl transition-colors duration-300"
+                className="relative z-[10000] flex max-w-6xl flex-col overflow-hidden rounded-2xl bg-card border border-border transition-colors duration-300"
                 onClick={(e) => e.stopPropagation()}
               >
                 <button

@@ -30,7 +30,7 @@ export default function VideoCard({
     <Link
       href={share_url}
       target="_blank"
-      className="group relative block w-full overflow-hidden rounded-lg border border-border bg-secondary shadow-sm transition-all duration-300 hover:shadow-md hover:border-primary/50"
+      className="group relative block w-full overflow-hidden rounded-lg border border-border bg-secondary transition-all duration-300 hover:border-primary/50"
     >
       <Image
         src={cover_image_url}
@@ -43,7 +43,7 @@ export default function VideoCard({
 
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
 
-      <div className="absolute bottom-2 left-2 flex items-center gap-1 font-medium text-white drop-shadow-md">
+      <div className="absolute bottom-2 left-2 flex items-center gap-1 font-medium text-white">
         <ViewIcon size={16} />
         <span className="text-sm font-semibold">
           {formatViewCount(view_count)}

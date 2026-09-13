@@ -23,7 +23,7 @@ const ChatButton = () => {
   return (
     <>
       <div
-        className="fixed bottom-6 right-6 rounded-full border-2 border-neutral-300 bg-gradient-to-br from-neutral-300 to-neutral-100 p-3 text-neutral-700 drop-shadow-xl transition duration-300 hover:scale-105 hover:to-neutral-50 active:scale-95 dark:border-neutral-600 dark:from-neutral-700 dark:to-neutral-800 dark:text-neutral-100 hover:dark:to-neutral-900"
+        className="fixed bottom-6 right-6 rounded-full border-2 border-neutral-300 bg-gradient-to-br from-neutral-300 to-neutral-100 p-3 text-neutral-700 transition duration-300 hover:scale-105 hover:to-neutral-50 active:scale-95 dark:border-neutral-600 dark:from-neutral-700 dark:to-neutral-800 dark:text-neutral-100 hover:dark:to-neutral-900"
         onMouseEnter={() => setIsHover(true)}
         onMouseLeave={() => setIsHover(false)}
         onClick={handleClick}

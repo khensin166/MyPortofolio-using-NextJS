@@ -140,7 +140,7 @@ const ProjectDetail = ({
           </button>
 
           {showPicker && (
-            <div className="absolute bottom-10 left-0 z-50 flex gap-1.5 rounded-2xl border border-border bg-card p-2 shadow-lg">
+            <div className="absolute bottom-10 left-0 z-50 flex gap-1.5 rounded-2xl border border-border bg-card p-2">
               {ALL_EMOJIS.map((emoji) => (
                 <button
                   key={emoji}

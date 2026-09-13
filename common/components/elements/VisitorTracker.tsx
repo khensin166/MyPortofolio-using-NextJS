@@ -29,7 +29,8 @@ export default function VisitorTracker() {
           }),
         });
       } catch (error) {
-        console.error("Tracking failed:", error);
+        // Suppress errors to prevent Next.js dev overlay from blocking the UI
+        // console.error("Tracking failed:", error);
       }
     };
 

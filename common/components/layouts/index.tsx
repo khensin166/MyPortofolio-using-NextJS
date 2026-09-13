@@ -24,7 +24,8 @@ const Layouts = ({ children }: LayoutsProps) => {
   const pathname = usePathname();
   const { layoutMode } = useLayoutStore();
 
-  const isShowChatButton = pathname !== "/chat";
+  const isAdminRoute = pathname?.includes("/admin");
+  const isShowChatButton = pathname !== "/chat" && !isAdminRoute;
 
   useEffect(() => {
     AOS.init({
@@ -32,6 +33,16 @@ const Layouts = ({ children }: LayoutsProps) => {
       delay: 50,
     });
   }, []);
+
+  if (isAdminRoute) {
+    return (
+      <div className="w-full">
+        <ThemeMagicClick />
+        <main className="w-full">{children}</main>
+        <Notif />
+      </div>
+    );
+  }
 
   const isSidebar = layoutMode === "sidebar";
 

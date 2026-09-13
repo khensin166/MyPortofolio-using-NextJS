@@ -111,7 +111,7 @@ const ComboBoxFilter = ({
             exit={{ scale: 0, opacity: 0, y: 0 }}
             className="absolute left-0 top-12 z-10 w-full"
           >
-            <div className="w-full rounded-md bg-card outline outline-border shadow-xl">
+            <div className="w-full rounded-md bg-card border border-border">
               <div className="grid w-full grid-cols-[1.5rem_1fr] items-center border-b border-border px-3 py-2">
                 <SearchIcon className="text-muted-foreground" />
                 <input

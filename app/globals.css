@@ -1,7 +1,10 @@
-@tailwind base;
+﻿@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* =============================================
+   PALETTE: New Forest Color System
+   ============================================= */
 :root {
   --background: 0 0% 100%;
   --foreground: 222.2 84% 4.9%;
@@ -38,6 +41,19 @@
   --ring: 222.2 84% 4.9%;
 
   --radius: 0.5rem;
+
+  /* Raw palette tokens (accessible in all themes) */
+  --color-forest-depths: 114 49% 16%;     /* #1c3a13 */
+  --color-lime-pulse: 90 91% 80%;         /* #d3fa99 */
+  --color-sage-moss: 77 14% 42%;          /* #757c5d */
+  --color-olive-gold: 56 27% 49%;         /* #9f995b */
+  --color-eucalyptus: 143 16% 49%;        /* #698e79 */
+  --color-snow-white: 60 33% 99%;         /* #fcfcf7 */
+  --color-warm-stone: 60 11% 93%;         /* #eeeee9 */
+  --color-frosted-glass: 120 2% 77%;      /* #c4c7c4 */
+  --color-ash: 0 0% 70%;                  /* #b3b3b3 */
+  --color-pewter: 0 0% 40%;               /* #666666 */
+  --color-ink: 0 0% 0%;                   /* #000000 */
 }
 
 .dark {
@@ -76,32 +92,71 @@
   --ring: 212.7 26.8% 83.9%;
 }
 
+/* =============================================
+   FOREST THEME - Premium Natural/Organic Light
+   Palette by Kenan — mapped to Seed-style aesthetic
+   =============================================
+   Forest Depths  #1c3a13  → CTAs, nav, body text
+   Lime Pulse     #d3fa99  → badges, highlights, accents
+   Sage Moss      #757c5d  → muted text, secondary tags
+   Olive Gold     #9f995b  → warm accent, decorative
+   Eucalyptus     #698e79  → cool secondary accent
+   Snow White     #fcfcf7  → page canvas, primary inverse text
+   Warm Stone     #eeeee9  → secondary surfaces, panels
+   Frosted Glass  #c4c7c4  → borders, muted overlays
+   Ash            #b3b3b3  → disabled states, low-emphasis
+   Pewter         #666666  → secondary body text, captions
+   ============================================= */
 .forest {
-  --background: 120 100% 6%;
-  --foreground: 49 77% 65%;
-  --card: 120 100% 6%;
-  --card-foreground: 49 77% 65%;
-  --popover: 120 100% 6%;
-  --popover-foreground: 49 77% 65%;
-  --primary: 49 77% 65%;
-  --primary-foreground: 120 100% 6%;
-  --secondary: 120 30% 10%;
-  --secondary-foreground: 49 77% 65%;
-  --muted: 120 30% 10%;
-  --muted-foreground: 50 68% 45%;
-  --accent: 163 100% 19%;
-  --accent-foreground: 49 77% 65%;
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 49 77% 65%;
-  --border: 120 50% 15%;
-  --input: 120 50% 15%;
-  --ring: 49 77% 65%;
+  /* Page canvas: Snow White for a clean, bright base */
+  --background: 60 33% 99%;              /* #fcfcf7 */
+  --foreground: 114 49% 16%;             /* #1c3a13 - Forest Depths */
 
-  --contribution-1: 120 70% 20%;
-  --contribution-2: 120 70% 35%;
-  --contribution-3: 120 70% 50%;
-  --contribution-4: 120 70% 65%;
+  /* Cards: A pale wash of Olive Gold for colorful but legible surfaces */
+  --card: 56 40% 90%;                    /* Pale Olive Gold wash */
+  --card-foreground: 114 49% 16%;        /* Forest Depths */
+
+  /* Popovers: Pale wash of Eucalyptus for a cool contrast to cards */
+  --popover: 143 30% 92%;                /* Pale Eucalyptus wash */
+  --popover-foreground: 114 49% 16%;     /* Forest Depths */
+
+  /* Primary CTA: Forest Depths filled button, but with Lime Pulse text for a vibrant pop! */
+  --primary: 114 49% 16%;               /* #1c3a13 - Forest Depths */
+  --primary-foreground: 90 91% 80%;     /* #d3fa99 - Lime Pulse */
+
+  /* Secondary surface: Warm Stone (light, clean) instead of solid Sage Moss */
+  /* This fixes the muddy inputs and toggle backgrounds */
+  --secondary: 60 11% 93%;              /* #eeeee9 - Warm Stone */
+  --secondary-foreground: 114 49% 16%;  /* Forest Depths */
+
+  /* Muted: A very pale wash of Sage Moss for badges and subtle tags */
+  /* This gives the Sage Moss touch without being overly heavy */
+  --muted: 77 20% 86%;                  /* Pale Sage Moss wash */
+  --muted-foreground: 77 14% 30%;       /* Darkened Sage Moss for readable text */
+
+  /* Accent: Lime Pulse for highlights and tags */
+  --accent: 90 91% 80%;                 /* #d3fa99 - Lime Pulse */
+  --accent-foreground: 114 49% 16%;     /* Forest Depths */
+
+  /* Borders: A softer Olive Gold so outlines aren't too harsh */
+  --border: 56 30% 70%;                 /* Softened Olive Gold */
+  --input: 60 33% 99%;                  /* Snow White */
+
+  /* Destructive */
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 33% 99%;
+
+  /* Ring: Eucalyptus for a cool-toned focus ring */
+  --ring: 143 16% 49%;                  /* Eucalyptus */
+
+  /* GitHub-style contribution heatmap in vibrant organic tones */
+  --contribution-1: 56 40% 90%;         /* Pale Olive */
+  --contribution-2: 90 91% 80%;         /* Lime Pulse */
+  --contribution-3: 143 16% 49%;        /* Eucalyptus */
+  --contribution-4: 114 49% 16%;        /* Forest Depths */
 }
+
+
 
 @layer base {
   * {
@@ -136,3 +191,6 @@
     clip-path: polygon(0 25%, 50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%);
   }
 }
+
+
+
