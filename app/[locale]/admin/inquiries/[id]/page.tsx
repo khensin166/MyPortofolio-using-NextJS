@@ -5,7 +5,7 @@ import { useAdminAuth } from "@/hooks/useAdminAuth";
 import { Loader2, ArrowLeft, Mail, Phone, Calendar, CheckCircle } from "lucide-react";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
-import type { Inquiry } from "@/common/types/discovery-form";
+import type { Inquiry, InquiryStatus } from "@/common/types/discovery-form";
 import { motion } from "framer-motion";
 
 export default function InquiryDetailPage() {
@@ -47,7 +47,7 @@ export default function InquiryDetailPage() {
     fetchInquiry();
   }, [token, authLoading, id]);
 
-  const updateStatus = async (newStatus: string) => {
+  const updateStatus = async (newStatus: InquiryStatus) => {
     if (!token) return;
     setIsUpdating(true);
     try {
