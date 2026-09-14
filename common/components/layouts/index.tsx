@@ -22,7 +22,7 @@ interface LayoutsProps {
 
 const Layouts = ({ children }: LayoutsProps) => {
   const pathname = usePathname();
-  const { layoutMode } = useLayoutStore();
+  const { layoutMode, isHydrated } = useLayoutStore();
 
   const isAdminRoute = pathname?.includes("/admin");
   const isShowChatButton = pathname !== "/chat" && !isAdminRoute;
@@ -44,7 +44,8 @@ const Layouts = ({ children }: LayoutsProps) => {
     );
   }
 
-  const isSidebar = layoutMode === "sidebar";
+  // Hindari Hydration Mismatch dengan memaksa render SSR konsisten (default: sidebar)
+  const isSidebar = isHydrated ? layoutMode === "sidebar" : true;
 
   return (
     <div className="mx-auto max-w-7xl lg:px-12">

@@ -3,7 +3,7 @@ import { useWindowSize } from "usehooks-ts";
 
 const useIsMobile = () => {
   const { width } = useWindowSize();
-  const [isMobile, setIsMobile] = useState(width < 769);
+  const [isMobile, setIsMobile] = useState(false); // Default false for SSR stability
 
   useEffect(() => {
     setIsMobile(width < 821);
