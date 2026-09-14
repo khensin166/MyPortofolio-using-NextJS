@@ -14,10 +14,10 @@ export function AdminLayoutClient({ children }: AdminLayoutClientProps) {
       <AdminSidebar />
       
       {/* Main Content Area */}
-      <div className="flex flex-1 flex-col md:ml-64 w-full">
+      <div className="flex flex-1 flex-col lg:ml-64 w-full">
         <AdminHeader />
         
-        <main className="flex-1 p-4 md:p-8 w-full overflow-x-hidden">
+        <main className="flex-1 p-4 lg:p-8 w-full overflow-x-hidden">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
