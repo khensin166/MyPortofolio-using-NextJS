@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { LogOut, LayoutDashboard, MessageSquare, Settings, Briefcase, GraduationCap, LayoutTemplate, Cpu, X } from "lucide-react";
 import { useAdminAuth } from "@/hooks/useAdminAuth";
 import { useAdminUIStore } from "@/common/stores/adminUI";
+import ThemeSwitcher from "@/common/components/elements/ThemeSwitcher";
 
 const NAV_ITEMS = [
   { name: "Dashboard", href: "/en/admin", icon: LayoutDashboard },
@@ -32,14 +33,14 @@ export function AdminSidebar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSidebarOpen(false)}
-            className="fixed inset-0 z-40 bg-black/50 md:hidden"
+            className="fixed inset-0 z-40 bg-black/50 lg:hidden"
           />
         )}
       </AnimatePresence>
 
       {/* Sidebar Content */}
       <aside
-        className={`fixed left-0 top-0 z-50 h-screen w-64 border-r border-border bg-card shadow-sm transition-transform duration-300 ease-in-out md:translate-x-0 ${
+        className={`fixed left-0 top-0 z-50 h-[100dvh] w-64 border-r border-border bg-card shadow-sm transition-transform duration-300 ease-in-out lg:translate-x-0 ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -52,14 +53,14 @@ export function AdminSidebar() {
             </div>
             <button 
               onClick={() => setSidebarOpen(false)}
-              className="md:hidden text-muted-foreground hover:text-foreground"
+              className="lg:hidden text-muted-foreground hover:text-foreground"
             >
               <X className="h-6 w-6" />
             </button>
           </div>
 
           {/* Navigation */}
-          <nav className="flex-1 space-y-1 overflow-y-auto">
+          <nav className="flex-1 space-y-1 overflow-y-auto pb-4">
             {NAV_ITEMS.map(({ name, href, icon: Icon }) => {
               const isActive = href === "/en/admin" 
                 ? pathname === "/en/admin" || pathname === "/id/admin"
@@ -84,9 +85,14 @@ export function AdminSidebar() {
 
           {/* User Info & Logout */}
           <div className="mt-auto border-t border-border pt-4">
-            <div className="mb-4 px-2">
-              <p className="text-sm font-medium text-foreground">{user?.name || "Admin"}</p>
-              <p className="truncate text-xs text-muted-foreground">{user?.email}</p>
+            <div className="mb-4 px-2 flex items-center justify-between">
+              <div className="overflow-hidden pr-2">
+                <p className="text-sm font-medium text-foreground truncate">{user?.name || "Admin"}</p>
+                <p className="truncate text-xs text-muted-foreground">{user?.email}</p>
+              </div>
+              <div className="shrink-0">
+                <ThemeSwitcher />
+              </div>
             </div>
             <button
               onClick={logout}

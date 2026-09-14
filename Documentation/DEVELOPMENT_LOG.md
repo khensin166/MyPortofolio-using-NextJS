@@ -15,7 +15,8 @@ File ini mencatat seluruh riwayat aktivitas rekayasa dan pengembangan (*engineer
    - Memecah file raksasa `layout.tsx` di area admin menjadi komponen terisolasi (`AdminSidebar`, `AdminHeader`, `AdminLayoutClient`).
    - Menyimpan komponen eksklusif admin di *Private Folder* `app/[locale]/admin/_components` agar tidak berbaur dengan elemen UI publik di folder `common/`.
 3. **Mobile-First Admin Dashboard:** Merombak *sidebar* dan *layout* admin yang sebelumnya kaku menjadi responsif di perangkat bergerak (layar kecil), lengkap dengan animasi transisi elegan (CSS & Framer Motion) dan *hamburger menu*.
-4. **API Client Tersentralisasi:** Membuat `apiClient.ts` untuk memfasilitasi injeksi *Bearer token* secara otomatis saat Admin berkomunikasi dengan backend, menghindarkan *boilerplate code*.
+4. **Penyempurnaan Responsivitas Admin (iPad & iOS):** Menggeser *breakpoint* desktop Sidebar dari `md:` ke `lg:` (1024px) agar perangkat *Tablet/iPad Portrait* mendapatkan tampilan Hamburger Menu. Mengubah *height* sidebar menjadi `100dvh` (*Dynamic Viewport Height*) untuk mengatasi *bug* bilah alamat Safari di iOS yang sering menutupi tombol bagian bawah.
+5. **API Client Tersentralisasi:** Membuat `apiClient.ts` untuk memfasilitasi injeksi *Bearer token* secara otomatis saat Admin berkomunikasi dengan backend, menghindarkan *boilerplate code*.
 
 ---
 
