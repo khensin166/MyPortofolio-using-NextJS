@@ -1,7 +1,6 @@
 "use client";
 
 import useSWR from "swr";
-import useSWRInfinite from "swr/infinite";
 import { useTranslations } from "next-intl";
 
 import VideoList from "./VideoList";
@@ -9,40 +8,17 @@ import ProfileHeader from "./ProfileHeader";
 import { ProfileHeaderSkeleton, VideoListSkeleton } from "./TiktokSkeleton";
 
 import EmptyState from "@/common/components/elements/EmptyState";
-import { fetcher } from "@/services/fetcher";
-
-const TIKTOK_API_BASE = "/api/tiktok?action=";
+import { getTiktokData } from "@/services/portfolio";
 
 const Tiktok = () => {
   const t = useTranslations("ContentsPage");
 
-  const { data: profile, isLoading: profileLoading } = useSWR(
-    `${TIKTOK_API_BASE}profile`,
-    fetcher,
+  const { data, isLoading, error } = useSWR(
+    "creations/tiktok",
+    getTiktokData,
   );
 
-  const getKey = (pageIndex: number, previousPageData: any) => {
-    if (previousPageData && !previousPageData.has_more) return null;
-    if (pageIndex === 0) return `${TIKTOK_API_BASE}videos`;
-    return `${TIKTOK_API_BASE}videos&cursor=${previousPageData.cursor}`;
-  };
-
-  const {
-    data,
-    size,
-    setSize,
-    error: videoError,
-    isValidating: videoValidating,
-    isLoading: videoLoading,
-  } = useSWRInfinite(getKey, fetcher);
-
-  const allVideos = data ? data.flatMap((page) => page.videos) : [];
-  const hasMore = data ? data[data.length - 1]?.has_more : false;
-  const isRefreshing = videoValidating && data && data.length === size;
-
-  const isLoadingInitial = profileLoading || (videoLoading && !data);
-
-  if (isLoadingInitial) {
+  if (isLoading) {
     return (
       <section className="space-y-6">
         <ProfileHeaderSkeleton />
@@ -51,39 +27,34 @@ const Tiktok = () => {
     );
   }
 
-  if (videoError) return <EmptyState message={t("error")} />;
+  if (error || !data) return <EmptyState message={t("error")} />;
 
-  if (allVideos.length === 0) return <EmptyState message={t("no_data")} />;
+  const { profile, videos } = data;
 
   return (
     <section className="space-y-4">
-      {profile?.data && (
+      {profile && (
         <ProfileHeader
           platform="tiktok"
-          username={profile.data.username}
-          fullName={profile.data.display_name}
-          profilePic={profile.data.avatar_large_url}
-          externalUrl={profile.data.profile_deep_link}
+          username={profile.username}
+          fullName={profile.nickname}
+          profilePic={profile.avatar}
+          externalUrl={`https://www.tiktok.com/@${profile.username}`}
           stats={{
-            followers: profile.data.follower_count,
-            following: profile.data.following_count,
-            likes: profile.data.likes_count,
-            posts: profile.data.video_count,
+            followers: profile.stats.followers,
+            following: profile.stats.following,
+            likes: profile.stats.likes,
+            posts: profile.stats.videos,
           }}
         />
       )}
 
-      <VideoList videos={allVideos} />
-
-      {hasMore && (
-        <div className="flex justify-center">
-          <button
-            onClick={() => setSize(size + 1)}
-            disabled={isRefreshing}
-            className="rounded-full bg-secondary px-4 py-1 text-sm text-foreground transition-all duration-300 hover:scale-105 hover:bg-muted disabled:opacity-50"
-          >
-            {isRefreshing ? "Loading..." : t("load_more") || "Load More"}
-          </button>
+      {videos && videos.length > 0 ? (
+        <VideoList videos={videos} />
+      ) : (
+        <div className="flex flex-col items-center justify-center py-12 text-center text-muted-foreground border border-dashed rounded-lg mt-8">
+          <p className="text-sm font-medium">No videos available at the moment</p>
+          <p className="text-xs mt-1 opacity-70">Check back later or visit my TikTok profile directly.</p>
         </div>
       )}
     </section>

@@ -1,7 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Loader2, Plus, X } from "lucide-react";
+import ImageUpload from "@/common/components/elements/ImageUpload";
+import { isFormDirty } from "@/common/utils/formatters";
 
 export interface EducationFormData {
   institutionName: string;
@@ -38,6 +40,32 @@ export default function EducationForm({ initialData, onSubmit, onCancel, isLoadi
     description: initialData ? extractArray(initialData.description) : [""],
     imageLogo: initialData?.imageLogo || "",
   });
+
+  const [initialFormData, setInitialFormData] = useState<EducationFormData>({
+    institutionName: initialData?.institutionName || "",
+    degree: initialData?.degree || "",
+    major: initialData?.major || "",
+    startDate: initialData?.startDate || "",
+    endDate: initialData?.endDate || "",
+    description: initialData ? extractArray(initialData.description) : [""],
+    imageLogo: initialData?.imageLogo || "",
+  });
+
+  useEffect(() => {
+    if (initialData) {
+      const initial = {
+        institutionName: initialData.institutionName || "",
+        degree: initialData.degree || "",
+        major: initialData.major || "",
+        startDate: initialData.startDate || "",
+        endDate: initialData.endDate || "",
+        description: extractArray(initialData.description),
+        imageLogo: initialData.imageLogo || "",
+      };
+      setFormData(initial);
+      setInitialFormData(initial);
+    }
+  }, [initialData]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -98,8 +126,12 @@ export default function EducationForm({ initialData, onSubmit, onCancel, isLoadi
           <p className="text-xs text-muted-foreground mt-1">Leave empty if currently studying</p>
         </div>
         <div className="space-y-1 sm:col-span-2">
-          <label className="text-sm font-medium">Logo URL / Image Source</label>
-          <input type="text" name="imageLogo" value={formData.imageLogo} onChange={handleChange} className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm outline-none focus:border-primary" placeholder="https://..." />
+          <ImageUpload
+            value={formData.imageLogo}
+            onChange={(url) => setFormData({ ...formData, imageLogo: url })}
+            label="Logo URL / Image Source"
+            placeholder="https://..."
+          />
         </div>
       </div>
 
@@ -130,7 +162,11 @@ export default function EducationForm({ initialData, onSubmit, onCancel, isLoadi
         <button type="button" onClick={onCancel} disabled={isLoading} className="rounded-lg px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors">
           Cancel
         </button>
-        <button type="submit" disabled={isLoading} className="flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:brightness-110 transition-colors disabled:opacity-70">
+        <button 
+          type="submit" 
+          disabled={isLoading || (initialFormData && !isFormDirty(formData, initialFormData))} 
+          className="flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:brightness-110 transition-colors disabled:opacity-70"
+        >
           {isLoading && <Loader2 className="h-4 w-4 animate-spin" />}
           {initialData ? "Update Education" : "Save Education"}
         </button>

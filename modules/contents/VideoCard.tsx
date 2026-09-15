@@ -20,25 +20,24 @@ const formatViewCount = (count: number) => {
 };
 
 export default function VideoCard({
-  share_url,
-  cover_image_url,
-  width,
-  height,
-  view_count,
+  id,
+  cover,
+  title,
+  playCount,
 }: VideoItem) {
   return (
     <Link
-      href={share_url}
+      href={`https://www.tiktok.com/@khensint/video/${id}`}
       target="_blank"
       className="group relative block w-full overflow-hidden rounded-lg border border-border bg-secondary transition-all duration-300 hover:border-primary/50"
     >
       <Image
-        src={cover_image_url}
+        src={cover}
         className="aspect-[3/4] object-cover transition-transform duration-500 group-hover:scale-105"
-        alt="TikTok Thumbnail"
+        alt={title || "TikTok Thumbnail"}
         loading="lazy"
-        width={width || 1080}
-        height={height || 1920}
+        width={1080}
+        height={1920}
       />
 
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
@@ -46,7 +45,7 @@ export default function VideoCard({
       <div className="absolute bottom-2 left-2 flex items-center gap-1 font-medium text-white">
         <ViewIcon size={16} />
         <span className="text-sm font-semibold">
-          {formatViewCount(view_count)}
+          {formatViewCount(playCount || 0)}
         </span>
       </div>
     </Link>

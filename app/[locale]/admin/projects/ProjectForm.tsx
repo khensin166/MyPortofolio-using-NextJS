@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { Loader2, Sparkles } from "lucide-react";
+import ImageUpload from "@/common/components/elements/ImageUpload";
+import { isFormDirty } from "@/common/utils/formatters";
 
 export interface ProjectFormData {
   title: string;
@@ -40,6 +42,7 @@ const DEFAULT_FORM_DATA: ProjectFormData = {
 
 export default function ProjectForm({ initialData, onSubmit, onCancel, isSubmitting }: ProjectFormProps) {
   const [formData, setFormData] = useState<ProjectFormData>(DEFAULT_FORM_DATA);
+  const [initialFormData, setInitialFormData] = useState<ProjectFormData>(DEFAULT_FORM_DATA);
   const [tagInput, setTagInput] = useState("");
   const [typeInput, setTypeInput] = useState("");
   const [featureInput, setFeatureInput] = useState("");
@@ -71,8 +74,7 @@ export default function ProjectForm({ initialData, onSubmit, onCancel, isSubmitt
 
       const lang = initialData.sourceLang || 'en';
 
-      setFormData((prev) => ({
-        ...prev,
+      const initial = {
         sourceLang: lang,
         title: initialData.title || "",
         overview: parseString(initialData.overview?.[lang] || initialData.overview, lang),
@@ -85,7 +87,10 @@ export default function ProjectForm({ initialData, onSubmit, onCancel, isSubmitt
         isFeatured: !!initialData.isFeatured,
         type: parseArray(initialData.type),
         category: initialData.category || "Personal Project",
-      }));
+      };
+
+      setFormData(initial as ProjectFormData);
+      setInitialFormData(initial as ProjectFormData);
     }
   }, [initialData]);
 
@@ -268,12 +273,10 @@ export default function ProjectForm({ initialData, onSubmit, onCancel, isSubmitt
         </div>
         
         <div className="space-y-1 md:col-span-2">
-          <label className="text-sm font-medium">Image Source URL</label>
-          <input
-            type="text"
+          <ImageUpload
             value={formData.imageSrc}
-            onChange={(e) => setFormData({ ...formData, imageSrc: e.target.value })}
-            className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm outline-none focus:border-primary"
+            onChange={(url) => setFormData({ ...formData, imageSrc: url })}
+            label="Image Source URL / Project Banner"
             placeholder="/images/projects/project1.png or https://..."
           />
         </div>
@@ -370,7 +373,7 @@ export default function ProjectForm({ initialData, onSubmit, onCancel, isSubmitt
         </button>
         <button
           type="submit"
-          disabled={isSubmitting}
+          disabled={isSubmitting || (initialData && !isFormDirty(formData, initialFormData))}
           className="flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:brightness-110 disabled:opacity-50 transition-colors"
         >
           {isSubmitting && <Loader2 className="h-4 w-4 animate-spin" />}

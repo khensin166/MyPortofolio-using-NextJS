@@ -1,7 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Loader2, Plus, X } from "lucide-react";
+import ImageUpload from "@/common/components/elements/ImageUpload";
+import { isFormDirty } from "@/common/utils/formatters";
 
 export interface ExperienceFormData {
   role: string;
@@ -50,6 +52,44 @@ export default function ExperienceForm({ initialData, onSubmit, onCancel, isLoad
     tags: initialData?.tags && Array.isArray(initialData.tags) && initialData.tags.length ? initialData.tags : [""],
     imageSrc: initialData?.imageSrc || "",
   });
+
+  const [initialFormData, setInitialFormData] = useState<ExperienceFormData>({
+    role: initialData?.role || "",
+    organisation: initialData?.organisation || "",
+    startDate: initialData?.startDate || "",
+    endDate: initialData?.endDate || "",
+    isCurrent: initialData?.isCurrent || false,
+    workSetting: initialData?.workSetting || "Onsite",
+    employmentType: initialData?.employmentType || "Full-time",
+    location: initialData?.location || "",
+    responsibilities: initialData ? extractArray(initialData.responsibilities) : [""],
+    whatILearned: initialData ? extractArray(initialData.whatILearned) : [""],
+    impact: initialData ? extractArray(initialData.impact) : [""],
+    tags: initialData?.tags && Array.isArray(initialData.tags) && initialData.tags.length ? initialData.tags : [""],
+    imageSrc: initialData?.imageSrc || "",
+  });
+
+  useEffect(() => {
+    if (initialData) {
+      const initial = {
+        role: initialData.role || "",
+        organisation: initialData.organisation || "",
+        startDate: initialData.startDate || "",
+        endDate: initialData.endDate || "",
+        isCurrent: initialData.isCurrent || false,
+        workSetting: initialData.workSetting || "Onsite",
+        employmentType: initialData.employmentType || "Full-time",
+        location: initialData.location || "",
+        responsibilities: extractArray(initialData.responsibilities),
+        whatILearned: extractArray(initialData.whatILearned),
+        impact: extractArray(initialData.impact),
+        tags: initialData.tags && Array.isArray(initialData.tags) && initialData.tags.length ? initialData.tags : [""],
+        imageSrc: initialData.imageSrc || "",
+      };
+      setFormData(initial);
+      setInitialFormData(initial);
+    }
+  }, [initialData]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target as HTMLInputElement;
@@ -147,8 +187,12 @@ export default function ExperienceForm({ initialData, onSubmit, onCancel, isLoad
           <input required type="text" name="location" value={formData.location} onChange={handleChange} className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm outline-none focus:border-primary" placeholder="e.g. Jakarta, Indonesia" />
         </div>
         <div className="space-y-1 sm:col-span-2">
-          <label className="text-sm font-medium">Company Logo URL / Image Source</label>
-          <input type="text" name="imageSrc" value={formData.imageSrc} onChange={handleChange} className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm outline-none focus:border-primary" placeholder="https://..." />
+          <ImageUpload
+            value={formData.imageSrc}
+            onChange={(url) => setFormData({ ...formData, imageSrc: url })}
+            label="Company Logo URL / Image Source"
+            placeholder="https://..."
+          />
         </div>
       </div>
 
@@ -161,7 +205,11 @@ export default function ExperienceForm({ initialData, onSubmit, onCancel, isLoad
         <button type="button" onClick={onCancel} disabled={isLoading} className="rounded-lg px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors">
           Cancel
         </button>
-        <button type="submit" disabled={isLoading} className="flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:brightness-110 transition-colors disabled:opacity-70">
+        <button 
+          type="submit" 
+          disabled={isLoading || (initialFormData && !isFormDirty(formData, initialFormData))} 
+          className="flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:brightness-110 transition-colors disabled:opacity-70"
+        >
           {isLoading && <Loader2 className="h-4 w-4 animate-spin" />}
           {initialData ? "Update Experience" : "Save Experience"}
         </button>
