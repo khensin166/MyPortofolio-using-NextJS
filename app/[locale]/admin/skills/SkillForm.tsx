@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { Loader2 } from "lucide-react";
+import ImageUpload from "@/common/components/elements/ImageUpload";
+import { isFormDirty } from "@/common/utils/formatters";
 
 export interface SkillFormData {
   title: string;
@@ -30,18 +32,21 @@ const CATEGORIES = ["Frontend", "Backend", "Mobile", "Tools", "Design", "Databas
 
 export default function SkillForm({ initialData, onSubmit, onCancel, isSubmitting }: SkillFormProps) {
   const [formData, setFormData] = useState<SkillFormData>(DEFAULT_FORM_DATA);
+  const [initialFormData, setInitialFormData] = useState<SkillFormData>(DEFAULT_FORM_DATA);
   const [tagInput, setTagInput] = useState("");
 
   useEffect(() => {
     if (initialData) {
-      setFormData({
+      const initial = {
         title: initialData.title || "",
         category: initialData.category || "Frontend",
         imageSrc: initialData.imageSrc || "",
         isCoreSkill: !!initialData.isCoreSkill,
         color: initialData.color || "#000000",
         tags: initialData.tags || [],
-      });
+      };
+      setFormData(initial);
+      setInitialFormData(initial);
     }
   }, [initialData]);
 
@@ -127,12 +132,10 @@ export default function SkillForm({ initialData, onSubmit, onCancel, isSubmittin
 
         {/* Image Source */}
         <div className="space-y-1 md:col-span-2">
-          <label className="text-sm font-medium">Icon URL / Image Source</label>
-          <input
-            type="text"
+          <ImageUpload
             value={formData.imageSrc}
-            onChange={(e) => setFormData({ ...formData, imageSrc: e.target.value })}
-            className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm outline-none focus:border-primary"
+            onChange={(url) => setFormData({ ...formData, imageSrc: url })}
+            label="Icon URL / Image Source"
             placeholder="/icons/react.svg or https://..."
           />
         </div>
@@ -170,7 +173,7 @@ export default function SkillForm({ initialData, onSubmit, onCancel, isSubmittin
         </button>
         <button
           type="submit"
-          disabled={isSubmitting}
+          disabled={isSubmitting || (initialData && !isFormDirty(formData, initialFormData))}
           className="flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:brightness-110 disabled:opacity-50 transition-colors"
         >
           {isSubmitting && <Loader2 className="h-4 w-4 animate-spin" />}

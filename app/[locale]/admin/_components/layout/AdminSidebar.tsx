@@ -3,18 +3,22 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { LogOut, LayoutDashboard, MessageSquare, Settings, Briefcase, GraduationCap, LayoutTemplate, Cpu, X } from "lucide-react";
+import { LogOut, LayoutDashboard, MessageSquare, Settings, Briefcase, GraduationCap, LayoutTemplate, Cpu, X, UserCircle, Award, FileText, Mail } from "lucide-react";
 import { useAdminAuth } from "@/hooks/useAdminAuth";
 import { useAdminUIStore } from "@/common/stores/adminUI";
 import ThemeSwitcher from "@/common/components/elements/ThemeSwitcher";
 
 const NAV_ITEMS = [
   { name: "Dashboard", href: "/en/admin", icon: LayoutDashboard },
-  { name: "Inquiries", href: "/en/admin/inquiries", icon: MessageSquare },
+  { name: "Profile", href: "/en/admin/profile", icon: UserCircle },
   { name: "Projects", href: "/en/admin/projects", icon: LayoutTemplate },
   { name: "Skills", href: "/en/admin/skills", icon: Cpu },
   { name: "Experiences", href: "/en/admin/experiences", icon: Briefcase },
   { name: "Education", href: "/en/admin/education", icon: GraduationCap },
+  { name: "Certifications", href: "/en/admin/certifications", icon: Award },
+  { name: "Articles", href: "/en/admin/articles", icon: FileText },
+  { name: "Messages", href: "/en/admin/messages", icon: Mail },
+  { name: "Inquiries", href: "/en/admin/inquiries", icon: MessageSquare },
   { name: "Form Builder", href: "/en/admin/form-builder", icon: Settings },
 ];
 

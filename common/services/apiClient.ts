@@ -19,8 +19,14 @@ export const apiClient = async <T = any>(
 
   const customHeaders: Record<string, string> = {
     "Content-Type": "application/json",
+    "X-Public-API-Key": process.env.NEXT_PUBLIC_API_SECRET_KEY || "supersecretkey",
     ...(headers as Record<string, string>),
   };
+
+  // Allow browser to automatically set Content-Type with boundary for FormData
+  if (customOptions.body instanceof FormData) {
+    delete customHeaders["Content-Type"];
+  }
 
   if (requireAuth) {
     const token = useAdminAuthStore.getState().token;

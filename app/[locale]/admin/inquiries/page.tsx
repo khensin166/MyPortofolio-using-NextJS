@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useAdminAuth } from "@/hooks/useAdminAuth";
-import { Loader2, Search, Filter, Eye, ChevronRight, MessageSquare } from "lucide-react";
+import { Loader2, Search, Filter, Eye, ChevronRight, MessageSquare, Download } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import type { Inquiry, InquiryStatus } from "@/common/types/discovery-form";
@@ -67,6 +67,44 @@ export default function InquiriesPage() {
     );
   }
 
+  const exportToCSV = () => {
+    if (inquiries.length === 0) return;
+
+    // Define headers
+    const headers = ["ID", "Name", "Email", "Phone", "Company", "Budget", "Timeline", "Status", "Created At"];
+    
+    // Create CSV rows
+    const rows = filteredInquiries.map(inq => {
+      const company = inq.answers["company"] || inq.answers["company_name"] || "";
+      const budget = inq.answers["budget"] || "";
+      const timeline = inq.answers["timeline"] || "";
+
+      return [
+        inq.id,
+        `"${inq.name.replace(/"/g, '""')}"`,
+        `"${inq.email}"`,
+        `"${inq.phone || ''}"`,
+        `"${company}"`,
+        `"${budget}"`,
+        `"${timeline}"`,
+        inq.status,
+        new Date(inq.createdAt).toISOString()
+      ].join(",");
+    });
+
+    const csvContent = [headers.join(","), ...rows].join("\n");
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", `inquiries_export_${new Date().getTime()}.csv`);
+    link.style.visibility = "hidden";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -75,6 +113,14 @@ export default function InquiriesPage() {
           <p className="text-sm text-muted-foreground mt-1">Kelola pesan masuk dari Discovery Form</p>
         </div>
         <div className="flex items-center gap-2">
+          <button 
+            onClick={exportToCSV}
+            disabled={filteredInquiries.length === 0}
+            className="flex h-10 items-center justify-center gap-2 rounded-lg bg-emerald-500/10 px-4 text-sm font-medium text-emerald-600 transition-colors hover:bg-emerald-500/20 disabled:opacity-50 dark:text-emerald-400"
+          >
+            <Download className="h-4 w-4" />
+            <span className="hidden sm:inline">Download CSV</span>
+          </button>
           <div className="relative">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <input
