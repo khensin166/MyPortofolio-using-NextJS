@@ -128,3 +128,18 @@ export const getInstagramData = async () => {
     return null;
   }
 };
+
+export const getTiktokData = async () => {
+  const url = `${API_URL}/creations/tiktok`;
+  try {
+    const res = await fetch(url, {
+      cache: "no-store",
+    });
+    if (!res.ok) throw new Error("Failed to fetch /creations/tiktok");
+    const json = await res.json();
+    return json.data;
+  } catch (error) {
+    console.error("Error fetching /creations/tiktok:", error);
+    return null;
+  }
+};

@@ -4,6 +4,7 @@ import useSWR from "swr";
 import { useTranslations } from "next-intl";
 
 import InstagramList from "./InstagramList";
+import InstagramHighlights from "./InstagramHighlights";
 import ProfileHeader from "./ProfileHeader";
 import { ProfileHeaderSkeleton, VideoListSkeleton } from "./TiktokSkeleton";
 
@@ -49,15 +50,27 @@ const Instagram = () => {
         }}
       />
 
-      <div className="flex items-center gap-4">
-        <div className="h-[1px] flex-1 bg-border transition-colors duration-300"></div>
-        <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-[0.2em] transition-colors duration-300">
-          {posts.length} Posts
-        </h3>
-        <div className="h-[1px] flex-1 bg-border transition-colors duration-300"></div>
-      </div>
+      {data?.highlights && data.highlights.length > 0 && (
+        <InstagramHighlights highlights={data.highlights} />
+      )}
 
-      <InstagramList posts={posts} />
+      {posts.length > 0 ? (
+        <>
+          <div className="flex items-center gap-4 mt-8 mb-6">
+            <div className="h-[1px] flex-1 bg-border transition-colors duration-300"></div>
+            <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-[0.2em] transition-colors duration-300">
+              {posts.length} Posts
+            </h3>
+            <div className="h-[1px] flex-1 bg-border transition-colors duration-300"></div>
+          </div>
+          <InstagramList posts={posts} />
+        </>
+      ) : (
+        <div className="flex flex-col items-center justify-center py-12 text-center text-muted-foreground border border-dashed rounded-lg mt-8">
+          <p className="text-sm font-medium">No posts available at the moment</p>
+          <p className="text-xs mt-1 opacity-70">Check back later or visit my Instagram profile directly.</p>
+        </div>
+      )}
     </section>
   );
 };
