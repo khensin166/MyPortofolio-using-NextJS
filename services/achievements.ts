@@ -1,7 +1,26 @@
 import { getCertifications } from "@/services/portfolio";
 import { AchievementItem } from "@/common/types/achievements";
 
+/**
+ * Standarisasi format tanggal dari berbagai sumber (Admin Panel, data lama, null).
+ * Output: string ISO "YYYY-MM-DD" atau string kosong "" jika tidak valid.
+ */
+const formatAchievementDate = (dateStr: string | null | undefined): string => {
+  if (!dateStr) return "";
+  const str = dateStr.toString().trim();
 
+  // Tolak kata-kata tidak valid dari data lama di database
+  const invalidWords = ["nothing", "present", "invalid", "null", "n/a"];
+  if (invalidWords.some((word) => str.toLowerCase().includes(word))) return "";
+
+  // Jika sudah berformat YYYY-MM-DD atau lebih panjang, ambil 10 karakter pertama
+  if (str.length >= 10) return str.substring(0, 10);
+
+  // Jika berformat YYYY-MM (7 karakter), tambahkan -01
+  if (str.length === 7) return `${str}-01`;
+
+  return "";
+};
 
 export const getAchievementsData = async ({
   category,
@@ -24,8 +43,8 @@ export const getAchievementsData = async ({
     tags: item.tags || [],
     categories: item.categories || [],
     url_credential: item.credentialUrl,
-    issue_date: item.issueDate ? `${item.issueDate}-01` : "",
-    expiration_date: item.expirationDate ? `${item.expirationDate}-01` : "",
+    issue_date: formatAchievementDate(item.issueDate),
+    expiration_date: formatAchievementDate(item.expirationDate),
     image: item.imageLogo,
     is_show: true,
   }));
