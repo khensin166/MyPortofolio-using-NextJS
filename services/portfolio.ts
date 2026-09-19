@@ -64,8 +64,31 @@ export const getProjects = async (locale: string = "en") => {
 };
 
 export const getAnalytics = async () => {
-  const data = await fetchAPI('/analytics', ['analytics'], 3600); // cache for 1 hour
-  return data;
+  // Menggunakan Go Analysis API sebagai Single Source of Truth
+  // Endpoint ini menggabungkan archive (bulan lalu) + hot data (bulan ini)
+  const analysisApiUrl = process.env.NEXT_PUBLIC_ANALYSIS_API_URL || 'https://porto-analysis.kenantomfie.com/api';
+  const url = `${analysisApiUrl}/analytics/summary`;
+  try {
+    const res = await fetch(url, { next: { revalidate: 300 } }); // revalidate setiap 5 menit
+    if (!res.ok) throw new Error(`Failed to fetch /analytics/summary`);
+    const raw = await res.json();
+    // raw = { total_visitors, total_pageviews, top_countries, top_referrers }
+
+    // Memetakan ke bentuk yang sudah digunakan oleh komponen VisitorAnalytics.tsx
+    return {
+      summary: {
+        totalVisitors: raw.total_visitors ?? 0,
+        totalCountries: raw.top_countries?.length ?? 0,
+        topDevice: raw.top_devices?.[0]?.device ?? '-',
+        topSource: raw.top_referrers?.[0]?.referrer ?? 'Direct',
+      },
+      topCountries: (raw.top_countries ?? []).map((c: any) => ({ country: c.country, count: c.total })),
+      topCities: [], // Tidak ada di summary endpoint, bisa ditambahkan nanti
+    };
+  } catch (error) {
+    console.error('Error fetching /analytics:', error);
+    return null;
+  }
 };
 export const getSkills = async (locale: string = "en") => {
   const data = await fetchAPI('/skills', ['skills']);

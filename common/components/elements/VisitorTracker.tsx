@@ -15,6 +15,9 @@ export default function VisitorTracker() {
   useEffect(() => {
     if (!mounted) return;
 
+    // Jangan track kunjungan jika berada di halaman Admin
+    if (pathname.includes("/admin")) return;
+
     const trackVisit = async () => {
       try {
         const apiUrl = process.env.NEXT_PUBLIC_ANALYSIS_API_URL || "https://porto-analysis.kenantomfie.com/api";
