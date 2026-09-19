@@ -32,51 +32,35 @@ export default function AdminDashboardPage() {
     const fetchAnalytics = async () => {
       try {
         setIsLoading(true);
-        // Note: You can replace this with actual endpoints depending on your backend
-        // For now, we fetch from /analytics and manually aggregate others if needed
-        const { data, error: fetchError } = await apiClient("/analytics");
-        
-        if (fetchError) throw new Error(fetchError);
-        
-        // Mock fallback if the RPC get_visitor_analytics isn't returning everything we need
-        setAnalytics({
-          totalVisitors: data?.totalVisitors || 0,
-          totalPageviews: data?.totalPageviews || 0,
-          totalProjects: data?.totalProjects || 0, // In reality, we could do Promise.all and fetch /projects, /skills, /inquiry
-          totalSkills: data?.totalSkills || 0,
-          totalInquiries: data?.totalInquiries || 0,
-          inquiriesByStatus: data?.inquiriesByStatus || {
-            NEW: 0, CONTACTED: 0, DEAL: 0, REJECTED: 0
-          }
-        });
-        
-        // Since we don't know the exact structure of your analytics RPC yet, 
-        // let's fetch the counts directly from the endpoints as a robust backup
+
+        // Ambil data statistik dari Go Analysis API (Single Source of Truth)
+        // Endpoint ini menggabungkan data archive (bulan lalu) + hot data (bulan ini)
+        const analysisApiUrl = process.env.NEXT_PUBLIC_ANALYSIS_API_URL || "https://porto-analysis.kenantomfie.com/api";
+        const analyticsRes = await fetch(`${analysisApiUrl}/analytics/summary`, { cache: "no-store" });
+        const analyticsData = analyticsRes.ok ? await analyticsRes.json() : null;
+        // Response shape: { total_visitors, total_pageviews, top_countries, top_referrers }
+
+        // Ambil data projects, skills, inquiries dari Node.js Backend secara paralel
         const [projectsRes, skillsRes, inquiriesRes] = await Promise.all([
           apiClient("/projects"),
           apiClient("/skills"),
-          apiClient("/inquiry")
+          apiClient("/inquiry"),
         ]);
-        
-        setAnalytics(prev => {
-          if (!prev) return prev;
-          
-          const inqData = inquiriesRes.data?.inquiries || inquiriesRes.data || [];
-          const newCount = inqData.filter((i: any) => i.status === 'NEW').length;
-          const dealCount = inqData.filter((i: any) => i.status === 'DEAL').length;
-          
-          return {
-            ...prev,
-            totalProjects: (projectsRes.data || []).length,
-            totalSkills: (skillsRes.data || []).length,
-            totalInquiries: inqData.length,
-            inquiriesByStatus: {
-              NEW: newCount,
-              CONTACTED: inqData.filter((i: any) => i.status === 'CONTACTED').length,
-              DEAL: dealCount,
-              REJECTED: inqData.filter((i: any) => i.status === 'REJECTED').length,
-            }
-          };
+
+        const inqData = inquiriesRes.data?.inquiries || inquiriesRes.data || [];
+
+        setAnalytics({
+          totalVisitors: analyticsData?.total_visitors ?? 0,
+          totalPageviews: analyticsData?.total_pageviews ?? 0,
+          totalProjects: (projectsRes.data || []).length,
+          totalSkills: (skillsRes.data || []).length,
+          totalInquiries: inqData.length,
+          inquiriesByStatus: {
+            NEW: inqData.filter((i: any) => i.status === "NEW").length,
+            CONTACTED: inqData.filter((i: any) => i.status === "CONTACTED").length,
+            DEAL: inqData.filter((i: any) => i.status === "DEAL").length,
+            REJECTED: inqData.filter((i: any) => i.status === "REJECTED").length,
+          },
         });
 
       } catch (err: any) {
