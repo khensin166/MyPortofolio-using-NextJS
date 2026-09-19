@@ -75,15 +75,17 @@ export const getAnalytics = async () => {
     // raw = { total_visitors, total_pageviews, top_countries, top_referrers }
 
     // Memetakan ke bentuk yang sudah digunakan oleh komponen VisitorAnalytics.tsx
+    const topDeviceName = raw.top_devices?.[0]?.device?.replace('Device', '') ?? '-';
+    
     return {
       summary: {
         totalVisitors: raw.total_visitors ?? 0,
         totalCountries: raw.top_countries?.length ?? 0,
-        topDevice: raw.top_devices?.[0]?.device ?? '-',
+        topDevice: topDeviceName,
         topSource: raw.top_referrers?.[0]?.referrer ?? 'Direct',
       },
       topCountries: (raw.top_countries ?? []).map((c: any) => ({ country: c.country, count: c.total })),
-      topCities: [], // Tidak ada di summary endpoint, bisa ditambahkan nanti
+      topCities: (raw.top_cities ?? []).map((c: any) => ({ city: c.city, count: c.total })),
     };
   } catch (error) {
     console.error('Error fetching /analytics:', error);
