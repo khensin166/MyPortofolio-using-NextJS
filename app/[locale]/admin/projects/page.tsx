@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import useSWR from "swr";
 import { useAdminAuth } from "@/hooks/useAdminAuth";
 import { Loader2, Plus, Edit, Trash2, LayoutTemplate } from "lucide-react";
 import { motion } from "framer-motion";
@@ -38,31 +39,26 @@ const parseArray = (val: any) => {
 
 export default function ProjectsPage() {
   const { token, isLoading: authLoading } = useAdminAuth();
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState("");
-  
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingData, setEditingData] = useState<Project | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const fetchProjects = async () => {
-    try {
-      setIsLoading(true);
-      const { data, error: fetchError } = await apiClient("/projects");
+  const {
+    data: projects = [],
+    error: swrError,
+    isLoading,
+    mutate,
+  } = useSWR<Project[]>(
+    !authLoading && token ? "/projects" : null,
+    async (endpoint: string) => {
+      const { data, error: fetchError } = await apiClient<Project[]>(endpoint);
       if (fetchError) throw new Error(fetchError);
-      setProjects(data || []);
-    } catch (err: any) {
-      setError(err.message);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+      return data || [];
+    },
+    { revalidateOnFocus: false, dedupingInterval: 10000 },
+  );
 
-  useEffect(() => {
-    if (!token || authLoading) return;
-    fetchProjects();
-  }, [token, authLoading]);
+  const error = swrError ? swrError.message : "";
 
   const handleOpenModal = (project?: Project) => {
     setEditingData(project || null);
@@ -93,7 +89,7 @@ export default function ProjectsPage() {
         if (createError) throw new Error(createError);
       }
       
-      await fetchProjects();
+      await mutate();
       handleCloseModal();
     } catch (err: any) {
       alert(`Error: ${err.message}`);
@@ -111,7 +107,7 @@ export default function ProjectsPage() {
       });
       if (deleteError) throw new Error(deleteError);
       
-      setProjects(projects.filter(p => p.id !== id));
+      mutate((current) => (current || []).filter((p) => p.id !== id), false);
     } catch (err: any) {
       alert(`Delete failed: ${err.message}`);
     }

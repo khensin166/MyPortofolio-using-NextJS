@@ -7,11 +7,24 @@ import { useAdminAuthStore } from "@/common/stores/adminAuth";
 import { AdminLayoutClient } from "./_components/layout/AdminLayoutClient";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
-  const { isAuthenticated, isLoading } = useAdminAuth();
+  const { isAuthenticated, isLoading, checkSession } = useAdminAuth();
   const pathname = usePathname();
   const router = useRouter();
 
   const isLoginPage = pathname?.includes("/admin/login");
+
+  // Verifikasi sesi HttpOnly cookie ke server saat layout dimuat
+  useEffect(() => {
+    // Bersihkan sisa key legacy di localStorage jika masih ada dari sesi lama
+    if (typeof window !== "undefined") {
+      try {
+        window.localStorage.removeItem("portfolio_admin_auth");
+      } catch {
+        // ignore
+      }
+    }
+    checkSession();
+  }, [checkSession]);
 
   // Proteksi rute: arahkan ke login jika belum terotentikasi,
   // dan arahkan ke dasbor jika sudah login tapi mencoba mengakses halaman login.

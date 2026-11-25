@@ -1,26 +1,59 @@
 import { useCallback } from "react";
 import { useRouter } from "next/navigation";
-import { useAdminAuthStore } from "@/common/stores/adminAuth";
+import { useAdminAuthStore, type AdminUser } from "@/common/stores/adminAuth";
 
 /**
- * Hook untuk otentikasi Admin.
- * Menggunakan Zustand global store agar semua komponen (termasuk layout)
- * langsung bereaksi saat status login berubah - tanpa perlu refresh halaman.
+ * Hook untuk otentikasi Admin berbasis HttpOnly Cookie + verifikasi server (/api/admin-auth/me).
  */
 export function useAdminAuth() {
   const router = useRouter();
   const { token, user, isAuthenticated, isHydrated, setAuth, clearAuth } =
     useAdminAuthStore();
 
+  const checkSession = useCallback(async () => {
+    try {
+      const res = await fetch("/api/admin-auth/me", {
+        method: "GET",
+        credentials: "same-origin",
+        cache: "no-store",
+      });
+
+      if (!res.ok) {
+        clearAuth();
+        return false;
+      }
+
+      const data = await res.json();
+      if (data?.authenticated && data?.user) {
+        setAuth(data.user);
+        return true;
+      }
+
+      clearAuth();
+      return false;
+    } catch {
+      clearAuth();
+      return false;
+    }
+  }, [setAuth, clearAuth]);
+
   const login = useCallback(
-    (token: string, user: { id: string; name: string; email: string }) => {
-      setAuth(token, user);
+    (loggedInUser: AdminUser) => {
+      setAuth(loggedInUser);
       router.push("/en/admin/inquiries");
     },
     [setAuth, router],
   );
 
-  const logout = useCallback(() => {
+  const logout = useCallback(async () => {
+    try {
+      await fetch("/api/admin-auth/logout", {
+        method: "POST",
+        credentials: "same-origin",
+      });
+    } catch {
+      // Ignore network error on logout
+    }
     clearAuth();
     router.push("/en/admin/login");
   }, [clearAuth, router]);
@@ -29,8 +62,8 @@ export function useAdminAuth() {
     token,
     user,
     isAuthenticated,
-    // isLoading sekarang bergantung pada hidrasi store Zustand dari localStorage
     isLoading: !isHydrated,
+    checkSession,
     login,
     logout,
   };

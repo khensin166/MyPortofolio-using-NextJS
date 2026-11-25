@@ -1,45 +1,58 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import useSWR from "swr";
 import { useAdminAuth } from "@/hooks/useAdminAuth";
-import { Loader2, Search, Filter, Eye, ChevronRight, MessageSquare, Download } from "lucide-react";
+import { Loader2, Search, Eye, MessageSquare, Download, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
-import Link from "next/link";
-import type { Inquiry, InquiryStatus } from "@/common/types/discovery-form";
+import type { Inquiry } from "@/common/types/discovery-form";
 import { apiClient } from "@/common/services/apiClient";
 import Modal from "@/common/components/elements/Modal";
 import InquiryModal from "./InquiryModal";
 
+interface InquiriesResponse {
+  inquiries: Inquiry[];
+  total: number;
+  page: number;
+  limit: number;
+  totalPages: number;
+}
+
 export default function InquiriesPage() {
   const { token, isLoading: authLoading } = useAdminAuth();
-  const [inquiries, setInquiries] = useState<Inquiry[]>([]);
   const [selectedInquiry, setSelectedInquiry] = useState<Inquiry | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
+  const [statusFilter, setStatusFilter] = useState<string>("");
+  const [page, setPage] = useState(1);
+  const limit = 20;
 
-  useEffect(() => {
-    if (!token || authLoading) return;
+  const queryParams = new URLSearchParams({
+    page: String(page),
+    limit: String(limit),
+    ...(statusFilter ? { status: statusFilter } : {}),
+  }).toString();
 
-    const fetchInquiries = async () => {
-      try {
-        const { data, error: fetchError } = await apiClient("/inquiry");
-        
-        if (fetchError) {
-          throw new Error(fetchError);
-        }
+  const swrKey = !authLoading && token ? `/inquiry?${queryParams}` : null;
 
-        // Backend returns { inquiries: [...], total: ... } inside data
-        setInquiries(data?.inquiries || []);
-      } catch (err: any) {
-        setError(err.message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+  const {
+    data,
+    error: swrError,
+    isLoading,
+    mutate,
+  } = useSWR<InquiriesResponse>(
+    swrKey,
+    async (endpoint: string) => {
+      const { data: resData, error: fetchError } = await apiClient<InquiriesResponse>(endpoint);
+      if (fetchError) throw new Error(fetchError);
+      return resData || { inquiries: [], total: 0, page: 1, limit, totalPages: 1 };
+    },
+    { revalidateOnFocus: false, dedupingInterval: 10000 },
+  );
 
-    fetchInquiries();
-  }, [token, authLoading]);
+  const inquiries = data?.inquiries || [];
+  const totalPages = data?.totalPages || 1;
+  const total = data?.total || 0;
+  const error = swrError ? swrError.message : "";
 
   const filteredInquiries = inquiries.filter(inq => 
     inq.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
@@ -67,28 +80,34 @@ export default function InquiriesPage() {
     );
   }
 
+  const sanitizeCsvCell = (raw: unknown): string => {
+    const str = String(raw ?? "");
+    const neutralized = /^[=+\-@\t\r]/.test(str) ? `'${str}` : str;
+    return `"${neutralized.replace(/"/g, '""')}"`;
+  };
+
   const exportToCSV = () => {
     if (inquiries.length === 0) return;
 
     // Define headers
     const headers = ["ID", "Name", "Email", "Phone", "Company", "Budget", "Timeline", "Status", "Created At"];
     
-    // Create CSV rows
+    // Create CSV rows (dengan proteksi CSV Formula Injection)
     const rows = filteredInquiries.map(inq => {
       const company = inq.answers["company"] || inq.answers["company_name"] || "";
       const budget = inq.answers["budget"] || "";
       const timeline = inq.answers["timeline"] || "";
 
       return [
-        inq.id,
-        `"${inq.name.replace(/"/g, '""')}"`,
-        `"${inq.email}"`,
-        `"${inq.phone || ''}"`,
-        `"${company}"`,
-        `"${budget}"`,
-        `"${timeline}"`,
-        inq.status,
-        new Date(inq.createdAt).toISOString()
+        sanitizeCsvCell(inq.id),
+        sanitizeCsvCell(inq.name),
+        sanitizeCsvCell(inq.email),
+        sanitizeCsvCell(inq.phone || ""),
+        sanitizeCsvCell(company),
+        sanitizeCsvCell(budget),
+        sanitizeCsvCell(timeline),
+        sanitizeCsvCell(inq.status),
+        sanitizeCsvCell(new Date(inq.createdAt).toISOString())
       ].join(",");
     });
 
@@ -131,9 +150,21 @@ export default function InquiriesPage() {
               className="h-10 w-full sm:w-64 rounded-lg border border-border bg-background pl-9 pr-4 text-sm outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary"
             />
           </div>
-          <button className="flex h-10 items-center justify-center rounded-lg border border-border bg-background px-3 text-muted-foreground hover:bg-secondary">
-            <Filter className="h-4 w-4" />
-          </button>
+          <select
+            aria-label="Filter status"
+            value={statusFilter}
+            onChange={(e) => {
+              setStatusFilter(e.target.value);
+              setPage(1);
+            }}
+            className="h-10 rounded-lg border border-border bg-background px-3 text-sm text-foreground outline-none transition-colors focus:border-primary"
+          >
+            <option value="">Semua Status</option>
+            <option value="NEW">Baru</option>
+            <option value="CONTACTED">Dihubungi</option>
+            <option value="DEAL">Deal</option>
+            <option value="REJECTED">Ditolak</option>
+          </select>
         </div>
       </div>
 
@@ -204,6 +235,30 @@ export default function InquiriesPage() {
         )}
       </div>
 
+      {totalPages > 1 && (
+        <div className="flex items-center justify-between text-sm text-muted-foreground">
+          <span>
+            Halaman {page} dari {totalPages} ({total} total)
+          </span>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setPage((p) => Math.max(1, p - 1))}
+              disabled={page <= 1}
+              className="inline-flex h-9 items-center gap-1 rounded-lg border border-border bg-background px-3 hover:bg-secondary disabled:opacity-50"
+            >
+              <ChevronLeft className="h-4 w-4" /> Prev
+            </button>
+            <button
+              onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+              disabled={page >= totalPages}
+              className="inline-flex h-9 items-center gap-1 rounded-lg border border-border bg-background px-3 hover:bg-secondary disabled:opacity-50"
+            >
+              Next <ChevronRight className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+      )}
+
       <Modal 
         isOpen={!!selectedInquiry} 
         onClose={() => setSelectedInquiry(null)}
@@ -215,11 +270,19 @@ export default function InquiriesPage() {
             inquiry={selectedInquiry} 
             onClose={() => setSelectedInquiry(null)}
             onStatusUpdated={(id, newStatus) => {
-              setInquiries(prev => prev.map(inq => 
-                inq.id === id ? { ...inq, status: newStatus } : inq
-              ));
-              // Update selected inquiry state so the UI reflects the new status
-              setSelectedInquiry(prev => prev ? { ...prev, status: newStatus } : null);
+              mutate(
+                (current) =>
+                  current
+                    ? {
+                        ...current,
+                        inquiries: current.inquiries.map((inq) =>
+                          inq.id === id ? { ...inq, status: newStatus } : inq,
+                        ),
+                      }
+                    : current,
+                false,
+              );
+              setSelectedInquiry((prev) => (prev ? { ...prev, status: newStatus } : null));
             }}
           />
         )}

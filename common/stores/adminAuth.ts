@@ -1,40 +1,42 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
 
-interface User {
+export interface AdminUser {
   id: string;
   name: string;
   email: string;
+  role?: string;
 }
 
 interface AuthState {
+  /** Sentinel in-memory ("cookie-session") saat sesi HttpOnly valid; JWT asli tidak pernah disimpan di JS/localStorage */
   token: string | null;
-  user: User | null;
+  user: AdminUser | null;
   isAuthenticated: boolean;
   isHydrated: boolean;
-  // Actions
-  setAuth: (token: string, user: User) => void;
+  setAuth: (user: AdminUser) => void;
   clearAuth: () => void;
   setHydrated: (value: boolean) => void;
 }
 
-export const useAdminAuthStore = create<AuthState>()(
-  persist(
-    (set) => ({
+export const useAdminAuthStore = create<AuthState>((set) => ({
+  token: null,
+  user: null,
+  isAuthenticated: false,
+  isHydrated: false,
+
+  setAuth: (user) =>
+    set({
+      token: "cookie-session",
+      user,
+      isAuthenticated: true,
+      isHydrated: true,
+    }),
+  clearAuth: () =>
+    set({
       token: null,
       user: null,
       isAuthenticated: false,
-      isHydrated: false,
-
-      setAuth: (token, user) => set({ token, user, isAuthenticated: true }),
-      clearAuth: () => set({ token: null, user: null, isAuthenticated: false }),
-      setHydrated: (value) => set({ isHydrated: value }),
+      isHydrated: true,
     }),
-    {
-      name: "portfolio_admin_auth",
-      onRehydrateStorage: () => (state) => {
-        state?.setHydrated(true);
-      },
-    },
-  ),
-);
+  setHydrated: (value) => set({ isHydrated: value }),
+}));

@@ -6,6 +6,7 @@ import { Loader2, ArrowLeft, Mail, Phone, Calendar, CheckCircle } from "lucide-r
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import type { Inquiry, InquiryStatus } from "@/common/types/discovery-form";
+import { apiClient } from "@/common/services/apiClient";
 import { motion } from "framer-motion";
 
 export default function InquiryDetailPage() {
@@ -24,19 +25,11 @@ export default function InquiryDetailPage() {
 
     const fetchInquiry = async () => {
       try {
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000/api";
-        const res = await fetch(`${apiUrl}/inquiry/${id}`, {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        });
-
-        if (!res.ok) {
-          throw new Error("Failed to fetch inquiry details");
+        const { data, error: fetchError } = await apiClient<Inquiry>(`/inquiry/${id}`);
+        if (fetchError || !data) {
+          throw new Error(fetchError || "Failed to fetch inquiry details");
         }
-
-        const data = await res.json();
-        setInquiry(data.data);
+        setInquiry(data);
       } catch (err: any) {
         setError(err.message);
       } finally {
@@ -51,19 +44,12 @@ export default function InquiryDetailPage() {
     if (!token) return;
     setIsUpdating(true);
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000/api";
-      const res = await fetch(`${apiUrl}/inquiry/${id}/status`, {
+      const { error: patchError } = await apiClient(`/inquiry/${id}/status`, {
         method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`
-        },
-        body: JSON.stringify({ status: newStatus })
+        body: JSON.stringify({ status: newStatus }),
       });
 
-      if (!res.ok) throw new Error("Failed to update status");
-      
-      const data = await res.json();
+      if (patchError) throw new Error(patchError);
       setInquiry(prev => prev ? { ...prev, status: newStatus } : null);
     } catch (err: any) {
       alert(err.message);

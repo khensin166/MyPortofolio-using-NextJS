@@ -16,6 +16,21 @@ export default function middleware(req: NextRequest) {
     return NextResponse.redirect(newUrl, 301);
   }
 
+  // Proteksi server-side rute Admin (/(en|id)/admin/* kecuali /admin/login)
+  const pathname = req.nextUrl.pathname;
+  const adminMatch = pathname.match(/^\/(en|id)\/admin(?:\/(.*))?$/);
+  if (adminMatch) {
+    const locale = adminMatch[1];
+    const subPath = adminMatch[2] || "";
+    const isLoginPage = subPath === "login" || subPath.startsWith("login/");
+    const adminToken = req.cookies.get("portfolio_admin_token")?.value;
+
+    if (!isLoginPage && !adminToken) {
+      const loginUrl = new URL(`/${locale}/admin/login`, req.url);
+      return NextResponse.redirect(loginUrl);
+    }
+  }
+
   const response = intlMiddleware(req);
 
   // GSC Workaround: If next-intl redirects the root path '/' to '/en' with a 307 Temporary Redirect,
