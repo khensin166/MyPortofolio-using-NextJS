@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ message: "Missing tag param" }, { status: 400 });
     }
 
-    revalidateTag(tag, "max");
+    revalidateTag(tag, { expire: 0 });
     revalidatePath("/", "layout");
 
     return NextResponse.json({ revalidated: true, now: Date.now() });

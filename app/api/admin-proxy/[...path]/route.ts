@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { revalidatePath, revalidateTag } from "next/cache";
 
 const BACKEND_API_URL =
   process.env.BACKEND_API_URL ||
@@ -6,6 +7,16 @@ const BACKEND_API_URL =
   "http://localhost:4000/api";
 
 const ADMIN_COOKIE_NAME = "portfolio_admin_token";
+
+const REVALIDATABLE_CMS_TAGS = new Set([
+  "projects",
+  "profile",
+  "skills",
+  "experiences",
+  "articles",
+  "certifications",
+  "education",
+]);
 
 const ALLOWED_TOP_SEGMENTS = new Set([
   "projects",
@@ -71,11 +82,29 @@ async function handleProxy(
     });
 
     const responseText = await backendRes.text();
+
+    // Direct on-demand revalidation saat Admin sukses memutasi resource CMS
+    // (menjamin update langsung tampil di halaman publik < 1 detik tanpa bergantung webhook antar-lambda)
+    if (
+      backendRes.ok &&
+      req.method !== "GET" &&
+      req.method !== "HEAD" &&
+      REVALIDATABLE_CMS_TAGS.has(path[0])
+    ) {
+      try {
+        revalidateTag(path[0], { expire: 0 });
+        revalidatePath("/", "layout");
+      } catch (revalErr) {
+        console.error(`[AdminProxy] Revalidate error for "${path[0]}":`, revalErr);
+      }
+    }
+
     const res = new NextResponse(responseText, {
       status: backendRes.status,
       headers: {
         "Content-Type":
           backendRes.headers.get("content-type") || "application/json",
+        "Cache-Control": "no-store",
       },
     });
 
