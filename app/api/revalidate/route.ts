@@ -3,22 +3,24 @@ import { revalidateTag, revalidatePath } from "next/cache";
 
 export async function POST(request: NextRequest) {
   try {
-    const searchParams = request.nextUrl.searchParams;
-    let secret = searchParams.get("secret");
-    let tag = searchParams.get("tag");
+    const expectedSecret = process.env.NEXT_REVALIDATE_SECRET;
+    if (!expectedSecret) {
+      return NextResponse.json({ message: "Revalidation is not configured" }, { status: 503 });
+    }
 
-    // Try to get from body if not in searchParams
-    if (!secret || !tag) {
+    const headerSecret = request.headers.get("x-revalidate-secret");
+    let tag = request.nextUrl.searchParams.get("tag");
+
+    if (!tag) {
       try {
         const body = await request.json();
-        secret = secret || body.secret;
-        tag = tag || body.tag;
-      } catch (e) {
-        // Body is not JSON or empty, skip
+        tag = typeof body?.tag === "string" ? body.tag : null;
+      } catch {
+        // Body is not JSON or empty
       }
     }
 
-    if (secret !== process.env.NEXT_REVALIDATE_SECRET) {
+    if (!headerSecret || headerSecret !== expectedSecret) {
       return NextResponse.json({ message: "Invalid token" }, { status: 401 });
     }
 
@@ -30,11 +32,7 @@ export async function POST(request: NextRequest) {
     revalidatePath("/", "layout");
 
     return NextResponse.json({ revalidated: true, now: Date.now() });
-  } catch (err) {
+  } catch {
     return NextResponse.json({ message: "Error revalidating" }, { status: 500 });
   }
-}
-
-export async function GET(request: NextRequest) {
-  return POST(request);
 }

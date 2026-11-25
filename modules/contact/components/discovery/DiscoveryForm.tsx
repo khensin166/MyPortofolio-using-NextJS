@@ -13,7 +13,7 @@ import FormNavigation from "./FormNavigation";
 import SuccessScreen from "./SuccessScreen";
 
 // ── Env ─────────────────────────────────────────────────────────────────────
-const INQUIRY_API = `${process.env.NEXT_PUBLIC_API_URL}/inquiry`;
+const INQUIRY_API = `/api/public/inquiry`;
 
 // ── Validation ───────────────────────────────────────────────────────────────
 /**

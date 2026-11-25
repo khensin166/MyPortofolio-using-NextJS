@@ -1,32 +1,20 @@
 "use client";
 
-import useSWR from "swr";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import ChatInput from "./ChatInput";
 import ChatList from "./ChatList";
 import ChatItemSkeleton from "./ChatItemSkeleton";
 
 import { MessageProps } from "@/common/types/chat";
-import { fetcher } from "@/services/fetcher";
 import useNotif from "@/hooks/useNotif";
 
-const BACKEND_CHAT_API = process.env.NEXT_PUBLIC_API_URL + "/messages";
+const PUBLIC_MESSAGES_API = "/api/public/messages";
 
 export const ChatRoom = ({ isWidget = false }: { isWidget?: boolean }) => {
-  // Fetch messages from Hono backend with Bearer token
-  const { data, isLoading, error, mutate } = useSWR(BACKEND_CHAT_API, (url: string) =>
-    axios
-      .get(url, {
-        headers: {
-          Authorization: `Bearer supersecretkey`,
-        },
-      })
-      .then((res) => res.data),
-  );
-
   const [messages, setMessages] = useState<MessageProps[]>([]);
+  const isLoading = false;
   const [isReply, setIsReply] = useState({
     is_reply: false,
     name: "",
@@ -51,13 +39,8 @@ export const ChatRoom = ({ isWidget = false }: { isWidget?: boolean }) => {
     };
 
     try {
-      await axios.post(BACKEND_CHAT_API, newMessageData, {
-        headers: {
-          Authorization: `Bearer supersecretkey`,
-        },
-      });
+      await axios.post(PUBLIC_MESSAGES_API, newMessageData);
       notif("Successfully to send message");
-      mutate(); // Refresh messages
       handleCancelReply();
     } catch (err) {
       console.error("Error:", err);
@@ -65,27 +48,9 @@ export const ChatRoom = ({ isWidget = false }: { isWidget?: boolean }) => {
     }
   };
 
-  const handleDeleteMessage = async (id: string) => {
-    try {
-      await axios.delete(`${BACKEND_CHAT_API}/${id}`, {
-        headers: {
-          Authorization: `Bearer supersecretkey`,
-        },
-      });
-      notif("Successfully to delete message");
-      mutate();
-    } catch (err) {
-      notif("Failed to delete message");
-    }
+  const handleDeleteMessage = async (_id: string) => {
+    notif("Deleting messages is only available from the Admin Dashboard");
   };
-
-  useEffect(() => {
-    if (error) console.error("ChatRoom SWR Error:", error);
-    if (data) {
-      const rawMessages = Array.isArray(data) ? data : data.data || [];
-      setMessages(rawMessages);
-    }
-  }, [data, error]);
 
   const filteredMessages = Array.isArray(messages)
     ? messages.map((msg: any) => ({

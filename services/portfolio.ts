@@ -50,17 +50,8 @@ export const getProfile = async (locale: string = "en") => {
   return getLocalizedData(data, locale);
 };
 export const getProjects = async (locale: string = "en") => {
-  const url = `${API_URL}/projects`;
-  try {
-    // Use no-store so reactions counts are always fresh
-    const res = await fetch(url, { cache: "no-store" });
-    if (!res.ok) throw new Error("Failed to fetch /projects");
-    const json = await res.json();
-    return getLocalizedData(json.data, locale);
-  } catch (error) {
-    console.error("Error fetching /projects:", error);
-    return null;
-  }
+  const data = await fetchAPI('/projects', ['projects'], 300);
+  return getLocalizedData(data, locale);
 };
 
 export const getAnalytics = async () => {
@@ -128,8 +119,7 @@ export const reactToProject = async (id: number, emoji: string) => {
 };
 
 export const submitContactMessage = async (body: { senderName: string, senderEmail: string, message: string }) => {
-  const url = `${API_URL}/messages`;
-  const res = await fetch(url, {
+  const res = await fetch('/api/public/messages', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body)
@@ -140,10 +130,7 @@ export const getInstagramData = async () => {
   const url = `${API_URL}/creations/instagram`;
   try {
     const res = await fetch(url, {
-      cache: "no-store",
-      headers: {
-        Authorization: `Bearer supersecretkey`,
-      },
+      next: { tags: ["instagram"], revalidate: 3600 },
     });
     if (!res.ok) throw new Error("Failed to fetch /creations/instagram");
     const json = await res.json();
@@ -158,7 +145,7 @@ export const getTiktokData = async () => {
   const url = `${API_URL}/creations/tiktok`;
   try {
     const res = await fetch(url, {
-      cache: "no-store",
+      next: { tags: ["tiktok"], revalidate: 3600 },
     });
     if (!res.ok) throw new Error("Failed to fetch /creations/tiktok");
     const json = await res.json();

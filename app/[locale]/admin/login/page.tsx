@@ -18,21 +18,21 @@ export default function AdminLogin() {
     setIsSubmitting(true);
 
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000/api";
-      const res = await fetch(`${apiUrl}/auth/login`, {
+      const res = await fetch("/api/admin-auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "same-origin",
         body: JSON.stringify({ email, password }),
       });
 
       const data = await res.json();
 
-      if (!res.ok) {
+      if (!res.ok || !data?.data?.user) {
         throw new Error(data.error || "Login failed");
       }
 
-      // Successful login
-      login(data.data.token, data.data.user);
+      // Successful login (JWT disimpan aman di HttpOnly cookie oleh server)
+      login(data.data.user);
     } catch (err: any) {
       setError(err.message);
     } finally {
